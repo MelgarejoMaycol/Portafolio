@@ -15,11 +15,11 @@ export default function Encabezado() {
     <nav className="navbar navbar-expand-lg navbar-dark py-3">
       <div className="container-fluid px-0">
         {/* Nombre a la izquierda */}
-        <span className="navbar-brand fw-bold fs-5 flex-shrink-0 m-0 ps-5">Maycol Melgarejo</span>
+        <span className="navbar-brand fw-bold fs-5 flex-shrink-0 m-0">Maycol Melgarejo</span>
 
         {/* Botón hamburguesa */}
         <button
-          className="navbar-toggler me-5"
+          className="navbar-toggler me-3 me-md-5"
           type="button"
           data-bs-toggle="collapse"
           data-bs-target="#navbarNav"
