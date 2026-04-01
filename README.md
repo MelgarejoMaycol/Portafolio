@@ -2,7 +2,7 @@
 
 Un portafolio web moderno, responsivo y completamente funcional construido con React y Vite. Diseñado para mostrar proyectos, habilidades técnicas y facilitar el contacto directo.
 
-🌐 **[Ver en Vivo](https://melgarejomaycol.vercel.app/)** | [![GitHub Actions](https://github.com/maycolmelgarejo/Portafolio/actions/workflows/deploy.yml/badge.svg)](https://github.com/maycolmelgarejo/Portafolio/actions)
+🌐 **[Ver en Vivo](https://melgarejomaycol.vercel.app/)**
 
 ## 📋 Características
 
