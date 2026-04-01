@@ -3,6 +3,15 @@ body {
   color: #ffffff;
 }
 
+/* Navbar pegajoso (sticky) */
+.navbar {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  background-color: #00091c;
+  box-shadow: 0 2px 15px rgba(13, 110, 253, 0.1);
+}
+
 .inicio {
   background-color: #00091c;
 }
@@ -38,6 +47,30 @@ h2 {
 /* Display classes personalizadas */
 .display-3 {
   font-size: 2.5rem !important;
+}
+
+/* Títulos de sección */
+.section-title {
+  font-size: 2rem !important;
+  font-weight: bold;
+}
+
+@media (min-width: 576px) {
+  .section-title {
+    font-size: 2.3rem !important;
+  }
+}
+
+@media (min-width: 768px) {
+  .section-title {
+    font-size: 2.8rem !important;
+  }
+}
+
+@media (min-width: 1200px) {
+  .section-title {
+    font-size: 3.5rem !important;
+  }
 }
 
 /* Avatar responsivo - tamaños adaptables según pantalla */
@@ -355,5 +388,87 @@ h2 {
   .inicio-glow {
     width: 600px;
     height: 600px;
+  }
+}
+
+/* Iconos de herramientas responsivos */
+.herramientas-icon {
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: rgba(13, 110, 253, 0.1);
+  border: 1px solid rgba(13, 110, 253, 0.3);
+  border-radius: 12px;
+  padding: 8px;
+  transition: all 0.3s ease;
+}
+
+.herramientas-icon img {
+  width: 90%;
+  height: 90%;
+  object-fit: contain;
+}
+
+/* Placeholder más visible en formularios */
+.form-control::placeholder {
+  color: rgba(255, 255, 255, 0.6) !important;
+  opacity: 1 !important;
+}
+
+.form-control::-webkit-input-placeholder {
+  color: rgba(255, 255, 255, 0.6);
+  opacity: 1;
+}
+
+.form-control::-moz-placeholder {
+  color: rgba(255, 255, 255, 0.6);
+  opacity: 1;
+}
+
+/* Extra pequeño (360px) */
+.herramientas-icon {
+  width: 40px;
+  height: 40px;
+}
+
+/* Pequeño (576px) */
+@media (min-width: 576px) {
+  .herramientas-icon {
+    width: 50px;
+    height: 50px;
+  }
+}
+
+/* Tablet pequeño (640px) */
+@media (min-width: 640px) {
+  .herramientas-icon {
+    width: 55px;
+    height: 55px;
+  }
+}
+
+/* Tablet (768px) */
+@media (min-width: 768px) {
+  .herramientas-icon {
+    width: 60px;
+    height: 60px;
+  }
+}
+
+/* Desktop (992px) */
+@media (min-width: 992px) and (max-width: 1199px) {
+  .herramientas-icon {
+    width: 65px;
+    height: 65px;
+  }
+}
+
+/* Desktop grande (1200px) */
+@media (min-width: 1200px) {
+  .herramientas-icon {
+    width: 70px;
+    height: 70px;
   }
 }

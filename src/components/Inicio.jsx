@@ -1,7 +1,26 @@
 import React from 'react'
-import Imagen from '../../public/avatar.jpg';
+import Imagen from '../../public/avatar.jpg'
 
 export default function Inicio() {
+  const handleNavLinkClick = (sectionId) => {
+    const element = document.getElementById(sectionId)
+    
+    if (element) {
+      const isMobile = window.innerWidth < 992
+      const offset = isMobile ? -120 : -40
+      
+      // Agregar pequeño delay para que el menú se recoja antes de scrollear
+      setTimeout(() => {
+        const elementPosition = element.getBoundingClientRect().top + window.scrollY
+        const offsetPosition = elementPosition + offset
+        
+        window.scrollTo({
+          top: offsetPosition,
+          behavior: 'smooth'
+        })
+      }, 200)
+    }
+  }
   return (
     <section className="inicio py-2 py-md-3" style={{ minHeight: '85vh' }} id="inicio">
       <div className="container d-flex align-items-center justify-content-center px-2 px-md-4" style={{ minHeight: '85vh' }}>
@@ -19,12 +38,20 @@ export default function Inicio() {
             </h2>
 
             <div className="d-flex gap-2 gap-md-3 flex-wrap">
-              <a href="#proyectos" className="btn btn-primary px-4 px-md-5 rounded-pill" style={{ fontSize: '0.9rem' }}>
+              <button 
+                onClick={() => handleNavLinkClick('proyectos')}
+                className="btn btn-primary px-4 px-md-5 rounded-pill" 
+                style={{ fontSize: '0.9rem', border: 'none', cursor: 'pointer' }}
+              >
                 Ver Proyectos
-              </a>
-              <a href="#contacto" className="btn btn-outline-primary px-4 px-md-5 rounded-pill" style={{ fontSize: '0.9rem' }}>
-                Contactar
-              </a>
+              </button>
+              <button 
+                onClick={() => handleNavLinkClick('contacto')}
+                className="btn btn-outline-primary px-4 px-md-5 rounded-pill" 
+                style={{ fontSize: '0.9rem', border: 'none', cursor: 'pointer' }}
+              >
+                Contáctame
+              </button>
             </div>
           </div>
 
