@@ -72,7 +72,7 @@ export default function Encabezado() {
         // Luego hace scroll con delay para que el menú se recoja primero
         setTimeout(() => {
           const isMobile = window.innerWidth < 992
-          const offset = isMobile ? -120 : -40
+          const offset = isMobile ? -140 : -40
           
           const elementPosition = element.getBoundingClientRect().top + window.scrollY
           const offsetPosition = elementPosition + offset
