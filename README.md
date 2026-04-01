@@ -2,7 +2,7 @@
 
 Un portafolio web moderno, responsivo y completamente funcional construido con React y Vite. Diseñado para mostrar proyectos, habilidades técnicas y facilitar el contacto directo.
 
-[![Deploy to GitHub Pages](https://github.com/maycolmelgarejo/Portafolio/actions/workflows/deploy.yml/badge.svg)](https://maycolmelgarejo.github.io/Portafolio)
+🌐 **[Ver en Vivo](https://melgarejomaycol.vercel.app/)** | [![GitHub Actions](https://github.com/maycolmelgarejo/Portafolio/actions/workflows/deploy.yml/badge.svg)](https://github.com/maycolmelgarejo/Portafolio/actions)
 
 ## 📋 Características
 
@@ -12,7 +12,7 @@ Un portafolio web moderno, responsivo y completamente funcional construido con R
 - ✅ **Descarga de Documentos**: CV y Certificados disponibles en múltiples ubicaciones
 - ✅ **Galería de Proyectos**: Showcase de 5 proyectos destacados con descripciones
 - ✅ **Stack Técnico**: Visualización interactiva de tecnologías con logos oficiales
-- ✅ **Deploy Automático**: GitHub Actions para build y deploy a GitHub Pages
+- ✅ **Deploy Automático**: CI/CD con GitHub Actions + Vercel
 - ✅ **Rendimiento Optimizado**: Build optimizado con Vite
 
 ## 🛠️ Tecnologías
@@ -26,7 +26,7 @@ Un portafolio web moderno, responsivo y completamente funcional construido con R
 
 ### Backend & Servicios
 - **EmailJS** 4.x - Servicio de email
-- **GitHub Pages** - Hosting
+- **Vercel** - Hosting y deploy automático
 
 ### Herramientas de Desarrollo
 - ESLint - Linting
@@ -187,10 +187,9 @@ Filtros automáticos para eliminar:
 ## 📞 Contacto
 
 - **Email**: mfmelgarejo04@gmail.com
-- **GitHub**: [@maycolmelgarejo](https://github.com/maycolmelgarejo)
-- **Instagram**: [@maycolmelgarejo](https://instagram.com/maycolmelgarejo)
-- **LinkedIn**: [Maycol Melgarejo](https://linkedin.com/in/maycolmelgarejo)
-- **WhatsApp**: [Contactar](https://wa.me/57XXXXXXXXXX)
+- **GitHub**: [@MelgarejoMaycol](https://github.com/MelgarejoMaycol)
+- **Instagram**: [@melgarejo_mayc](https://instagram.com/melgarejo_mayc)
+- **WhatsApp**: [Contactar](https://wa.me/573143832271)
 
 ## 📄 Licencia
 
