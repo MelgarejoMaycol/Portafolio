@@ -78,6 +78,9 @@ export default function SobreMi() {
                 <a href="https://github.com/MelgarejoMaycol" target="_blank" rel="noopener noreferrer" className="text-primary">
                   <i className="fa-brands fa-github" style={{ fontSize: '1.2rem' }}></i>
                 </a>
+                <a href="https://www.linkedin.com/in/maycol-melgarejo-a59bb9322" target="_blank" rel="noopener noreferrer" className="text-primary">
+                  <i className="fa-brands fa-linkedin" style={{ fontSize: '1.2rem' }}></i>
+                </a>
               </div>
             </div>
           </div>

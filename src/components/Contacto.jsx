@@ -229,7 +229,7 @@ export default function Contacto() {
                 <a href="https://instagram.com/melgarejo_mayc/" target="_blank" rel="noopener noreferrer" className="btn btn-outline-primary rounded-circle p-2" style={{ width: '45px', height: '45px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
                   <i className="fab fa-instagram"></i>
                 </a>
-                <a href="https://linkedin.com/in/maycol-melgarejo" target="_blank" rel="noopener noreferrer" className="btn btn-outline-primary rounded-circle p-2" style={{ width: '45px', height: '45px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                <a href="https://www.linkedin.com/in/maycol-melgarejo-a59bb9322" target="_blank" rel="noopener noreferrer" className="btn btn-outline-primary rounded-circle p-2" style={{ width: '45px', height: '45px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
                   <i className="fab fa-linkedin"></i>
                 </a>
               </div>
