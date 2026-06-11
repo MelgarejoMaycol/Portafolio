@@ -4,6 +4,8 @@ import proyectoTaxis from '../../public/ProyectoTaxis.png'
 import proyectoCompu from '../../public/ProyectoCompu3D.png'
 import proyectoTrackFile from '../../public/ProyectoTrackFile.png'
 import ProyectoSeries from '../../public/ProyectoSeries.png'
+import ProyectoPokeVerso from '../../public/ProyectoPokeVerso.png'
+import documentoTrackFile from '../assets/F-DC-125  desarrollo tecnológico listo.pdf'
 
 export default function Proyectos() {
   const proyectos = [
@@ -48,9 +50,18 @@ export default function Proyectos() {
       titulo: 'TRACKEILE',
       descripcion: 'Sistema Multiplataforma de gestión de documentos con Flutter y Dark, facilitando la organización y seguimiento de archivos digitales.',
       imagen: proyectoTrackFile,
-      linkDetalles: 'https://github.com/MelgarejoMaycol/TRACKFILE',
+      linkDetalles: documentoTrackFile,
       linkPagina: 'https://trackfile.vercel.app/',
-      estado: 'en-desarrollo'
+      estado: 'completo'
+    },
+    {
+      id: 6,
+      titulo: 'PokeVerso',
+      descripcion: 'PokeVerso es una aplicación hecha con React y Vite que consume la PokeAPI para mostrar una lista de Pokémon, buscar por nombre y guardar favoritos.',
+      imagen: ProyectoPokeVerso,
+      linkDetalles: 'https://github.com/MelgarejoMaycol/PokeVerso',
+      linkPagina: 'https://poke-verso.vercel.app/',
+      estado: 'completo'
     }
   ]
 

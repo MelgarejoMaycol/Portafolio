@@ -29,6 +29,16 @@ export default function Herramientas() {
       url: 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/'
     },
     { 
+      nombre: 'Node.js', 
+      logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg',
+      url: 'https://nodejs.org/'
+    },
+    { 
+      nombre: 'Express', 
+      logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/express/express-original.svg',
+      url: 'https://expressjs.com/'
+    },
+    { 
       nombre: 'HTML5', 
       logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg',
       url: 'https://developer.mozilla.org/en-US/docs/Web/HTML/'
@@ -79,7 +89,9 @@ export default function Herramientas() {
       { top: '20%', left: '19%' },
       { top: '20%', left: '41%' },
       { top: '6%', right: '22%' },
-      { top: '19%', left: '63%' }
+      { top: '19%', left: '63%' },
+      { top: '37%', left: '73%' },
+      { top: '35%', left: '40%' }
     ]
     return basePositions[index] || basePositions[0]
   }
@@ -112,7 +124,7 @@ export default function Herramientas() {
         {/* Lista de tecnologías */}
         <div className="text-center mb-5">
           <p className="text-primary fw-bold" style={{ fontSize: '0.9rem', lineHeight: '1.8', flexWrap: 'wrap' }}>
-            React · Laravel · PHP · Java · Spring Boot · MySQL · PostgreSQL · JavaScript · Bootstrap · Git · XAMPP
+            React · Laravel · PHP · Java · Spring Boot · MySQL · PostgreSQL · JavaScript · Node.js · Express · Bootstrap · Git · XAMPP
           </p>
         </div>
 
