@@ -6,6 +6,8 @@ import proyectoTrackFile from '../../public/ProyectoTrackFile.png'
 import ProyectoSeries from '../../public/ProyectoSeries.png'
 import ProyectoPokeVerso from '../../public/ProyectoPokeVerso.png'
 import documentoTrackFile from '../assets/F-DC-125  desarrollo tecnológico listo.pdf'
+import ProyectoRecetas_Api from '../../public/ProyectoRecetas_Api.png'
+import RecetasFrontTS from '../../public/ProyectoRecetas_Front_TS.png'
 
 export default function Proyectos() {
   const proyectos = [
@@ -61,6 +63,24 @@ export default function Proyectos() {
       imagen: ProyectoPokeVerso,
       linkDetalles: 'https://github.com/MelgarejoMaycol/PokeVerso',
       linkPagina: 'https://poke-verso.vercel.app/',
+      estado: 'completo'
+    },
+    {
+      id: 7,
+      titulo: 'Recetas-Api',
+      descripcion: 'API REST para gestionar recetas, usuarios, categorias, ingredientes, preparaciones, comentarios y favoritos, el servidor puede tardar unos minutos en encender la primera vez.',
+      imagen: ProyectoRecetas_Api,
+      linkDetalles: 'https://github.com/MelgarejoMaycol/recetas-api',
+      linkPagina: 'https://recetas-api-j4p8.onrender.com/',
+      estado: 'completo'
+    },
+    {
+      id: 8,
+      titulo: 'Recetas-Front-TS',
+      descripcion: 'Frontend de la aplicación de recetas, desarrollado con React y TypeScript, consumiendo la API de recetas para mostrar y gestionar recetas, usuarios y favoritos.',
+      imagen: RecetasFrontTS,
+      linkDetalles: 'https://github.com/MelgarejoMaycol/Recetas-TS',
+      linkPagina: 'https://recetas-ts.vercel.app/',
       estado: 'completo'
     }
   ]
