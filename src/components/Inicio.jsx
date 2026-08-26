@@ -34,7 +34,7 @@ export default function Inicio() {
               Hola, mi nombre es <span className="text-primary">Maycol</span>.
             </h1>
             <h2 className="h3 mb-3 mb-md-5" style={{ fontSize: '1.2rem' }}>
-              Desarrollador Web /<span className="text-primary"> Frontend </span>
+              Desarrollador <span className="text-primary">Full Stack</span>
             </h2>
 
             <div className="d-flex gap-2 gap-md-3 flex-wrap">
