@@ -33,7 +33,7 @@ export default function Proyectos() {
       descripcion:
         'Sistema multiplataforma para gestionar, consultar y dar seguimiento a documentos y archivos digitales. Participé en el análisis, diseño e integración entre frontend, backend y base de datos.',
       imagen: proyectoTrackFile,
-      imagenContain: false,
+      imagenContain: true,
       stack: ['Flutter', 'Dart', 'Full Stack', 'Gestión documental'],
       linkPagina: 'https://trackfile.vercel.app/',
       linkDetalles: documentoTrackFile,
