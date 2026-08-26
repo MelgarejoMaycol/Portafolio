@@ -1,5 +1,5 @@
-import avatar from '../../public/avatar2.jpeg';
-import CVPDF from '../assets/CV_MaycolMelgarejo.pdf';
+import avatar from '../../public/avatar2.jpeg'
+import { downloadCV } from '../utils/downloadCV'
 
 export default function SobreMi() {
   return (
@@ -17,12 +17,7 @@ export default function SobreMi() {
             </p>
             <div className="mt-3 mt-md-4">
               <button
-                onClick={() => {
-                  const link = document.createElement('a')
-                  link.href = CVPDF
-                  link.download = 'CV_MaycolMelgarejo.pdf'
-                  link.click()
-                }}
+                onClick={downloadCV}
                 className="btn btn-primary rounded-pill px-4 fw-bold"
                 style={{ fontSize: '0.9rem' }}
               >
@@ -54,16 +49,16 @@ export default function SobreMi() {
               <p className="text-primary fw-bold mb-1" style={{ fontSize: '0.9rem' }}>Edad:</p>
               <p className="text-white" style={{ fontSize: '0.95rem' }}>
                 {(() => {
-                  const hoy = new Date();
-                  const fechaNac = new Date(2004, 10, 16);
-                  let edad = hoy.getFullYear() - fechaNac.getFullYear();
-                  const diferenciaMeses = hoy.getMonth() - fechaNac.getMonth();
+                  const hoy = new Date()
+                  const fechaNac = new Date(2004, 10, 16)
+                  let edad = hoy.getFullYear() - fechaNac.getFullYear()
+                  const diferenciaMeses = hoy.getMonth() - fechaNac.getMonth()
 
                   if (diferenciaMeses < 0 || (diferenciaMeses === 0 && hoy.getDate() < fechaNac.getDate())) {
-                    edad--;
+                    edad--
                   }
 
-                  return `${edad} años`;
+                  return `${edad} años`
                 })()}
               </p>
             </div>
