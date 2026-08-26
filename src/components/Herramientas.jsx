@@ -24,8 +24,7 @@ export default function Herramientas() {
         {
           nombre: 'Vue.js',
           logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vuejs/vuejs-original.svg',
-          url: 'https://vuejs.org/',
-          nivel: 'Conocimientos'
+          url: 'https://vuejs.org/'
         },
         {
           nombre: 'HTML5',
@@ -131,7 +130,7 @@ export default function Herramientas() {
 
         <div className="text-center mb-5">
           <p className="text-primary fw-bold herramientas-resumen">
-            React - TypeScript - JavaScript - Vue.js (conocimientos) - Node.js - Express - Laravel - PHP - Java - Spring Boot - PostgreSQL - MySQL - Bootstrap - Git - XAMPP
+            React - TypeScript - JavaScript - Vue.js - Node.js - Express - Laravel - PHP - Java - Spring Boot - PostgreSQL - MySQL - Bootstrap - Git - XAMPP
           </p>
         </div>
 
@@ -147,7 +146,7 @@ export default function Herramientas() {
                     target="_blank"
                     rel="noopener noreferrer"
                     className="herramientas-item"
-                    title={herramienta.nivel ? `${herramienta.nombre} · ${herramienta.nivel}` : herramienta.nombre}
+                    title={herramienta.nombre}
                   >
                     <div className="herramientas-icon">
                       <img
@@ -156,18 +155,6 @@ export default function Herramientas() {
                       />
                     </div>
                     <span>{herramienta.nombre}</span>
-                    {herramienta.nivel && (
-                      <small
-                        style={{
-                          color: '#8fb9ff',
-                          fontSize: '0.7rem',
-                          marginTop: '0.2rem',
-                          fontWeight: 600
-                        }}
-                      >
-                        {herramienta.nivel}
-                      </small>
-                    )}
                   </a>
                 ))}
               </div>
