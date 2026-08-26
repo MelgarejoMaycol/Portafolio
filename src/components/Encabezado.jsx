@@ -36,10 +36,19 @@ export default function Encabezado() {
     const navToggler = document.querySelector('.navbar-toggler');
     const navbarCollapse = document.querySelector('.navbar-collapse');
     
-    if (navbarCollapse.classList.contains('show')) {
-      navToggler.click();
+    if (navbarCollapse?.classList.contains('show')) {
+      navToggler?.click();
     }
   };
+
+  const handleCVDownload = () => {
+    const link = document.createElement('a')
+    link.href = CVPDF
+    link.download = 'CV_MaycolMelgarejo.pdf'
+    document.body.appendChild(link)
+    link.click()
+    link.remove()
+  }
 
   const handleNavLinkClick = (e, sectionId) => {
     e.preventDefault()
@@ -131,21 +140,26 @@ export default function Encabezado() {
 
           {/* Botón CV para móvil */}
           <div className="d-lg-none w-100 d-flex justify-content-center mt-3">
-            <a href="#cv" className="btn btn-primary px-4 fw-bold" onClick={handleNavClick}>CV</a>
+            <button
+              type="button"
+              className="btn btn-primary px-4 fw-bold"
+              onClick={() => {
+                handleNavClick()
+                handleCVDownload()
+              }}
+            >
+              CV
+            </button>
           </div>
         </div>
 
         {/* Botón CV para escritorio */}
         <button
-                        onClick={() => {
-                          const link = document.createElement('a')
-                          link.href = CVPDF
-                          link.download = 'CV_MaycolMelgarejo.pdf'
-                          link.click()
-                        }}
-                        className="btn btn-primary px-5 d-flex align-items-center justify-content-center rounded-pill fw-bold d-none d-lg-flex me-5"
-                      >
-                        CV
+          type="button"
+          onClick={handleCVDownload}
+          className="btn btn-primary px-5 d-flex align-items-center justify-content-center rounded-pill fw-bold d-none d-lg-flex me-5"
+        >
+          CV
         </button>
         
       </div>
