@@ -12,14 +12,20 @@ export default function Herramientas() {
           url: 'https://reactjs.org/'
         },
         {
+          nombre: 'TypeScript',
+          logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg',
+          url: 'https://www.typescriptlang.org/'
+        },
+        {
           nombre: 'JavaScript',
           logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg',
           url: 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/'
         },
         {
-          nombre: 'TypeScript',
-          logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg',
-          url: 'https://www.typescriptlang.org/'
+          nombre: 'Vue.js',
+          logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vuejs/vuejs-original.svg',
+          url: 'https://vuejs.org/',
+          nivel: 'Conocimientos'
         },
         {
           nombre: 'HTML5',
@@ -77,14 +83,14 @@ export default function Herramientas() {
       titulo: 'Datos y flujo',
       herramientas: [
         {
-          nombre: 'MySQL',
-          logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg',
-          url: 'https://www.mysql.com/'
-        },
-        {
           nombre: 'PostgreSQL',
           logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-original.svg',
           url: 'https://www.postgresql.org/'
+        },
+        {
+          nombre: 'MySQL',
+          logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg',
+          url: 'https://www.mysql.com/'
         },
         {
           nombre: 'Git',
@@ -120,12 +126,12 @@ export default function Herramientas() {
 
       <div className="container px-2 px-md-4" style={{ position: 'relative', zIndex: 1 }}>
         <div className="text-center mb-4 mb-md-5">
-          <h2 className="section-title text-white mb-3 mb-md-4">Herramientas y tecnologias</h2>
+          <h2 className="section-title text-white mb-3 mb-md-4">Herramientas y tecnologías</h2>
         </div>
 
         <div className="text-center mb-5">
           <p className="text-primary fw-bold herramientas-resumen">
-            React - TypeScript - Laravel - PHP - Java - Spring Boot - MySQL - PostgreSQL - JavaScript - Node.js - Express - Bootstrap - Git - XAMPP
+            React - TypeScript - JavaScript - Vue.js (conocimientos) - Node.js - Express - Laravel - PHP - Java - Spring Boot - PostgreSQL - MySQL - Bootstrap - Git - XAMPP
           </p>
         </div>
 
@@ -141,7 +147,7 @@ export default function Herramientas() {
                     target="_blank"
                     rel="noopener noreferrer"
                     className="herramientas-item"
-                    title={herramienta.nombre}
+                    title={herramienta.nivel ? `${herramienta.nombre} · ${herramienta.nivel}` : herramienta.nombre}
                   >
                     <div className="herramientas-icon">
                       <img
@@ -150,6 +156,18 @@ export default function Herramientas() {
                       />
                     </div>
                     <span>{herramienta.nombre}</span>
+                    {herramienta.nivel && (
+                      <small
+                        style={{
+                          color: '#8fb9ff',
+                          fontSize: '0.7rem',
+                          marginTop: '0.2rem',
+                          fontWeight: 600
+                        }}
+                      >
+                        {herramienta.nivel}
+                      </small>
+                    )}
                   </a>
                 ))}
               </div>
