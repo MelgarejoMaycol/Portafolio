@@ -18,11 +18,12 @@ export default function Proyectos() {
       id: 'fynar',
       titulo: 'Fynar — Finanzas Personales',
       descripcion:
-        'Plataforma Full Stack para centralizar cuentas, movimientos, presupuestos, tarjetas de crédito y obligaciones financieras. Desarrollé la experiencia web, integración con la API, autenticación, modelado de datos, pruebas y despliegue.',
+        'Plataforma Full Stack de finanzas personales para centralizar cuentas, movimientos, presupuestos, metas, créditos, pagos recurrentes e inversiones. Incluye conversor de divisas, simulaciones, proyecciones, salud financiera y una demo pública para conocer el producto sin registrarse.',
       imagen: imagenFynarReal,
       imagenContain: true,
       stack: ['React', 'TypeScript', 'Node.js', 'Express', 'PostgreSQL', 'Prisma'],
       linkPagina: 'https://fynar.vercel.app/',
+      linkDemo: 'https://fynar.vercel.app/demo',
       linkDetalles: 'https://github.com/MelgarejoMaycol/frontFynar',
       linkBackend: 'https://github.com/MelgarejoMaycol/BackFynar',
       etiqueta: 'Proyecto principal · Full Stack'
@@ -236,8 +237,20 @@ export default function Proyectos() {
                       className="btn btn-primary rounded-pill px-3"
                     >
                       <i className="fa-solid fa-arrow-up-right-from-square me-2"></i>
-                      Ver aplicación
+                      {proyecto.id === 'fynar' ? 'Conocer Fynar' : 'Ver aplicación'}
                     </a>
+
+                    {proyecto.linkDemo && (
+                      <a
+                        href={proyecto.linkDemo}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="btn btn-outline-primary rounded-pill px-3"
+                      >
+                        <i className="fa-solid fa-flask me-2"></i>
+                        Probar demo
+                      </a>
+                    )}
 
                     <a
                       href={proyecto.linkDetalles}
