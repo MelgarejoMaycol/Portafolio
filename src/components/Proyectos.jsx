@@ -21,8 +21,8 @@ export default function Proyectos() {
       imagen: imagenCifrya,
       imagenContain: true,
       stack: ['React', 'TypeScript', 'Node.js', 'Express', 'PostgreSQL', 'Prisma'],
-      linkPagina: 'https://cifrya.vercel.app/',
-      linkDemo: 'https://cifrya.vercel.app/demo',
+      linkPagina: 'https://cifrya.com/',
+      linkDemo: 'https://cifrya.com/demo',
       etiqueta: 'Proyecto principal · Full Stack'
     },
     {
