@@ -9,7 +9,7 @@ import documentoTrackFile from '../assets/F-DC-125  desarrollo tecnológico list
 import ProyectoRecetas_Api from '../../public/ProyectoRecetas_Api.png'
 import RecetasFrontTS from '../../public/ProyectoRecetas_Front_TS.png'
 
-const imagenCifrya = '/ProyectoFynar.svg'
+const imagenCifrya = '/ProyectoCifrya.svg'
 
 export default function Proyectos() {
   const proyectosPrincipales = [
