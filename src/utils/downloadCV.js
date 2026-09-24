@@ -101,7 +101,7 @@ function makeCVPdf() {
   spacer(3)
 
   heading('PROYECTOS DESTACADOS')
-  body('Fynar — Plataforma de finanzas personales | React · TypeScript · Node.js · Express · PostgreSQL · Prisma | 2026 – Actualidad', { bold: true, size: 7.15 })
+  body('Cifrya — Plataforma de finanzas personales | React · TypeScript · Node.js · Express · PostgreSQL · Prisma | 2026 – Actualidad', { bold: true, size: 7.15 })
   body('• Construí interfaces responsivas para cuentas, tarjetas de crédito, movimientos y presupuestos, priorizando claridad visual y experiencia de usuario.')
   body('• Integré frontend con API REST, autenticación, validación y manejo de datos; desplegué frontend, backend y base de datos en Vercel, Render y Neon.')
   spacer(1)
@@ -137,7 +137,7 @@ function makeCVPdf() {
     `<< /Length ${byteLength(stream)} >>\nstream\n${stream}endstream`
   ]
 
-  let pdf = '%PDF-1.4\n% Fynar Portfolio CV\n'
+  let pdf = '%PDF-1.4\n% Cifrya Portfolio CV\n'
   const offsets = [0]
 
   objects.forEach((object, index) => {
