@@ -9,7 +9,7 @@ import documentoTrackFile from '../assets/F-DC-125  desarrollo tecnológico list
 import ProyectoRecetas_Api from '../../public/ProyectoRecetas_Api.png'
 import RecetasFrontTS from '../../public/ProyectoRecetas_Front_TS.png'
 
-const imagenCifrya = '/ProyectoCifrya.svg'
+const imagenCifrya = '/cifrya-dashboard.webp'
 
 export default function Proyectos() {
   const proyectosPrincipales = [
@@ -19,7 +19,7 @@ export default function Proyectos() {
       descripcion:
         'Plataforma Full Stack de finanzas personales para centralizar cuentas, movimientos, presupuestos, metas, créditos, pagos recurrentes e inversiones. Incluye conversor de divisas, simulaciones, proyecciones, salud financiera y una demo pública para conocer el producto sin registrarse.',
       imagen: imagenCifrya,
-      imagenContain: true,
+      imagenContain: false,
       stack: ['React', 'TypeScript', 'Node.js', 'Express', 'PostgreSQL', 'Prisma'],
       linkPagina: 'https://cifrya.com/',
       linkDemo: 'https://cifrya.com/demo',
