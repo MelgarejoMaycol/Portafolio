@@ -9,23 +9,20 @@ import documentoTrackFile from '../assets/F-DC-125  desarrollo tecnológico list
 import ProyectoRecetas_Api from '../../public/ProyectoRecetas_Api.png'
 import RecetasFrontTS from '../../public/ProyectoRecetas_Front_TS.png'
 
-const imagenFynarReal =
-  'https://raw.githubusercontent.com/MelgarejoMaycol/frontFynar/main/public/LogoHorizontal.png'
+const imagenCifrya = '/ProyectoFynar.svg'
 
 export default function Proyectos() {
   const proyectosPrincipales = [
     {
-      id: 'fynar',
-      titulo: 'Fynar — Finanzas Personales',
+      id: 'cifrya',
+      titulo: 'Cifrya — Finanzas Personales',
       descripcion:
         'Plataforma Full Stack de finanzas personales para centralizar cuentas, movimientos, presupuestos, metas, créditos, pagos recurrentes e inversiones. Incluye conversor de divisas, simulaciones, proyecciones, salud financiera y una demo pública para conocer el producto sin registrarse.',
-      imagen: imagenFynarReal,
+      imagen: imagenCifrya,
       imagenContain: true,
       stack: ['React', 'TypeScript', 'Node.js', 'Express', 'PostgreSQL', 'Prisma'],
-      linkPagina: 'https://fynar.vercel.app/',
-      linkDemo: 'https://fynar.vercel.app/demo',
-      linkDetalles: 'https://github.com/MelgarejoMaycol/frontFynar',
-      linkBackend: 'https://github.com/MelgarejoMaycol/BackFynar',
+      linkPagina: 'https://cifrya.vercel.app/',
+      linkDemo: 'https://cifrya.vercel.app/demo',
       etiqueta: 'Proyecto principal · Full Stack'
     },
     {
@@ -237,7 +234,7 @@ export default function Proyectos() {
                       className="btn btn-primary rounded-pill px-3"
                     >
                       <i className="fa-solid fa-arrow-up-right-from-square me-2"></i>
-                      {proyecto.id === 'fynar' ? 'Conocer Fynar' : 'Ver aplicación'}
+                      {proyecto.id === 'cifrya' ? 'Abrir Cifrya' : 'Ver aplicación'}
                     </a>
 
                     {proyecto.linkDemo && (
@@ -252,15 +249,17 @@ export default function Proyectos() {
                       </a>
                     )}
 
-                    <a
-                      href={proyecto.linkDetalles}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="btn btn-outline-light rounded-pill px-3"
-                    >
-                      <i className={`${proyecto.id === 'fynar' ? 'fa-brands fa-github' : 'fa-solid fa-file-lines'} me-2`}></i>
-                      {proyecto.detalleLabel || 'Frontend'}
-                    </a>
+                    {proyecto.linkDetalles && (
+                      <a
+                        href={proyecto.linkDetalles}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="btn btn-outline-light rounded-pill px-3"
+                      >
+                        <i className="fa-solid fa-file-lines me-2"></i>
+                        {proyecto.detalleLabel || 'Detalles'}
+                      </a>
+                    )}
 
                     {proyecto.linkBackend && (
                       <a
