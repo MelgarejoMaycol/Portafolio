@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="1200" height="675" viewBox="0 0 1200 675" role="img" aria-labelledby="title desc">
-  <title id="title">Fynar — plataforma de finanzas personales</title>
-  <desc id="desc">Vista conceptual de un dashboard financiero de Fynar con tarjetas de resumen y gráfico.</desc>
+  <title id="title">Cifrya — plataforma de finanzas personales</title>
+  <desc id="desc">Vista conceptual de un dashboard financiero de Cifrya con tarjetas de resumen y gráfico.</desc>
   <defs>
     <linearGradient id="bg" x1="0" x2="1" y1="0" y2="1">
       <stop offset="0" stop-color="#071623"/>
@@ -23,7 +23,7 @@
   <g transform="translate(72 74)">
     <circle cx="38" cy="38" r="38" fill="#34d3b5" opacity=".16"/>
     <path d="M18 45c11-23 28-28 48-14-9 5-15 12-18 23-11-9-20-10-30-9z" fill="url(#accent)"/>
-    <text x="94" y="54" fill="#f4fffd" font-family="Inter,Segoe UI,Arial,sans-serif" font-size="56" font-weight="650" letter-spacing="-2">Fynar</text>
+    <text x="94" y="54" fill="#f4fffd" font-family="Inter,Segoe UI,Arial,sans-serif" font-size="56" font-weight="650" letter-spacing="-2">Cifrya</text>
     <text x="96" y="88" fill="#9ecbc3" font-family="Inter,Segoe UI,Arial,sans-serif" font-size="19">Finanzas personales, más claras.</text>
   </g>
 
