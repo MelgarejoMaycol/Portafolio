@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react'
-import CVPDF from '../assets/CV_MaycolMelgarejo.pdf';
+import { downloadCV } from '../utils/downloadCV'
 import '../index.css';
 
 export default function Encabezado() {
@@ -42,12 +42,7 @@ export default function Encabezado() {
   };
 
   const handleCVDownload = () => {
-    const link = document.createElement('a')
-    link.href = CVPDF
-    link.download = 'CV_MaycolMelgarejo.pdf'
-    document.body.appendChild(link)
-    link.click()
-    link.remove()
+    downloadCV()
   }
 
   const handleNavLinkClick = (e, sectionId) => {
