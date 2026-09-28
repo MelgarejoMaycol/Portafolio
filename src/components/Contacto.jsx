@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import emailjs from '@emailjs/browser'
 import certificadosPDF from '../assets/Certificados.pdf'
-import CVPDF from '../assets/CV_MaycolMelgarejo.pdf'
+import { downloadCV } from '../utils/downloadCV'
 
 export default function Contacto() {
   const [formData, setFormData] = useState({
@@ -239,12 +239,7 @@ export default function Contacto() {
               <h6 className="text-white fw-bold mb-3 mt-4">Descargar documentos</h6>
               <div className="d-flex gap-2 flex-wrap">
                 <button
-                  onClick={() => {
-                    const link = document.createElement('a')
-                    link.href = CVPDF
-                    link.download = 'CV_MaycolMelgarejo.pdf'
-                    link.click()
-                  }}
+                  onClick={downloadCV}
                   className="btn btn-primary rounded-pill px-3 fw-bold"
                   style={{ fontSize: '0.9rem' }}
                 >
