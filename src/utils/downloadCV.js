@@ -50,7 +50,7 @@ function makeCVPdf() {
   rect(0, 720, 612, 72, dark)
   drawText('MAYCOL MELGAREJO', 34, 764, 18.5, 'F2', '1 1 1')
   drawText('DESARROLLADOR FRONT-END | REACT · TYPESCRIPT · VUE.JS', 34, 746, 9.6, 'F2', '0.78 0.93 0.90')
-  drawText('Full Stack con enfoque en interfaces responsivas, APIs REST y productos digitales', 34, 733, 7.8, 'F1', '0.91 0.94 0.95')
+  drawText('Tecnólogo en Desarrollo de Sistemas Informáticos · Front-End / Full Stack · APIs REST y productos digitales', 34, 733, 7.8, 'F1', '0.91 0.94 0.95')
   drawText('Bucaramanga, Colombia | +57 314 383 2271 | mfmelgarejo04@gmail.com', 34, 711, 7.4, 'F1', muted)
   drawText('Portafolio: melgarejomaycol.vercel.app | GitHub: github.com/MelgarejoMaycol | LinkedIn: linkedin.com/in/maycol-melgarejo-a59bb9322', 34, 700, 6.9, 'F1', muted)
 
@@ -115,7 +115,7 @@ function makeCVPdf() {
 
   heading('EDUCACIÓN')
   body('Tecnología en Desarrollo de Sistemas Informáticos — Unidades Tecnológicas de Santander, Bucaramanga | 2022 – 2026', { bold: true, size: 7.15 })
-  body('Tecnólogo en espera de ceremonia de grado · Septiembre de 2026')
+  body('Tecnólogo graduado · Septiembre de 2026')
   spacer(3)
 
   heading('CERTIFICACIONES RELEVANTES')
