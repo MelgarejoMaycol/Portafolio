@@ -14,6 +14,9 @@ import certificado11 from '../assets/certificados/certificado_11.pdf'
 import certificado12 from '../assets/certificados/certificado_12.pdf'
 import certificado13 from '../assets/certificados/certificado_13.pdf'
 import unabCongreso from '../assets/certificados/unab-congreso-2025.pdf'
+import cs50Pdf from '../assets/certificados-drive/harvard-cs50x-2026.pdf'
+import claude101Pdf from '../assets/certificados-drive/anthropic-claude-101-2026.pdf'
+import aiLimitsPdf from '../assets/certificados-drive/anthropic-ai-capabilities-limitations-2026.pdf'
 
 const certificados = [
   {
@@ -23,11 +26,8 @@ const certificados = [
     categoria: 'Desarrollo',
     icono: 'fa-solid fa-graduation-cap',
     destacado: true,
-    registro: true,
-    fecha: '2026',
-    evidencia: 'Certificado de finalización de CS50x conservado como evidencia dentro del portafolio.',
-    urlOficial: 'https://cs50.harvard.edu/certificates/7d215635-ef95-4138-82ae-d5c2fe41416e',
-    accion: 'Ver certificado'
+    pdf: cs50Pdf,
+    urlOficial: 'https://cs50.harvard.edu/certificates/7d215635-ef95-4138-82ae-d5c2fe41416e'
   },
   {
     titulo: 'Claude 101',
@@ -36,10 +36,7 @@ const certificados = [
     categoria: 'IA',
     icono: 'fa-solid fa-brain',
     destacado: true,
-    registro: true,
-    fecha: '29 de septiembre de 2026',
-    evidencia: 'Anthropic Education confirmó por correo oficial la finalización de este curso.',
-    accion: 'Ver registro'
+    pdf: claude101Pdf
   },
   {
     titulo: 'AI Capabilities and Limitations',
@@ -48,10 +45,7 @@ const certificados = [
     categoria: 'IA',
     icono: 'fa-solid fa-brain',
     destacado: true,
-    registro: true,
-    fecha: '29 de septiembre de 2026',
-    evidencia: 'Anthropic Education confirmó por correo oficial la finalización de este curso.',
-    accion: 'Ver registro'
+    pdf: aiLimitsPdf
   },
   {
     titulo: 'Universidad Angular - De Cero a Experto',
@@ -506,7 +500,7 @@ export default function Certificaciones() {
                       rel="noopener noreferrer"
                       className="btn btn-primary rounded-pill px-4 fw-bold"
                     >
-                      <i className="fa-solid fa-badge-check me-2"></i>
+                      <i className="fa-solid fa-circle-check me-2"></i>
                       Verificación oficial
                     </a>
                   ) : (
