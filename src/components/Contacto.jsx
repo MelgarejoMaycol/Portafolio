@@ -1,9 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import emailjs from '@emailjs/browser'
-import certificadosPDF from '../assets/Certificados.pdf'
 import { downloadCV } from '../utils/downloadCV'
-
-const cs50CertificateUrl = 'https://cs50.harvard.edu/certificates/7d215635-ef95-4138-82ae-d5c2fe41416e'
 
 export default function Contacto() {
   const [formData, setFormData] = useState({
@@ -238,7 +235,7 @@ export default function Contacto() {
 
               <hr style={{ borderColor: 'rgba(13, 110, 253, 0.3)', marginTop: '2rem' }} />
 
-              <h6 className="text-white fw-bold mb-3 mt-4">Descargar documentos</h6>
+              <h6 className="text-white fw-bold mb-3 mt-4">Documentos y perfil</h6>
               <div className="d-flex gap-2 flex-wrap">
                 <button
                   onClick={downloadCV}
@@ -249,28 +246,13 @@ export default function Contacto() {
                   Descargar CV
                 </button>
                 <a
-                  href={cs50CertificateUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
+                  href="#certificaciones"
                   className="btn btn-outline-primary rounded-pill px-3 fw-bold"
                   style={{ fontSize: '0.9rem' }}
                 >
                   <i className="fa-solid fa-award me-2"></i>
-                  CS50x Harvard
+                  Ver certificaciones
                 </a>
-                <button
-                  onClick={() => {
-                    const link = document.createElement('a')
-                    link.href = certificadosPDF
-                    link.download = 'Certificados.pdf'
-                    link.click()
-                  }}
-                  className="btn btn-outline-primary rounded-pill px-3 fw-bold"
-                  style={{ fontSize: '0.9rem' }}
-                >
-                  <i className="fa-solid fa-download me-2"></i>
-                  Otros certificados
-                </button>
               </div>
             </div>
           </div>
