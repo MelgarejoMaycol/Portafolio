@@ -23,8 +23,11 @@ const certificados = [
     categoria: 'Desarrollo',
     icono: 'fa-solid fa-graduation-cap',
     destacado: true,
-    url: 'https://cs50.harvard.edu/certificates/7d215635-ef95-4138-82ae-d5c2fe41416e',
-    accion: 'Verificar certificado'
+    registro: true,
+    fecha: '2026',
+    evidencia: 'Certificado de finalización de CS50x conservado como evidencia dentro del portafolio.',
+    urlOficial: 'https://cs50.harvard.edu/certificates/7d215635-ef95-4138-82ae-d5c2fe41416e',
+    accion: 'Ver certificado'
   },
   {
     titulo: 'Claude 101',
@@ -33,8 +36,10 @@ const certificados = [
     categoria: 'IA',
     icono: 'fa-solid fa-brain',
     destacado: true,
-    url: 'https://anthropic.skilljar.com/accounts/profile/',
-    accion: 'Ver credencial'
+    registro: true,
+    fecha: '29 de septiembre de 2026',
+    evidencia: 'Anthropic Education confirmó por correo oficial la finalización de este curso.',
+    accion: 'Ver registro'
   },
   {
     titulo: 'AI Capabilities and Limitations',
@@ -43,8 +48,10 @@ const certificados = [
     categoria: 'IA',
     icono: 'fa-solid fa-brain',
     destacado: true,
-    url: 'https://anthropic.skilljar.com/accounts/profile/',
-    accion: 'Ver credencial'
+    registro: true,
+    fecha: '29 de septiembre de 2026',
+    evidencia: 'Anthropic Education confirmó por correo oficial la finalización de este curso.',
+    accion: 'Ver registro'
   },
   {
     titulo: 'Universidad Angular - De Cero a Experto',
@@ -53,8 +60,10 @@ const certificados = [
     categoria: 'Desarrollo',
     icono: 'fa-brands fa-angular',
     destacado: true,
-    url: 'https://e2.udemymail.com/ls/click?upn=u001.TtzRjPf63yUg9yrAxgqE7735MMJ3LdrdgxmaXqQZmIcKtteem0YkFhUyRcH1V-2Fzq-2FvB0eQ0O3PKlU8FlP5BfWghcPgD5p4bLKmUyBbsIs-2BIdwzukAwqBJR-2FCfa4alo82MIQg3WM-2Fk8qKC1KX30YjFh7cZK4xmFPmVu1wLr6U1VZxbVIAkuv2ML1I8zcvLO3cpQsl_MB72SU25nsCnNUVqQP9N2M1jB9M6lofTCvm9cPVMgiWlqpa8ZDJfxDzgom-2BlWlx2NPiCeJHj982bPj-2BXX-2BDNBBYYPnNmH2QDeZ6bVZvikke4NvQv6xAS0ExEUrQ74Xqxof2Jwv9r1ZB1B8VNrQTZWoWKb3Q5IBlipXLsfVCQt15laIin5k2GNOvQQDkP7c-2BD4cJ1xMhK-2F8MhwJMCsdWu4Zh61TkkIL99bA34Q9Bch6WC8rWkmrcGhv0FKXXwo-2BiccKOuw1TpJxur-2FmsgaKGKusntM772VYBxam5ovBSvyNvxzyq17xcKrwgC3TDj-2BYl9JfdH-2FmU9e7vQmJ7ia5sc3w-3D-3D',
-    accion: 'Ver credencial'
+    registro: true,
+    fecha: '29 de septiembre de 2026',
+    evidencia: 'Udemy confirmó por correo oficial que el certificado de cumplimiento fue emitido.',
+    accion: 'Ver registro'
   },
   {
     titulo: 'Apropiación de los conceptos en ciberseguridad',
@@ -63,8 +72,10 @@ const certificados = [
     categoria: 'Ciberseguridad',
     icono: 'fa-solid fa-shield-halved',
     destacado: true,
-    url: 'https://www.senasofiaplus.edu.co/',
-    accion: 'Consultar certificado'
+    registro: true,
+    fecha: '17 de julio de 2026',
+    evidencia: 'El SENA confirmó por correo oficial que el curso fue cursado y aprobado y que el certificado electrónico quedó disponible.',
+    accion: 'Ver registro'
   },
   {
     titulo: 'Desarrollo con Node.js: Aplicación, Testing y Seguridad',
@@ -99,8 +110,10 @@ const certificados = [
     anio: 2025,
     categoria: 'Desarrollo',
     icono: 'fa-solid fa-terminal',
-    url: 'https://r.info.certika.co/tr/cl/PlgjEGROMh68C-IpYj5lqq8Yb18zi8jgvJPKMCv7zyuVgZfwv_V9LJxEImCfude3D4dskas6PFKq8w5xb1rjkEPJFEuKrRhPuJTzHnqhVP2CLqlpPyKfgq6db2AnC9ZhRKQrP9i8OG1W9tgEoRFTh8n5ioVH6lMiCNAeYJ0WLBPj0snfKQIOItbo5v1-CESGJsr1KnwgtcjJroauumGY-CgojV6TmWFgxikXGqXH-oQXscika6jMz_3lnZ0c2SF1D37RE13p_qGdKSHu-d4kyigg5FvTfA3tF2Jj0LA_AfBUhLCeSPMm4CY',
-    accion: 'Ver credencial'
+    registro: true,
+    fecha: '30 de mayo de 2025',
+    evidencia: 'Certika notificó por correo la emisión de la credencial Bootcamp Programación de Asoandes.',
+    accion: 'Ver registro'
   },
   {
     titulo: 'Participación en Semillero Azul',
@@ -254,12 +267,7 @@ export default function Certificaciones() {
   }, [seleccionado])
 
   const abrirCertificado = (certificado) => {
-    if (certificado.pdf) {
-      setSeleccionado(certificado)
-      return
-    }
-
-    window.open(certificado.url, '_blank', 'noopener,noreferrer')
+    setSeleccionado(certificado)
   }
 
   return (
@@ -336,7 +344,7 @@ export default function Certificaciones() {
                     <h3>{certificado.titulo}</h3>
                   </div>
                   <div className="certificacion-featured-cta">
-                    <span>{certificado.pdf ? 'Ver certificado' : (certificado.accion || 'Ver credencial')}</span>
+                    <span>{certificado.pdf ? 'Ver certificado' : (certificado.accion || 'Ver registro')}</span>
                     <i className="fa-solid fa-arrow-up-right-from-square"></i>
                   </div>
                 </button>
@@ -380,7 +388,7 @@ export default function Certificaciones() {
                       <span className="certificacion-row-category">{certificado.categoria}</span>
 
                       <span className="certificacion-row-action">
-                        <span className="d-none d-sm-inline">{certificado.pdf ? 'Ver' : 'Abrir'}</span>
+                        <span className="d-none d-sm-inline">Ver</span>
                         <i className="fa-solid fa-arrow-right"></i>
                       </span>
                     </button>
@@ -435,25 +443,81 @@ export default function Certificaciones() {
               </button>
             </div>
 
-            <div className="certificado-modal-viewer">
-              <iframe
-                src={seleccionado.pdf}
-                title={`Certificado ${seleccionado.titulo}`}
-              />
-            </div>
+            {seleccionado.pdf ? (
+              <>
+                <div className="certificado-modal-viewer">
+                  <iframe
+                    src={seleccionado.pdf}
+                    title={`Certificado ${seleccionado.titulo}`}
+                  />
+                </div>
 
-            <div className="certificado-modal-footer">
-              <span>{seleccionado.anio} · {seleccionado.categoria}</span>
-              <a
-                href={seleccionado.pdf}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="btn btn-primary rounded-pill px-4 fw-bold"
-              >
-                <i className="fa-solid fa-arrow-up-right-from-square me-2"></i>
-                Abrir en nueva pestaña
-              </a>
-            </div>
+                <div className="certificado-modal-footer">
+                  <span>{seleccionado.anio} · {seleccionado.categoria}</span>
+                  <a
+                    href={seleccionado.pdf}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="btn btn-primary rounded-pill px-4 fw-bold"
+                  >
+                    <i className="fa-solid fa-arrow-up-right-from-square me-2"></i>
+                    Abrir documento
+                  </a>
+                </div>
+              </>
+            ) : (
+              <>
+                <div className="certificado-registro">
+                  <div className="certificado-registro-sello">
+                    <i className="fa-solid fa-circle-check"></i>
+                  </div>
+                  <p className="certificado-registro-label">Registro de credencial guardado</p>
+                  <h4>{seleccionado.titulo}</h4>
+                  <p className="certificado-registro-institucion">{seleccionado.institucion}</p>
+
+                  <div className="certificado-registro-datos">
+                    <div>
+                      <span>Finalización</span>
+                      <strong>{seleccionado.fecha || seleccionado.anio}</strong>
+                    </div>
+                    <div>
+                      <span>Área</span>
+                      <strong>{seleccionado.categoria}</strong>
+                    </div>
+                  </div>
+
+                  <div className="certificado-registro-evidencia">
+                    <i className="fa-regular fa-envelope"></i>
+                    <p>{seleccionado.evidencia}</p>
+                  </div>
+
+                  <p className="certificado-registro-nota">
+                    Este registro se conserva dentro del portafolio para que la evidencia siempre esté disponible.
+                    Cuando la plataforma del emisor permite una verificación pública estable, se muestra como opción adicional.
+                  </p>
+                </div>
+
+                <div className="certificado-modal-footer">
+                  <span>{seleccionado.anio} · {seleccionado.categoria}</span>
+                  {seleccionado.urlOficial ? (
+                    <a
+                      href={seleccionado.urlOficial}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="btn btn-primary rounded-pill px-4 fw-bold"
+                    >
+                      <i className="fa-solid fa-badge-check me-2"></i>
+                      Verificación oficial
+                    </a>
+                  ) : (
+                    <span className="certificado-registro-disponible">
+                      <i className="fa-solid fa-lock me-2"></i>
+                      Evidencia almacenada localmente
+                    </span>
+                  )}
+                </div>
+              </>
+            )}
           </div>
         </div>
       )}
