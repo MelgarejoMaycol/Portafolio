@@ -5,6 +5,7 @@ import Inicio from './components/Inicio'
 import SobreMi from './components/SobreMi'
 import Proyectos from './components/Proyectos'
 import Herramientas from './components/Herramientas'
+import Certificaciones from './components/Certificaciones'
 import Contacto from './components/Contacto'
 import './index.css'
 
@@ -52,6 +53,7 @@ createRoot(document.getElementById('root')).render(
     <SobreMi />
     <Proyectos />
     <Herramientas />
+    <Certificaciones />
     <Contacto />
   </StrictMode>,
 )
