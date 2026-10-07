@@ -13,6 +13,7 @@ import certificado10 from '../assets/certificados/certificado_10.pdf'
 import certificado11 from '../assets/certificados/certificado_11.pdf'
 import certificado12 from '../assets/certificados/certificado_12.pdf'
 import certificado13 from '../assets/certificados/certificado_13.pdf'
+import unabCongreso from '../assets/certificados/unab-congreso-2025.pdf'
 
 const certificados = [
   {
@@ -108,6 +109,14 @@ const certificados = [
     categoria: 'Formación',
     icono: 'fa-solid fa-flask',
     pdf: certificado07
+  },
+  {
+    titulo: 'Congreso Internacional de Economía y Negocios',
+    institucion: 'Universidad Autónoma de Bucaramanga',
+    anio: 2025,
+    categoria: 'Formación',
+    icono: 'fa-solid fa-building-columns',
+    pdf: unabCongreso
   },
   {
     titulo: 'Java Programming',
