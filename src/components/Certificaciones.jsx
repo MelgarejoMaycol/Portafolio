@@ -17,6 +17,9 @@ import unabCongreso from '../assets/certificados/unab-congreso-2025.pdf'
 import cs50Pdf from '../assets/certificados-drive/harvard-cs50x-2026.pdf'
 import claude101Pdf from '../assets/certificados-drive/anthropic-claude-101-2026.pdf'
 import aiLimitsPdf from '../assets/certificados-drive/anthropic-ai-capabilities-limitations-2026.pdf'
+import angularPdf from '../assets/certificados-drive/udemy-angular-2026.pdf'
+import senaCiberseguridadPdf from '../assets/certificados-drive/sena-ciberseguridad-2026.pdf'
+import bootcampPdf from '../assets/certificados-drive/asoandes-certika-bootcamp-programacion-2025.pdf'
 
 const certificados = [
   {
@@ -54,10 +57,7 @@ const certificados = [
     categoria: 'Desarrollo',
     icono: 'fa-brands fa-angular',
     destacado: true,
-    registro: true,
-    fecha: '29 de septiembre de 2026',
-    evidencia: 'Udemy confirmó por correo oficial que el certificado de cumplimiento fue emitido.',
-    accion: 'Ver registro'
+    pdf: angularPdf
   },
   {
     titulo: 'Apropiación de los conceptos en ciberseguridad',
@@ -66,10 +66,7 @@ const certificados = [
     categoria: 'Ciberseguridad',
     icono: 'fa-solid fa-shield-halved',
     destacado: true,
-    registro: true,
-    fecha: '17 de julio de 2026',
-    evidencia: 'El SENA confirmó por correo oficial que el curso fue cursado y aprobado y que el certificado electrónico quedó disponible.',
-    accion: 'Ver registro'
+    pdf: senaCiberseguridadPdf
   },
   {
     titulo: 'Desarrollo con Node.js: Aplicación, Testing y Seguridad',
@@ -104,10 +101,7 @@ const certificados = [
     anio: 2025,
     categoria: 'Desarrollo',
     icono: 'fa-solid fa-terminal',
-    registro: true,
-    fecha: '30 de mayo de 2025',
-    evidencia: 'Certika notificó por correo la emisión de la credencial Bootcamp Programación de Asoandes.',
-    accion: 'Ver registro'
+    pdf: bootcampPdf
   },
   {
     titulo: 'Participación en Semillero Azul',
