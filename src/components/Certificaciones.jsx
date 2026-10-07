@@ -193,18 +193,49 @@ const certificados = [
 ]
 
 const filtros = ['Todos', 'Desarrollo', 'IA', 'Ciberseguridad', 'Formación']
+const destacadosPreferidos = [
+  'CS50x: Introduction to Computer Science',
+  'Claude 101',
+  'Desarrollo con Node.js: Aplicación, Testing y Seguridad'
+]
 
 export default function Certificaciones() {
   const [filtro, setFiltro] = useState('Todos')
-  const [mostrarTodos, setMostrarTodos] = useState(false)
   const [seleccionado, setSeleccionado] = useState(null)
 
   const filtrados = useMemo(
-    () => filtro === 'Todos' ? certificados : certificados.filter((certificado) => certificado.categoria === filtro),
+    () => filtro === 'Todos'
+      ? certificados
+      : certificados.filter((certificado) => certificado.categoria === filtro),
     [filtro]
   )
 
-  const visibles = filtro === 'Todos' && !mostrarTodos ? filtrados.slice(0, 8) : filtrados
+  const destacados = useMemo(() => {
+    if (filtro !== 'Todos') return filtrados.slice(0, Math.min(3, filtrados.length))
+
+    return destacadosPreferidos
+      .map((titulo) => certificados.find((certificado) => certificado.titulo === titulo))
+      .filter(Boolean)
+  }, [filtro, filtrados])
+
+  const archivo = useMemo(
+    () => filtrados.filter((certificado) => !destacados.includes(certificado)),
+    [filtrados, destacados]
+  )
+
+  const gruposPorAnio = useMemo(
+    () => archivo.reduce((grupos, certificado) => {
+      if (!grupos[certificado.anio]) grupos[certificado.anio] = []
+      grupos[certificado.anio].push(certificado)
+      return grupos
+    }, {}),
+    [archivo]
+  )
+
+  const instituciones = useMemo(
+    () => new Set(certificados.map((certificado) => certificado.institucion)).size,
+    []
+  )
 
   useEffect(() => {
     if (!seleccionado) return
@@ -222,120 +253,158 @@ export default function Certificaciones() {
     }
   }, [seleccionado])
 
-  const cambiarFiltro = (nuevoFiltro) => {
-    setFiltro(nuevoFiltro)
-    setMostrarTodos(nuevoFiltro !== 'Todos')
+  const abrirCertificado = (certificado) => {
+    if (certificado.pdf) {
+      setSeleccionado(certificado)
+      return
+    }
+
+    window.open(certificado.url, '_blank', 'noopener,noreferrer')
   }
 
   return (
-    <section className="certificaciones py-4 py-md-5" id="certificaciones">
-      <div className="container px-2 px-md-4">
-        <div className="text-center mb-4">
-          <p className="certificaciones-kicker mb-2">Formación continua</p>
-          <h2 className="section-title text-white mb-3">Certificaciones</h2>
-          <p className="certificaciones-intro">
-            Credenciales verificables y certificados de formación en desarrollo, inteligencia artificial,
-            ciberseguridad y tecnología.
-          </p>
+    <section className="certificaciones py-5" id="certificaciones">
+      <div className="container px-3 px-md-4">
+        <div className="certificaciones-hero">
+          <div className="certificaciones-hero-copy">
+            <span className="certificaciones-eyebrow">Aprendizaje continuo</span>
+            <h2 className="certificaciones-title">Certificaciones que respaldan lo que sé hacer.</h2>
+            <p>
+              Formación práctica en desarrollo de software, inteligencia artificial y tecnología,
+              con credenciales verificables y certificados reales de cada institución.
+            </p>
+          </div>
+
+          <div className="certificaciones-stats" aria-label="Resumen de certificaciones">
+            <div>
+              <strong>{certificados.length}</strong>
+              <span>credenciales</span>
+            </div>
+            <div>
+              <strong>{instituciones}</strong>
+              <span>instituciones</span>
+            </div>
+            <div>
+              <strong>2023—26</strong>
+              <span>formación reciente</span>
+            </div>
+          </div>
         </div>
 
-        <div className="certificaciones-filtros" role="group" aria-label="Filtrar certificaciones">
-          {filtros.map((item) => (
-            <button
-              type="button"
-              key={item}
-              className={`certificaciones-filtro ${filtro === item ? 'active' : ''}`}
-              onClick={() => cambiarFiltro(item)}
-            >
-              {item}
-            </button>
-          ))}
+        <div className="certificaciones-toolbar">
+          <div>
+            <span className="certificaciones-toolbar-label">Explorar por área</span>
+          </div>
+          <div className="certificaciones-filtros" role="group" aria-label="Filtrar certificaciones">
+            {filtros.map((item) => (
+              <button
+                type="button"
+                key={item}
+                className={`certificaciones-filtro ${filtro === item ? 'active' : ''}`}
+                onClick={() => setFiltro(item)}
+              >
+                {item}
+              </button>
+            ))}
+          </div>
         </div>
 
-        <div className="certificaciones-grid">
-          {visibles.map((certificado) => (
-            <article
-              className={`certificacion-card ${certificado.destacado ? 'certificacion-card-destacada' : ''}`}
-              key={`${certificado.institucion}-${certificado.titulo}`}
-            >
-              <div className="certificacion-card-top">
-                <div className="certificacion-icono" aria-hidden="true">
-                  <i className={certificado.icono}></i>
-                </div>
-                <div className="certificacion-meta">
-                  <span>{certificado.anio}</span>
-                  <span>{certificado.categoria}</span>
-                </div>
-              </div>
+        {destacados.length > 0 && (
+          <div className="certificaciones-destacadas">
+            <div className="certificaciones-section-heading">
+              <span>Selección destacada</span>
+              <p>{filtro === 'Todos' ? 'Las credenciales que mejor resumen mi perfil actual.' : `Lo más relevante en ${filtro}.`}</p>
+            </div>
 
-              <div className="certificacion-body">
-                <p className="certificacion-institucion">{certificado.institucion}</p>
-                <h3>{certificado.titulo}</h3>
-              </div>
-
-              <div className="certificacion-actions">
-                {certificado.pdf ? (
-                  <>
-                    <button
-                      type="button"
-                      className="btn btn-primary rounded-pill fw-bold"
-                      onClick={() => setSeleccionado(certificado)}
-                    >
-                      <i className="fa-regular fa-eye me-2"></i>
-                      Ver certificado
-                    </button>
-                    <a
-                      className="certificacion-link-icon"
-                      href={certificado.pdf}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      aria-label={`Abrir ${certificado.titulo} en una pestaña nueva`}
-                      title="Abrir en nueva pestaña"
-                    >
-                      <i className="fa-solid fa-arrow-up-right-from-square"></i>
-                    </a>
-                  </>
-                ) : (
-                  <a
-                    className="btn btn-primary rounded-pill fw-bold"
-                    href={certificado.url}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    <i className="fa-solid fa-arrow-up-right-from-square me-2"></i>
-                    {certificado.accion || 'Ver credencial'}
-                  </a>
-                )}
-              </div>
-            </article>
-          ))}
-        </div>
-
-        {filtro === 'Todos' && certificados.length > 8 && (
-          <div className="text-center mt-4">
-            <button
-              type="button"
-              className="btn btn-outline-primary rounded-pill px-4 fw-bold"
-              onClick={() => setMostrarTodos((actual) => !actual)}
-            >
-              <i className={`fa-solid ${mostrarTodos ? 'fa-chevron-up' : 'fa-chevron-down'} me-2`}></i>
-              {mostrarTodos ? 'Mostrar destacados' : `Ver las ${certificados.length} certificaciones`}
-            </button>
+            <div className="certificaciones-featured-grid">
+              {destacados.map((certificado, index) => (
+                <button
+                  type="button"
+                  className="certificacion-featured"
+                  key={`${certificado.institucion}-${certificado.titulo}`}
+                  onClick={() => abrirCertificado(certificado)}
+                >
+                  <div className="certificacion-featured-top">
+                    <span className="certificacion-featured-index">0{index + 1}</span>
+                    <span className="certificacion-featured-year">{certificado.anio}</span>
+                  </div>
+                  <div className="certificacion-featured-icon">
+                    <i className={certificado.icono}></i>
+                  </div>
+                  <div className="certificacion-featured-copy">
+                    <span>{certificado.institucion}</span>
+                    <h3>{certificado.titulo}</h3>
+                  </div>
+                  <div className="certificacion-featured-cta">
+                    <span>{certificado.pdf ? 'Ver certificado' : (certificado.accion || 'Ver credencial')}</span>
+                    <i className="fa-solid fa-arrow-up-right-from-square"></i>
+                  </div>
+                </button>
+              ))}
+            </div>
           </div>
         )}
 
-        <div className="certificaciones-dossier">
+        <div className="certificaciones-archivo">
+          <div className="certificaciones-section-heading archivo-heading">
+            <span>Archivo de credenciales</span>
+            <p>{archivo.length} certificaciones organizadas por año.</p>
+          </div>
+
+          {Object.entries(gruposPorAnio)
+            .sort(([a], [b]) => Number(b) - Number(a))
+            .map(([anio, items]) => (
+              <div className="certificaciones-year-group" key={anio}>
+                <div className="certificaciones-year">
+                  <span>{anio}</span>
+                  <small>{items.length} {items.length === 1 ? 'credencial' : 'credenciales'}</small>
+                </div>
+
+                <div className="certificaciones-list">
+                  {items.map((certificado) => (
+                    <button
+                      type="button"
+                      className="certificacion-row"
+                      key={`${certificado.institucion}-${certificado.titulo}`}
+                      onClick={() => abrirCertificado(certificado)}
+                    >
+                      <span className="certificacion-row-icon" aria-hidden="true">
+                        <i className={certificado.icono}></i>
+                      </span>
+
+                      <span className="certificacion-row-main">
+                        <small>{certificado.institucion}</small>
+                        <strong>{certificado.titulo}</strong>
+                      </span>
+
+                      <span className="certificacion-row-category">{certificado.categoria}</span>
+
+                      <span className="certificacion-row-action">
+                        <span className="d-none d-sm-inline">{certificado.pdf ? 'Ver' : 'Abrir'}</span>
+                        <i className="fa-solid fa-arrow-right"></i>
+                      </span>
+                    </button>
+                  ))}
+                </div>
+              </div>
+            ))}
+        </div>
+
+        <div className="certificaciones-footer-note">
           <div>
-            <p className="mb-1 fw-bold text-white">¿Necesitas el respaldo completo?</p>
-            <p className="mb-0">También puedes descargar el dossier original con los certificados agrupados.</p>
+            <i className="fa-regular fa-folder-open"></i>
+            <div>
+              <strong>¿Necesitas todas las evidencias en un solo archivo?</strong>
+              <span>Conservo también el dossier original como respaldo.</span>
+            </div>
           </div>
           <a
             href={certificadosPDF}
             download="Certificados_Maycol_Melgarejo.pdf"
-            className="btn btn-outline-primary rounded-pill px-4 fw-bold"
+            className="certificaciones-dossier-link"
           >
-            <i className="fa-solid fa-file-arrow-down me-2"></i>
             Descargar dossier
+            <i className="fa-solid fa-download"></i>
           </a>
         </div>
       </div>
@@ -353,7 +422,7 @@ export default function Certificaciones() {
           <div className="certificado-modal-panel">
             <div className="certificado-modal-header">
               <div>
-                <p className="certificacion-institucion mb-1">{seleccionado.institucion}</p>
+                <p className="certificacion-modal-institucion mb-1">{seleccionado.institucion}</p>
                 <h3 className="mb-0">{seleccionado.titulo}</h3>
               </div>
               <button
