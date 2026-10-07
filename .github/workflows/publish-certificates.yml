@@ -1,0 +1,49 @@
+name: Publish individual certificates
+
+on:
+  push:
+    paths:
+      - ".github/workflows/publish-certificates.yml"
+
+permissions:
+  contents: write
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Split certificate dossier
+        run: |
+          python -m pip install --quiet pypdf
+          python - <<'PY'
+          from pathlib import Path
+          from pypdf import PdfReader, PdfWriter
+
+          source = Path("src/assets/Certificados.pdf")
+          target = Path("src/assets/certificados")
+          target.mkdir(parents=True, exist_ok=True)
+
+          reader = PdfReader(str(source))
+          for index, page in enumerate(reader.pages, start=1):
+              writer = PdfWriter()
+              writer.add_page(page)
+              with open(target / f"certificado_{index:02d}.pdf", "wb") as output:
+                  writer.write(output)
+
+          print(f"Published {len(reader.pages)} individual certificates")
+          PY
+      - name: Commit certificates
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add src/assets/certificados/
+          if git diff --cached --quiet; then
+            echo "No certificate changes"
+          else
+            git commit -m "feat: add individual certificate PDFs [skip ci]"
+            git push
+          fi
