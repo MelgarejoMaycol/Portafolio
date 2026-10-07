@@ -1,8 +1,4 @@
 import React from 'react'
-import certificadosPDF from '../assets/Certificados.pdf'
-
-const cs50CertificateUrl = 'https://cs50.harvard.edu/certificates/7d215635-ef95-4138-82ae-d5c2fe41416e'
-
 export default function Herramientas() {
   const pilas = [
     {
@@ -164,43 +160,6 @@ export default function Herramientas() {
           ))}
         </div>
 
-        <div className="text-center herramientas-certificados">
-          <div
-            className="mx-auto mb-3 p-3 p-md-4 rounded-4"
-            style={{
-              maxWidth: '680px',
-              backgroundColor: 'rgba(13, 110, 253, 0.08)',
-              border: '1px solid rgba(13, 110, 253, 0.25)'
-            }}
-          >
-            <p className="text-primary fw-bold mb-2">Certificación destacada</p>
-            <h3 className="text-white h5 mb-2">CS50x: Introduction to Computer Science</h3>
-            <p className="text-white-50 mb-3">Harvard University · 2026</p>
-            <a
-              href={cs50CertificateUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="btn btn-primary rounded-pill px-4 fw-bold"
-            >
-              <i className="fa-solid fa-award me-2"></i>
-              Ver certificado oficial
-            </a>
-          </div>
-
-          <button
-            onClick={() => {
-              const link = document.createElement('a')
-              link.href = certificadosPDF
-              link.download = 'Certificados.pdf'
-              link.click()
-            }}
-            className="btn btn-outline-primary rounded-pill px-5 fw-bold"
-            style={{ cursor: 'pointer' }}
-          >
-            <i className="fa-solid fa-download me-2"></i>
-            Descargar otros certificados
-          </button>
-        </div>
       </div>
     </section>
   )
