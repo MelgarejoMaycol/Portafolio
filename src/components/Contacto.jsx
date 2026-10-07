@@ -3,6 +3,8 @@ import emailjs from '@emailjs/browser'
 import certificadosPDF from '../assets/Certificados.pdf'
 import { downloadCV } from '../utils/downloadCV'
 
+const cs50CertificateUrl = 'https://cs50.harvard.edu/certificates/7d215635-ef95-4138-82ae-d5c2fe41416e'
+
 export default function Contacto() {
   const [formData, setFormData] = useState({
     nombre: '',
