@@ -246,6 +246,16 @@ export default function Contacto() {
                   <i className="fa-solid fa-download me-2"></i>
                   Descargar CV
                 </button>
+                <a
+                  href={cs50CertificateUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="btn btn-outline-primary rounded-pill px-3 fw-bold"
+                  style={{ fontSize: '0.9rem' }}
+                >
+                  <i className="fa-solid fa-award me-2"></i>
+                  CS50x Harvard
+                </a>
                 <button
                   onClick={() => {
                     const link = document.createElement('a')
@@ -257,7 +267,7 @@ export default function Contacto() {
                   style={{ fontSize: '0.9rem' }}
                 >
                   <i className="fa-solid fa-download me-2"></i>
-                  Certificados
+                  Otros certificados
                 </button>
               </div>
             </div>
