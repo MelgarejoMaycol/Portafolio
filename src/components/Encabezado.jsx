@@ -11,7 +11,7 @@ export default function Encabezado() {
       // Solo actualizar si el usuario no acaba de hacer click en un botón
       if (isUserClickRef.current) return
 
-      const sections = ['inicio', 'sobre', 'proyectos', 'herramientas', 'contacto']
+      const sections = ['inicio', 'sobre', 'proyectos', 'herramientas', 'certificaciones', 'contacto']
       let current = 'inicio'
 
       for (const section of sections) {
@@ -127,6 +127,9 @@ export default function Encabezado() {
             </li>
             <li className="nav-item text-center text-lg-start">
               <a className={`nav-link ${activeSection === 'herramientas' ? 'active' : ''}`} href="#herramientas" onClick={(e) => handleNavLinkClick(e, 'herramientas')}>Herramientas</a>
+            </li>
+            <li className="nav-item text-center text-lg-start">
+              <a className={`nav-link ${activeSection === 'certificaciones' ? 'active' : ''}`} href="#certificaciones" onClick={(e) => handleNavLinkClick(e, 'certificaciones')}>Certificaciones</a>
             </li>
             <li className="nav-item text-center text-lg-start">
               <a className={`nav-link ${activeSection === 'contacto' ? 'active' : ''}`} href="#contacto" onClick={(e) => handleNavLinkClick(e, 'contacto')}>Contáctame</a>
