@@ -238,13 +238,15 @@ export default function Contacto() {
               <h6 className="text-white fw-bold mb-3 mt-4">Documentos y perfil</h6>
               <div className="d-flex gap-2 flex-wrap">
                 <button
-                  onClick={downloadCV}
+                  onClick={() => downloadCV('fullstack')}
                   className="btn btn-primary rounded-pill px-3 fw-bold"
                   style={{ fontSize: '0.9rem' }}
                 >
                   <i className="fa-solid fa-download me-2"></i>
-                  Descargar CV
+                  CV Full Stack
                 </button>
+                <button onClick={() => downloadCV('frontend')} type="button" className="btn btn-outline-primary rounded-pill px-3 fw-bold" style={{ fontSize: '0.9rem' }}>CV Frontend</button>
+                <button onClick={() => downloadCV('backend')} type="button" className="btn btn-outline-primary rounded-pill px-3 fw-bold" style={{ fontSize: '0.9rem' }}>CV Backend</button>
                 <a
                   href="#certificaciones"
                   className="btn btn-outline-primary rounded-pill px-3 fw-bold"

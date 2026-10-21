@@ -128,7 +128,10 @@ export default function Herramientas() {
 
         <div className="text-center mb-5">
           <p className="text-primary fw-bold herramientas-resumen">
-            React - TypeScript - JavaScript - Vue.js - Node.js - Express - Laravel - PHP - Java - Spring Boot - PostgreSQL - MySQL - Bootstrap - Git - XAMPP
+            Mi enfoque principal: React · TypeScript · JavaScript · Node.js · Express · PostgreSQL
+          </p>
+          <p className="text-white-50" style={{ maxWidth: '850px', margin: '0 auto' }}>
+            Conocimientos complementarios: Vue.js, PHP, Laravel, Java, Spring Boot, MySQL, Bootstrap y herramientas de desarrollo. Los distintos niveles de experiencia se reflejan en mis proyectos.
           </p>
         </div>
 

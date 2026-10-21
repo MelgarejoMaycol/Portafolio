@@ -13,17 +13,27 @@ export default function SobreMi() {
           <div className="col-xl-4 col-12 text-white mb-2 mb-xl-0 order-2 order-xl-1">
             <h3 className="text-primary fw-bold mb-2 mb-md-3 h2">Descripción</h3>
             <p className="text-white" style={{ lineHeight: '1.6', fontSize: '0.95rem' }}>
-              Soy <span className="text-primary">desarrollador Full Stack</span> y próximo a graduarme de <span className="text-primary">las Unidades Tecnológicas de Santander</span> en la <span className="text-primary">Tecnología en Desarrollo de Sistemas Informáticos</span>. Trabajo principalmente con <span className="text-primary">React, TypeScript y JavaScript</span>, y cuento con <span className="text-primary">conocimientos en Vue.js</span>. También desarrollo APIs, integro bases de datos y construyo soluciones completas con enfoque en <span className="text-primary">mantenibilidad, experiencia de usuario y resolución de problemas</span>.
+              Soy <span className="text-primary">desarrollador Full Stack junior</span> y Tecnólogo en Desarrollo de Sistemas Informáticos de las Unidades Tecnológicas de Santander. Me especializo en <span className="text-primary">React, TypeScript y Node.js</span> para crear interfaces, APIs REST y soluciones completas. En proyectos como <strong>Cifrya</strong> y <strong>TrackFile</strong> he trabajado con PostgreSQL, pruebas, seguridad y despliegues. También tengo conocimientos en Vue.js, Java, Spring Boot, PHP, Laravel y Flutter.
             </p>
             <div className="mt-3 mt-md-4">
               <button
-                onClick={downloadCV}
+                onClick={() => downloadCV('fullstack')}
                 className="btn btn-primary rounded-pill px-4 fw-bold"
                 style={{ fontSize: '0.9rem' }}
               >
                 <i className="fa-solid fa-download me-2"></i>
-                Descargar CV
+                CV Full Stack
               </button>
+              <button
+                onClick={() => downloadCV('frontend')}
+                className="btn btn-outline-primary rounded-pill px-3 mt-2 me-2"
+                type="button"
+              >CV Frontend</button>
+              <button
+                onClick={() => downloadCV('backend')}
+                className="btn btn-outline-primary rounded-pill px-3 mt-2"
+                type="button"
+              >CV Backend</button>
             </div>
           </div>
 

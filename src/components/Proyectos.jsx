@@ -279,10 +279,14 @@ export default function Proyectos() {
           ))}
         </div>
 
+        <details className="mt-3">
+          <summary className="text-center text-primary fw-bold mb-4" style={{ cursor: 'pointer', padding: '1rem' }}>
+            Explorar otros proyectos y ejercicios de formación
+          </summary>
         <div className="d-flex align-items-center gap-3 mb-4">
           <div style={{ height: '1px', backgroundColor: '#1e3a5f', flex: 1 }} />
           <h3 className="text-white-50 m-0" style={{ fontSize: '0.95rem', letterSpacing: '0.08em' }}>
-            OTROS PROYECTOS
+            OTROS PROYECTOS · FORMACIÓN Y PRÁCTICA
           </h3>
           <div style={{ height: '1px', backgroundColor: '#1e3a5f', flex: 1 }} />
         </div>
@@ -337,6 +341,7 @@ export default function Proyectos() {
             </div>
           ))}
         </div>
+        </details>
       </div>
     </section>
   )
