@@ -173,7 +173,7 @@ export default function Contacto() {
 
               {error && (
                 <div className="alert alert-danger mt-3" role="alert" style={{ backgroundColor: 'rgba(220, 53, 69, 0.2)', border: '1px solid #dc3545', color: '#ff6b6b' }}>
-                  ✗ Error al enviar. Verififica que EmailJS esté configurado correctamente.
+                  ✗ Error al enviar. Verifica que EmailJS esté configurado correctamente.
                 </div>
               )}
             </form>

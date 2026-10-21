@@ -29,10 +29,10 @@ export default function Proyectos() {
       id: 'trackfile',
       titulo: 'TrackFile — Gestión Documental',
       descripcion:
-        'Sistema multiplataforma para gestionar, consultar y dar seguimiento a documentos y archivos digitales. Participé en el análisis, diseño e integración entre frontend, backend y base de datos.',
+        'Plataforma para gestión documental y operación de empresas de transporte: archivos, usuarios, vehículos, solicitudes, mantenimiento y alertas. Proyecto de grado con cliente Flutter y API Spring Boot / PostgreSQL.',
       imagen: proyectoTrackFile,
       imagenContain: true,
-      stack: ['Flutter', 'Dart', 'Full Stack', 'Gestión documental'],
+      stack: ['Flutter', 'Dart', 'Java', 'Spring Boot', 'PostgreSQL'],
       linkPagina: 'https://trackfile.vercel.app/',
       linkDetalles: documentoTrackFile,
       detalleLabel: 'Documento',

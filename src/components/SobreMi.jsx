@@ -56,24 +56,6 @@ export default function SobreMi() {
             </div>
 
             <div className="mb-3 mb-md-4">
-              <p className="text-primary fw-bold mb-1" style={{ fontSize: '0.9rem' }}>Edad:</p>
-              <p className="text-white" style={{ fontSize: '0.95rem' }}>
-                {(() => {
-                  const hoy = new Date()
-                  const fechaNac = new Date(2004, 10, 16)
-                  let edad = hoy.getFullYear() - fechaNac.getFullYear()
-                  const diferenciaMeses = hoy.getMonth() - fechaNac.getMonth()
-
-                  if (diferenciaMeses < 0 || (diferenciaMeses === 0 && hoy.getDate() < fechaNac.getDate())) {
-                    edad--
-                  }
-
-                  return `${edad} años`
-                })()}
-              </p>
-            </div>
-
-            <div className="mb-3 mb-md-4">
               <p className="text-primary fw-bold mb-1" style={{ fontSize: '0.9rem' }}>Ubicación:</p>
               <p className="text-white" style={{ fontSize: '0.95rem' }}>Bucaramanga, Santander</p>
             </div>
