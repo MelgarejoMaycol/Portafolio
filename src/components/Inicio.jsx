@@ -1,71 +1,38 @@
-import React from 'react'
 import Imagen from '../../public/avatar.jpg'
 
 export default function Inicio() {
-  const handleNavLinkClick = (sectionId) => {
-    const element = document.getElementById(sectionId)
-    
-    if (element) {
-      const isMobile = window.innerWidth < 992
-      const offset = isMobile ? -120 : -40
-      
-      // Agregar pequeño delay para que el menú se recoja antes de scrollear
-      setTimeout(() => {
-        const elementPosition = element.getBoundingClientRect().top + window.scrollY
-        const offsetPosition = elementPosition + offset
-        
-        window.scrollTo({
-          top: offsetPosition,
-          behavior: 'smooth'
-        })
-      }, 200)
-    }
-  }
   return (
-    <section className="inicio py-2 py-md-3" style={{ minHeight: '85vh' }} id="inicio">
-      <div className="container d-flex align-items-center justify-content-center px-2 px-md-4" style={{ minHeight: '85vh' }}>
-        <div className="row w-100 align-items-center g-3">
-          {/* Contenido izquierdo */}
-          <div className="col-lg-6 col-md-12 text-white mb-2 mb-lg-0 order-2 order-lg-1 ps-md-4 ps-lg-5" style={{ paddingLeft: '0.5rem' }}>
-            <p className="lead mb-3 mb-md-5 text-primary fw-bold" style={{ fontSize: '0.9rem' }}>
-              Bienvenido a mi portafolio 
+    <section className="inicio py-4 py-md-5" style={{ minHeight: '85vh' }} id="inicio">
+      <div className="container d-flex align-items-center justify-content-center px-3 px-md-4" style={{ minHeight: '75vh' }}>
+        <div className="row w-100 align-items-center g-4">
+          <div className="col-lg-7 text-white order-2 order-lg-1 ps-lg-5">
+            <p className="lead text-primary fw-bold mb-3" style={{ fontSize: '0.95rem' }}>
+              Disponible para oportunidades de desarrollo junior · Colombia / remoto
             </p>
-            <h1 className="display-4 fw-bold mb-1 mb-md-2" style={{ fontSize: '2rem' }}>
-              Hola, mi nombre es <span className="text-primary">Maycol</span>.
+            <h1 className="fw-bold mb-3" style={{ fontSize: 'clamp(2rem, 4vw, 3.2rem)', lineHeight: 1.15 }}>
+              Maycol Melgarejo
+              <span className="d-block text-primary">Desarrollador React y TypeScript</span>
             </h1>
-            <h2 className="h3 mb-3 mb-md-5" style={{ fontSize: '1.2rem' }}>
-              Desarrollador <span className="text-primary">Full Stack</span>
-            </h2>
-
+            <p className="mb-4 text-white-50" style={{ fontSize: '1.05rem', lineHeight: 1.7, maxWidth: '660px' }}>
+              Tecnólogo en Desarrollo de Sistemas Informáticos. Desarrollo interfaces con React y
+              TypeScript, APIs con Node.js y aplicaciones conectadas a PostgreSQL.
+              Cifrya y TrackFile muestran cómo convierto requisitos en productos funcionales.
+            </p>
             <div className="d-flex gap-2 gap-md-3 flex-wrap">
-              <button 
-                onClick={() => handleNavLinkClick('proyectos')}
-                className="btn btn-primary px-4 px-md-5 rounded-pill" 
-                style={{ fontSize: '0.9rem', border: 'none', cursor: 'pointer' }}
-              >
-                Ver Proyectos
-              </button>
-              <button 
-                onClick={() => handleNavLinkClick('contacto')}
-                className="btn btn-outline-primary px-4 px-md-5 rounded-pill" 
-                style={{ fontSize: '0.9rem', border: 'none', cursor: 'pointer' }}
-              >
-                Contáctame
-              </button>
+              <a href="https://cifrya.com/demo" target="_blank" rel="noopener noreferrer" className="btn btn-primary rounded-pill px-4">
+                Probar Cifrya
+              </a>
+              <a href="#caso-cifrya" className="btn btn-outline-primary rounded-pill px-4">
+                Ver caso técnico
+              </a>
+              <a href="#contacto" className="btn btn-outline-light rounded-pill px-4">
+                Contacto y CV
+              </a>
             </div>
           </div>
-
-          {/* Contenido derecho - Imagen/Avatar */}
-          <div className="col-lg-6 col-md-12 text-center position-relative order-1 order-lg-2 mb-3 mb-lg-0">
-            {/* Destello/Glow detrás de la imagen */}
+          <div className="col-lg-5 text-center position-relative order-1 order-lg-2">
             <div className="inicio-glow" />
-            
-            {/* Imagen */}
-            <img
-              src={Imagen}
-              alt="Maycol Melgarejo"
-              className="inicio-image"
-            />
+            <img src={Imagen} alt="Retrato de Maycol Melgarejo, desarrollador de software" className="inicio-image" fetchPriority="high" />
           </div>
         </div>
       </div>

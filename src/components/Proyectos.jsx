@@ -1,4 +1,5 @@
 import React from 'react'
+import CasoTecnico from './CasoTecnico'
 import proyectoToDo from '../../public/Proyecto TO_DO.png'
 import proyectoTaxis from '../../public/ProyectoTaxis.png'
 import proyectoCompu from '../../public/ProyectoCompu3D.png'
@@ -23,6 +24,7 @@ export default function Proyectos() {
       stack: ['React', 'TypeScript', 'Node.js', 'Express', 'PostgreSQL', 'Prisma'],
       linkPagina: 'https://cifrya.com/',
       linkDemo: 'https://cifrya.com/demo',
+      linkCaseStudy: '#caso-cifrya',
       etiqueta: 'Proyecto principal · Full Stack'
     },
     {
@@ -249,6 +251,13 @@ export default function Proyectos() {
                       </a>
                     )}
 
+                    {proyecto.linkCaseStudy && (
+                      <a href={proyecto.linkCaseStudy} className="btn btn-outline-light rounded-pill px-3">
+                        <i className="fa-solid fa-code me-2"></i>
+                        Decisiones técnicas
+                      </a>
+                    )}
+
                     {proyecto.linkDetalles && (
                       <a
                         href={proyecto.linkDetalles}
@@ -278,6 +287,8 @@ export default function Proyectos() {
             </div>
           ))}
         </div>
+
+        <CasoTecnico />
 
         <details className="mt-3">
           <summary className="text-center text-primary fw-bold mb-4" style={{ cursor: 'pointer', padding: '1rem' }}>
