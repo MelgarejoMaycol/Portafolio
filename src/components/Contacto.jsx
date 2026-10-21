@@ -31,6 +31,7 @@ export default function Contacto() {
     e.preventDefault()
     setCargando(true)
     setError(false)
+    setEnviado(false)
 
     // Parámetros del template de EmailJS
     const templateParams = {
@@ -53,14 +54,14 @@ export default function Contacto() {
       setFormData({ nombre: '', email: '', asunto: '', mensaje: '' })
       setCargando(false)
       
-      setTimeout(() => setEnviado(false), 3000)
+
     })
     .catch((err) => {
       console.error('Error:', err)
       setError(true)
       setCargando(false)
       
-      setTimeout(() => setError(false), 3000)
+
     })
   }
 
@@ -166,7 +167,7 @@ export default function Contacto() {
               </button>
 
               {enviado && (
-                <div className="alert alert-success mt-3" role="alert" style={{ backgroundColor: 'rgba(25, 135, 84, 0.2)', border: '1px solid #198754', color: '#90EE90' }}>
+                <div className="alert alert-success mt-3" role="status" aria-live="polite" style={{ backgroundColor: 'rgba(25, 135, 84, 0.2)', border: '1px solid #198754', color: '#90EE90' }}>
                   ✓ ¡Mensaje enviado exitosamente! Pronto me pondré en contacto contigo.
                 </div>
               )}
@@ -222,13 +223,13 @@ export default function Contacto() {
 
               <h6 className="text-white fw-bold mb-3 mt-4">Sígueme en redes sociales</h6>
               <div className="d-flex gap-3">
-                <a href="https://github.com/MelgarejoMaycol" target="_blank" rel="noopener noreferrer" className="btn btn-outline-primary rounded-circle p-2" style={{ width: '45px', height: '45px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                <a href="https://github.com/MelgarejoMaycol" aria-label="Perfil de GitHub" target="_blank" rel="noopener noreferrer" className="btn btn-outline-primary rounded-circle p-2" style={{ width: '45px', height: '45px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
                   <i className="fab fa-github"></i>
                 </a>
-                <a href="https://instagram.com/melgarejo_mayc/" target="_blank" rel="noopener noreferrer" className="btn btn-outline-primary rounded-circle p-2" style={{ width: '45px', height: '45px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                <a href="https://instagram.com/melgarejo_mayc/" aria-label="Perfil de Instagram" target="_blank" rel="noopener noreferrer" className="btn btn-outline-primary rounded-circle p-2" style={{ width: '45px', height: '45px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
                   <i className="fab fa-instagram"></i>
                 </a>
-                <a href="https://www.linkedin.com/in/maycol-melgarejo-a59bb9322" target="_blank" rel="noopener noreferrer" className="btn btn-outline-primary rounded-circle p-2" style={{ width: '45px', height: '45px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                <a href="https://www.linkedin.com/in/maycol-melgarejo-a59bb9322" aria-label="Perfil de LinkedIn" target="_blank" rel="noopener noreferrer" className="btn btn-outline-primary rounded-circle p-2" style={{ width: '45px', height: '45px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
                   <i className="fab fa-linkedin"></i>
                 </a>
               </div>

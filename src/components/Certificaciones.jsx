@@ -28,7 +28,6 @@ const certificados = [
     anio: 2026,
     categoria: 'Desarrollo',
     icono: 'fa-solid fa-graduation-cap',
-    destacado: true,
     pdf: cs50Pdf,
     urlOficial: 'https://cs50.harvard.edu/certificates/7d215635-ef95-4138-82ae-d5c2fe41416e'
   },
@@ -38,7 +37,6 @@ const certificados = [
     anio: 2026,
     categoria: 'IA',
     icono: 'fa-solid fa-brain',
-    destacado: true,
     pdf: claude101Pdf
   },
   {
@@ -47,7 +45,6 @@ const certificados = [
     anio: 2026,
     categoria: 'IA',
     icono: 'fa-solid fa-brain',
-    destacado: true,
     pdf: aiLimitsPdf
   },
   {
@@ -56,7 +53,6 @@ const certificados = [
     anio: 2026,
     categoria: 'Desarrollo',
     icono: 'fa-brands fa-angular',
-    destacado: true,
     pdf: angularPdf
   },
   {
@@ -65,7 +61,6 @@ const certificados = [
     anio: 2026,
     categoria: 'Ciberseguridad',
     icono: 'fa-solid fa-shield-halved',
-    destacado: true,
     pdf: senaCiberseguridadPdf
   },
   {
@@ -74,7 +69,6 @@ const certificados = [
     anio: 2026,
     categoria: 'Desarrollo',
     icono: 'fa-brands fa-node-js',
-    destacado: true,
     pdf: certificado11
   },
   {
@@ -83,7 +77,6 @@ const certificados = [
     anio: 2026,
     categoria: 'Desarrollo',
     icono: 'fa-solid fa-code',
-    destacado: true,
     pdf: certificado13
   },
   {
@@ -92,7 +85,6 @@ const certificados = [
     anio: 2026,
     categoria: 'Desarrollo',
     icono: 'fa-solid fa-mobile-screen-button',
-    destacado: true,
     pdf: certificado12
   },
   {
@@ -196,8 +188,8 @@ const certificados = [
 const filtros = ['Todos', 'Desarrollo', 'IA', 'Ciberseguridad', 'Formación']
 const destacadosPreferidos = [
   'CS50x: Introduction to Computer Science',
-  'Claude 101',
-  'Desarrollo con Node.js: Aplicación, Testing y Seguridad'
+  'Desarrollo con Node.js: Aplicación, Testing y Seguridad',
+  'TypeScript para principiantes desde 0'
 ]
 
 export default function Certificaciones() {

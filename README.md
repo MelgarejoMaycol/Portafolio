@@ -21,7 +21,7 @@ Otros proyectos formativos están disponibles en una sección secundaria del por
 
 ## Caso de estudio técnico
 
-La sección **«Caso de estudio · Cifrya»** del portafolio describe el problema que resuelve,
+La sección **«Caso de estudio · Cifrya»** del portafolio y [su documento técnico](docs/CIFRYA_CASO_TECNICO.md) describen el problema que resuelve,
 la separación frontend/API/datos, las decisiones de ingeniería y las verificaciones CI.
 La demo es pública, pero los repositorios del producto siguen privados; no se afirman
 resultados de negocio ni métricas de uso sin datos verificables.
@@ -49,6 +49,7 @@ npm run dev
 ```
 
 - `src/components/`: secciones del portafolio.
+- `src/data/proyectos.js`: catálogo de proyectos separado del JSX.
 - `src/utils/downloadCV.js`: selección de CV.
 - `public/cv/`: PDF entregables.
 - `.github/workflows/deploy.yml`: validación de lint, archivos PDF, descarga de CV y build en push/PR. El despliegue del sitio depende de la integración externa de Vercel.

@@ -146,7 +146,7 @@ export default function Encabezado() {
                 handleCVDownload()
               }}
             >
-              CV
+              CV Full Stack
             </button>
           </div>
         </div>
@@ -157,7 +157,7 @@ export default function Encabezado() {
           onClick={handleCVDownload}
           className="btn btn-primary px-5 d-flex align-items-center justify-content-center rounded-pill fw-bold d-none d-lg-flex me-5"
         >
-          CV
+          CV Full Stack
         </button>
         
       </div>
