@@ -1,12 +1,15 @@
-import React from 'react'
+import { useState } from 'react'
 import CasoTecnico from './CasoTecnico'
+import FichaTrackFileModal from './FichaTrackFileModal'
 import { proyectosPrincipales, otrosProyectos } from '../data/proyectos'
 
 
 
 export default function Proyectos() {
+  const [fichaAbierta, setFichaAbierta] = useState(false)
 
   return (
+    <>
     <section
       className="proyectos py-3 py-md-5"
       id="proyectos"
@@ -155,7 +158,14 @@ export default function Proyectos() {
                       </a>
                     )}
 
-                    {proyecto.linkDetalles && (
+                    {proyecto.id === 'trackfile' && (
+                      <button type="button" onClick={() => setFichaAbierta(true)} className="btn btn-outline-light rounded-pill px-3">
+                        <i className="fa-regular fa-file-lines me-2" aria-hidden="true"></i>
+                        Ficha técnica
+                      </button>
+                    )}
+
+                    {proyecto.linkDetalles && proyecto.id !== 'trackfile' && (
                       <a
                         href={proyecto.linkDetalles}
                         target="_blank"
@@ -252,5 +262,7 @@ export default function Proyectos() {
         </details>
       </div>
     </section>
+    <FichaTrackFileModal open={fichaAbierta} onClose={() => setFichaAbierta(false)} />
+    </>
   )
 }

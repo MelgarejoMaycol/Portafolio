@@ -61,3 +61,12 @@ test('se prioriza Frontend con modal y dos casos de estudio', () => {
   assert.ok(modal.includes('getCvPath'))
   assert.ok(casos.includes('caso-cifrya') && casos.includes('caso-trackfile'))
 })
+
+test('TrackFile muestra una ficha resumida en un modal accesible', () => {
+  const proyectos = readFileSync(resolve(process.cwd(), 'src/components/Proyectos.jsx'), 'utf8')
+  const ficha = readFileSync(resolve(process.cwd(), 'src/components/FichaTrackFileModal.jsx'), 'utf8')
+  assert.ok(proyectos.includes('<FichaTrackFileModal'))
+  assert.ok(proyectos.includes('setFichaAbierta(true)'))
+  assert.ok(ficha.includes('aria-modal="true"'))
+  assert.ok(!ficha.includes('F-DC-125'))
+})
