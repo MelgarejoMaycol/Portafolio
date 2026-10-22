@@ -1422,3 +1422,12 @@ h2 {
 @media (prefers-reduced-motion: reduce) {
   .inicio-evidencia a { transition: none; }
 }
+
+/* Ficha técnica resumida de TrackFile en modal */
+.ficha-trackfile-dialog { width: min(100%, 830px); }
+.ficha-trackfile-body { flex: 1; min-height: 0; overflow: auto; padding: 1rem 1.5rem 1.3rem; }
+.ficha-trackfile-body p { line-height: 1.65; font-size: .91rem; }
+.ficha-trackfile-body .row p { color: #b8cce2; }
+.ficha-trackfile-stack { display: flex; flex-wrap: wrap; gap: .5rem; margin: 1.2rem 0; }
+.ficha-trackfile-stack span { border: 1px solid #2c547a; border-radius: 999px; background: #10263c; color: #bfe5ff; font-size: .8rem; padding: .4rem .75rem; }
+@media (max-width: 575px) { .ficha-trackfile-body { padding: .5rem 1rem 1rem; } }
