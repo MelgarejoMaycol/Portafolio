@@ -43,9 +43,8 @@ export default function Proyectos() {
             className="text-white"
             style={{ fontSize: '1.2rem', lineHeight: '1.6', maxWidth: '800px', margin: '0 auto' }}
           >
-            Proyectos <span className="text-primary">Full Stack</span>, frontend y multiplataforma
-            que reflejan mi experiencia construyendo soluciones completas, integrando interfaces,
-            APIs, bases de datos y despliegue.
+            Proyectos que muestran mi trabajo en <span className="text-primary">interfaces, experiencias responsivas e integración con APIs</span>.
+            React y TypeScript son mi prioridad, con conocimientos de backend que aportan contexto a cada solución.
           </p>
         </div>
 
@@ -151,8 +150,8 @@ export default function Proyectos() {
 
                     {proyecto.linkCaseStudy && (
                       <a href={proyecto.linkCaseStudy} className="btn btn-outline-light rounded-pill px-3">
-                        <i className="fa-solid fa-code me-2"></i>
-                        Decisiones técnicas
+                        <i className="fa-solid fa-code me-2" aria-hidden="true"></i>
+                        Ver caso de estudio
                       </a>
                     )}
 
@@ -188,7 +187,7 @@ export default function Proyectos() {
 
         <CasoTecnico />
 
-        <details className="mt-3">
+        <details className="mt-3" id="otros-proyectos">
           <summary className="text-center text-primary fw-bold mb-4" style={{ cursor: 'pointer', padding: '1rem' }}>
             Explorar otros proyectos y ejercicios de formación
           </summary>

@@ -1,4 +1,4 @@
-import { StrictMode } from 'react'
+import { StrictMode, useCallback, useState } from 'react'
 import { createRoot } from 'react-dom/client'
 import Encabezado from './components/Encabezado'
 import Inicio from './components/Inicio'
@@ -7,53 +7,30 @@ import Proyectos from './components/Proyectos'
 import Herramientas from './components/Herramientas'
 import Certificaciones from './components/Certificaciones'
 import Contacto from './components/Contacto'
+import CVModal from './components/CVModal'
 import './index.css'
 
-// Limpiar console de mensajes innecesarios en desarrollo
-if (import.meta.env.DEV) {
-  const originalWarn = console.warn
-  const originalError = console.error
-  
-  const ignoredPatterns = [
-    'Tracking Prevention',
-    'Warning',
-    'hydration',
-    'not wrapped in act',
-    'StrictMode',
-    'React DevTools',
-    'Download the React DevTools',
-    'blocked access to storage'
-  ]
+function Portafolio() {
+  const [cvAbierto, setCvAbierto] = useState(false)
+  const abrirCV = useCallback(() => setCvAbierto(true), [])
+  const cerrarCV = useCallback(() => setCvAbierto(false), [])
 
-  console.warn = (...args) => {
-    const message = String(args[0])
-    for (const pattern of ignoredPatterns) {
-      if (message.includes(pattern)) {
-        return
-      }
-    }
-    originalWarn(...args)
-  }
-
-  console.error = (...args) => {
-    const message = String(args[0])
-    for (const pattern of ignoredPatterns) {
-      if (message.includes(pattern)) {
-        return
-      }
-    }
-    originalError(...args)
-  }
+  return (
+    <>
+      <Encabezado onOpenCV={abrirCV} />
+      <Inicio onOpenCV={abrirCV} />
+      <SobreMi onOpenCV={abrirCV} />
+      <Proyectos />
+      <Herramientas />
+      <Certificaciones />
+      <Contacto onOpenCV={abrirCV} />
+      <CVModal open={cvAbierto} onClose={cerrarCV} />
+    </>
+  )
 }
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
-    <Encabezado />
-    <Inicio />
-    <SobreMi />
-    <Proyectos />
-    <Herramientas />
-    <Certificaciones />
-    <Contacto />
+    <Portafolio />
   </StrictMode>,
 )

@@ -128,10 +128,10 @@ export default function Herramientas() {
 
         <div className="text-center mb-5">
           <p className="text-primary fw-bold herramientas-resumen">
-            Mi enfoque principal: React · TypeScript · JavaScript · Node.js · Express · PostgreSQL
+            Mi enfoque principal: React · TypeScript · JavaScript · HTML · CSS · diseño de interfaces
           </p>
           <p className="text-white-50" style={{ maxWidth: '850px', margin: '0 auto' }}>
-            Conocimientos complementarios: Vue.js, PHP, Laravel, Java, Spring Boot, MySQL, Bootstrap y herramientas de desarrollo. Los distintos niveles de experiencia se reflejan en mis proyectos.
+            Además de maquetación responsiva, integración de APIs y pruebas, tengo conocimientos complementarios de Node.js, PostgreSQL, Vue.js, PHP, Laravel, Java y Flutter.
           </p>
         </div>
 

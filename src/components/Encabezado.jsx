@@ -1,8 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react'
-import { downloadCV } from '../utils/downloadCV'
 import '../index.css';
 
-export default function Encabezado() {
+export default function Encabezado({ onOpenCV }) {
   const [activeSection, setActiveSection] = useState('inicio')
   const isUserClickRef = useRef(false)
 
@@ -40,10 +39,6 @@ export default function Encabezado() {
       navToggler?.click();
     }
   };
-
-  const handleCVDownload = () => {
-    downloadCV()
-  }
 
   const handleNavLinkClick = (e, sectionId) => {
     e.preventDefault()
@@ -141,12 +136,13 @@ export default function Encabezado() {
             <button
               type="button"
               className="btn btn-primary px-4 fw-bold"
+              aria-label="Ver hojas de vida"
               onClick={() => {
                 handleNavClick()
-                handleCVDownload()
+                onOpenCV()
               }}
             >
-              CV Full Stack
+              CV
             </button>
           </div>
         </div>
@@ -154,10 +150,11 @@ export default function Encabezado() {
         {/* Botón CV para escritorio */}
         <button
           type="button"
-          onClick={handleCVDownload}
+          onClick={onOpenCV}
+          aria-label="Ver hojas de vida"
           className="btn btn-primary px-5 d-flex align-items-center justify-content-center rounded-pill fw-bold d-none d-lg-flex me-5"
         >
-          CV Full Stack
+          CV
         </button>
         
       </div>

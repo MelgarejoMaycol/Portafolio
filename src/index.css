@@ -1375,3 +1375,50 @@ h2 {
     width: 100%;
   }
 }
+
+/* Presentación Frontend y evidencia verificable */
+.inicio-inner { min-height: min(76vh, 760px); }
+.inicio-title { font-size: clamp(2rem, 4vw, 3.25rem) !important; line-height: 1.16; }
+.inicio-description { font-size: clamp(1rem, 1.5vw, 1.1rem); line-height: 1.75; max-width: 690px; }
+.inicio-evidencia { display: flex; flex-wrap: wrap; gap: .75rem; margin-top: 2rem; }
+.inicio-evidencia a { min-width: 130px; display: flex; flex-direction: column; gap: .2rem; padding: .75rem 1rem; border: 1px solid #234160; border-radius: 14px; background: rgba(13,110,253,.06); color: #d5e9ff; text-decoration: none; }
+.inicio-evidencia a:hover, .inicio-evidencia a:focus-visible { border-color: #77b4ff; background: rgba(13,110,253,.14); }
+.inicio-evidencia strong { color: #76b1ff; font-size: 1.35rem; line-height: 1.1; }
+.inicio-evidencia span { font-size: .76rem; }
+.caso-estudio { scroll-margin-top: 6rem; }
+.caso-estudio article { background: linear-gradient(145deg, #0b1c30, #092a32); border: 1px solid rgba(103,232,207,.28); }
+.caso-estudio .caso-intro { max-width: 860px; line-height: 1.75; }
+#otros-proyectos { scroll-margin-top: 6rem; }
+
+/* Diálogo CV: una acción en lugar de tres botones simultáneos */
+.cv-overlay { position: fixed; inset: 0; z-index: 2500; display: grid; place-items: center; background: rgba(0, 5, 17, .86); backdrop-filter: blur(9px); padding: 1rem; }
+.cv-dialog { width: min(100%, 980px); max-height: min(92dvh, 920px); display: flex; flex-direction: column; overflow: hidden; border: 1px solid #355b7e; border-radius: 20px; background: #08152b; color: #fff; box-shadow: 0 35px 110px rgba(0,0,0,.6); outline: none; }
+.cv-dialog-header { display: flex; align-items: flex-start; justify-content: space-between; gap: 1rem; padding: 1.25rem 1.5rem .5rem; }
+.cv-dialog-header h2 { color: #fff; font-size: 1.65rem !important; margin: 0; }
+.cv-dialog-close { width: 42px; height: 42px; flex: 0 0 auto; border: 1px solid #48607c; border-radius: 50%; background: #15253c; color: #fff; }
+.cv-dialog-close:hover, .cv-dialog-close:focus-visible { background: #27405f; }
+.cv-dialog-description { margin: .25rem 1.5rem 1rem; color: #b6c6da; line-height: 1.55; }
+.cv-options { display: flex; flex-wrap: wrap; gap: .6rem; padding: 0 1.5rem 1rem; }
+.cv-options button { padding: .55rem .85rem; border: 1px solid #416182; border-radius: 999px; background: #101f34; color: #e4eefa; font-size: .9rem; }
+.cv-options button[aria-pressed="true"] { background: #0d6efd; border-color: #4f9aff; color: #fff; }
+.cv-viewer { flex: 1; min-height: 240px; background: #e6eaf0; margin: 0 1.5rem; border-radius: 10px; overflow: hidden; }
+.cv-viewer iframe { display: block; width: 100%; height: 100%; min-height: 330px; border: 0; }
+.cv-dialog-footer { display: flex; gap: .65rem; align-items: center; justify-content: space-between; flex-wrap: wrap; padding: 1rem 1.5rem 1.25rem; }
+.cv-dialog-footer p { color: #bac6d6; margin: 0; font-size: .82rem; }
+.cv-dialog-footer .cv-actions { display: flex; flex-wrap: wrap; gap: .6rem; }
+@media (max-width: 575px) {
+  .inicio-inner { min-height: auto; }
+  .inicio-evidencia a { min-width: calc(50% - .4rem); }
+  .cv-overlay { padding: 0; }
+  .cv-dialog { width: 100%; max-height: 100dvh; height: 100dvh; border-radius: 0; }
+  .cv-dialog-header { padding: 1rem 1rem .5rem; }
+  .cv-dialog-description { margin: .2rem 1rem .8rem; }
+  .cv-options { padding: 0 1rem .85rem; gap: .35rem; }
+  .cv-options button { font-size: .8rem; }
+  .cv-viewer { margin: 0 1rem; }
+  .cv-dialog-footer { padding: .85rem 1rem; }
+  .cv-dialog-footer .btn { font-size: .85rem; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .inicio-evidencia a { transition: none; }
+}

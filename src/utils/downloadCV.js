@@ -4,13 +4,13 @@ export const CV_FILES = Object.freeze({
   backend: '/cv/CV_Maycol_Melgarejo_Backend.pdf'
 })
 
-export function getCvPath(tipo = 'fullstack') {
+export function getCvPath(tipo = 'frontend') {
   return typeof tipo === 'string' && Object.hasOwn(CV_FILES, tipo)
     ? CV_FILES[tipo]
-    : CV_FILES.fullstack
+    : CV_FILES.frontend
 }
 
-export function downloadCV(tipo = 'fullstack') {
+export function downloadCV(tipo = 'frontend') {
   const path = getCvPath(tipo)
   const link = document.createElement('a')
   link.href = path

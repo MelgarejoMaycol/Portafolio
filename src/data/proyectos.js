@@ -4,7 +4,6 @@ import proyectoCompu from '../../public/ProyectoCompu3D.png'
 import proyectoTrackFile from '../../public/ProyectoTrackFile.png'
 import ProyectoSeries from '../../public/ProyectoSeries.png'
 import ProyectoPokeVerso from '../../public/ProyectoPokeVerso.png'
-import documentoTrackFile from '../assets/F-DC-125  desarrollo tecnológico listo.pdf'
 import ProyectoRecetas_Api from '../../public/ProyectoRecetas_Api.png'
 import RecetasFrontTS from '../../public/ProyectoRecetas_Front_TS.png'
 
@@ -15,26 +14,27 @@ export const proyectosPrincipales = [
       id: 'cifrya',
       titulo: 'Cifrya — Finanzas Personales',
       descripcion:
-        'Plataforma Full Stack de finanzas personales para centralizar cuentas, movimientos, presupuestos, metas, créditos, pagos recurrentes e inversiones. Incluye conversor de divisas, simulaciones, proyecciones, salud financiera y una demo pública para conocer el producto sin registrarse.',
+        'Aplicación de finanzas personales con paneles, formularios y flujos de cuentas, movimientos y presupuestos. Construí interfaces en React y TypeScript conectadas con una API real, estados de carga y una demo pública navegable.',
       imagen: imagenCifrya,
       imagenContain: false,
       stack: ['React', 'TypeScript', 'Node.js', 'Express', 'PostgreSQL', 'Prisma'],
       linkPagina: 'https://cifrya.com/',
       linkDemo: 'https://cifrya.com/demo',
       linkCaseStudy: '#caso-cifrya',
-      etiqueta: 'Proyecto principal · Full Stack'
+      etiqueta: 'Proyecto personal · React/TypeScript'
     },
     {
       id: 'trackfile',
       titulo: 'TrackFile — Gestión Documental',
       descripcion:
-        'Plataforma para gestión documental y operación de empresas de transporte: archivos, usuarios, vehículos, solicitudes, mantenimiento y alertas. Proyecto de grado con cliente Flutter y API Spring Boot / PostgreSQL.',
+        'Proyecto de grado de gestión documental para transporte. Incluye flujos para archivos, usuarios, vehículos, solicitudes, mantenimiento y alertas; interfaz Flutter conectada con servicios Spring Boot y PostgreSQL.',
       imagen: proyectoTrackFile,
       imagenContain: true,
       stack: ['Flutter', 'Dart', 'Java', 'Spring Boot', 'PostgreSQL'],
       linkPagina: 'https://trackfile.vercel.app/',
-      linkDetalles: documentoTrackFile,
-      detalleLabel: 'Documento',
+      linkCaseStudy: '#caso-trackfile',
+      linkDetalles: 'https://github.com/MelgarejoMaycol/Portafolio/blob/main/docs/TRACKFILE_CASO_TECNICO.md',
+      detalleLabel: 'Ficha técnica',
       etiqueta: 'Proyecto principal · Proyecto de grado'
     }
   ]
