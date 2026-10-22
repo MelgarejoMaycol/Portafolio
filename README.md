@@ -2,7 +2,7 @@
 
 Sitio web construido con **React 19 + Vite 8** y publicado en [Vercel](https://melgarejomaycol.vercel.app/).
 
-El propósito del portafolio es presentar un perfil centrado en **Frontend (React, TypeScript y UI responsiva)**, proyectos verificables, contacto y las tres versiones de mi hoja de vida accesibles desde un solo modal.
+El propósito del portafolio es presentar un perfil centrado en **Frontend (React, TypeScript y UI responsiva)**, proyectos verificables, contacto y las tres versiones de mi hoja de vida accesibles desde un solo modal. El inicio evita métricas decorativas y «Sobre mí» se organiza en dos columnas responsivas.
 
 ## Especialización y otros conocimientos
 
@@ -22,7 +22,7 @@ Otros proyectos formativos están disponibles en una sección secundaria del por
 
 ## Caso de estudio técnico
 
-Las secciones de **casos de estudio** explican decisiones de interfaz y arquitectura de Cifrya y TrackFile. [La ficha de Cifrya](docs/CIFRYA_CASO_TECNICO.md) describe el problema que resuelve,
+Los **casos de estudio** se abren desde sus respectivas tarjetas (clic en cualquier zona libre de la tarjeta o en «Ver caso de estudio»); los enlaces externos siguen siendo independientes. Estas fichas explican decisiones de interfaz y arquitectura de Cifrya y TrackFile. [La ficha de Cifrya](docs/CIFRYA_CASO_TECNICO.md) describe el problema que resuelve,
 la separación frontend/API/datos, las decisiones de ingeniería y las verificaciones CI.
 La demo es pública, pero los repositorios del producto siguen privados; no se afirman
 resultados de negocio ni métricas de uso sin datos verificables. La [ficha pública de TrackFile](docs/TRACKFILE_CASO_TECNICO.md) reemplaza la memoria de grado: no contiene anexos internos ni datos sensibles.

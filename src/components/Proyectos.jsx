@@ -1,268 +1,118 @@
-import { useState } from 'react'
+import { useCallback, useEffect, useState } from 'react'
 import CasoTecnico from './CasoTecnico'
-import FichaTrackFileModal from './FichaTrackFileModal'
 import { proyectosPrincipales, otrosProyectos } from '../data/proyectos'
 
-
+const casosDisponibles = new Set(['cifrya', 'trackfile'])
 
 export default function Proyectos() {
-  const [fichaAbierta, setFichaAbierta] = useState(false)
+  const [proyectoActivo, setProyectoActivo] = useState(null)
+  const cerrarCaso = useCallback(() => setProyectoActivo(null), [])
+
+  useEffect(() => {
+    function abrirDesdeEnlace() {
+      const id = window.location.hash.replace('#caso-', '')
+      if (casosDisponibles.has(id)) setProyectoActivo(id)
+    }
+    abrirDesdeEnlace()
+    window.addEventListener('hashchange', abrirDesdeEnlace)
+    return () => window.removeEventListener('hashchange', abrirDesdeEnlace)
+  }, [])
 
   return (
     <>
-    <section
-      className="proyectos py-3 py-md-5"
-      id="proyectos"
-      style={{
-        backgroundColor: '#00091c',
-        minHeight: 'auto',
-        position: 'relative',
-        overflow: 'hidden'
-      }}
-    >
-      <div
-        style={{
-          position: 'absolute',
-          width: '600px',
-          height: '600px',
-          background: 'radial-gradient(circle, rgba(13, 110, 253, 0.15) 0%, transparent 70%)',
-          borderRadius: '50%',
-          top: '35%',
-          left: '50%',
-          transform: 'translate(-50%, -50%)',
-          filter: 'blur(80px)',
-          zIndex: 0,
-          pointerEvents: 'none'
-        }}
-      />
+      <section className="proyectos py-4 py-md-5" id="proyectos">
+        <div className="container px-3 px-md-4">
+          <div className="text-center mb-4 mb-md-5">
+            <h2 className="section-title text-white mb-3">Proyectos</h2>
+            <p className="text-white-50 proyectos-intro">
+              Dos proyectos con enfoques distintos, donde muestro interfaces,
+              integración con APIs y decisiones de diseño y desarrollo.
+              Selecciona una tarjeta para conocer su caso de estudio.
+            </p>
+          </div>
 
-      <div className="container px-2 px-md-4" style={{ position: 'relative', zIndex: 1 }}>
-        <div className="text-center mb-4 mb-md-5">
-          <h2 className="section-title text-white mb-3 mb-md-4">Proyectos</h2>
-        </div>
-
-        <div className="text-center mb-5">
-          <p
-            className="text-white"
-            style={{ fontSize: '1.2rem', lineHeight: '1.6', maxWidth: '800px', margin: '0 auto' }}
-          >
-            Proyectos que muestran mi trabajo en <span className="text-primary">interfaces, experiencias responsivas e integración con APIs</span>.
-            React y TypeScript son mi prioridad, con conocimientos de backend que aportan contexto a cada solución.
-          </p>
-        </div>
-
-        <div className="row g-4 mb-5">
-          {proyectosPrincipales.map((proyecto) => (
-            <div key={proyecto.id} className="col-lg-6 col-12 d-flex">
-              <article
-                className="card overflow-hidden w-100 h-100"
-                style={{
-                  background: 'linear-gradient(145deg, #0a1428 0%, #0b1f2a 100%)',
-                  border: '1px solid rgba(50, 208, 178, 0.35)',
-                  borderRadius: '20px',
-                  boxShadow: '0 18px 45px rgba(0, 0, 0, 0.28)'
-                }}
-              >
-                <div
-                  style={{
-                    height: '260px',
-                    backgroundColor: proyecto.imagenContain ? '#f4faf8' : '#071426',
-                    display: 'flex',
-                    alignItems: 'center',
-                    justifyContent: 'center',
-                    overflow: 'hidden'
-                  }}
-                >
-                  <img
-                    src={proyecto.imagen}
-                    alt={proyecto.titulo}
-                    style={{
-                      width: '100%',
-                      height: '100%',
-                      objectFit: proyecto.imagenContain ? 'contain' : 'cover',
-                      objectPosition: 'center',
-                      padding: proyecto.imagenContain ? '2.1rem' : 0,
-                      display: 'block'
-                    }}
+          <div className="row g-4 mb-5 proyectos-destacados">
+            {proyectosPrincipales.map((proyecto) => (
+              <div key={proyecto.id} className="col-lg-6 col-12 d-flex">
+                <article className="project-card w-100 h-100" id={'caso-' + proyecto.id}>
+                  <button
+                    type="button"
+                    className="project-card-hitarea"
+                    onClick={() => setProyectoActivo(proyecto.id)}
+                    aria-label={'Ver caso de estudio de ' + proyecto.titulo}
+                    aria-haspopup="dialog"
                   />
-                </div>
-
-                <div className="card-body p-4 d-flex flex-column">
-                  <div className="mb-3">
-                    <span
-                      className="badge rounded-pill"
-                      style={{
-                        backgroundColor: 'rgba(50, 208, 178, 0.14)',
-                        color: '#67e8cf',
-                        border: '1px solid rgba(103, 232, 207, 0.35)',
-                        padding: '0.55rem 0.85rem'
-                      }}
-                    >
-                      {proyecto.etiqueta}
+                  <div className={'project-card-media' + (proyecto.imagenContain ? ' project-card-media-contain' : '')}>
+                    <img src={proyecto.imagen} alt={'Vista previa de ' + proyecto.titulo} loading="lazy" />
+                    <span className="project-card-view-hint" aria-hidden="true">
+                      <i className="fa-solid fa-up-right-and-down-left-from-center me-2"></i>
+                      Conocer el proyecto
                     </span>
                   </div>
-
-                  <h3 className="text-white fw-bold mb-3" style={{ fontSize: '1.45rem' }}>
-                    {proyecto.titulo}
-                  </h3>
-
-                  <p className="text-white-50 mb-4" style={{ lineHeight: '1.65', flexGrow: 1 }}>
-                    {proyecto.descripcion}
-                  </p>
-
-                  <div className="d-flex flex-wrap gap-2 mb-4">
-                    {proyecto.stack.map((tecnologia) => (
-                      <span
-                        key={tecnologia}
-                        className="badge rounded-pill"
-                        style={{
-                          backgroundColor: '#111f33',
-                          color: '#dbeafe',
-                          border: '1px solid #233a58',
-                          padding: '0.5rem 0.75rem',
-                          fontWeight: 500
-                        }}
-                      >
-                        {tecnologia}
-                      </span>
-                    ))}
-                  </div>
-
-                  <div className="d-flex flex-wrap gap-2">
-                    <a
-                      href={proyecto.linkPagina}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="btn btn-primary rounded-pill px-3"
-                    >
-                      <i className="fa-solid fa-arrow-up-right-from-square me-2"></i>
-                      {proyecto.id === 'cifrya' ? 'Abrir Cifrya' : 'Ver aplicación'}
-                    </a>
-
-                    {proyecto.linkDemo && (
-                      <a
-                        href={proyecto.linkDemo}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="btn btn-outline-primary rounded-pill px-3"
-                      >
-                        <i className="fa-solid fa-flask me-2"></i>
-                        Probar demo
-                      </a>
-                    )}
-
-                    {proyecto.linkCaseStudy && (
-                      <a href={proyecto.linkCaseStudy} className="btn btn-outline-light rounded-pill px-3">
-                        <i className="fa-solid fa-code me-2" aria-hidden="true"></i>
+                  <div className="project-card-content">
+                    <span className="project-card-badge">{proyecto.etiqueta}</span>
+                    <h3>{proyecto.titulo}</h3>
+                    <p className="project-card-description">{proyecto.descripcion}</p>
+                    <div className="project-stack" aria-label={'Tecnologías de ' + proyecto.titulo}>
+                      {proyecto.stack.map((tecnologia) => <span key={tecnologia}>{tecnologia}</span>)}
+                    </div>
+                    <div className="project-card-actions">
+                      <button type="button" onClick={() => setProyectoActivo(proyecto.id)} className="btn btn-primary project-case-cta">
+                        <i className="fa-solid fa-book-open me-2" aria-hidden="true"></i>
                         Ver caso de estudio
-                      </a>
-                    )}
-
-                    {proyecto.id === 'trackfile' && (
-                      <button type="button" onClick={() => setFichaAbierta(true)} className="btn btn-outline-light rounded-pill px-3">
-                        <i className="fa-regular fa-file-lines me-2" aria-hidden="true"></i>
-                        Ficha técnica
+                        <i className="fa-solid fa-arrow-right ms-auto" aria-hidden="true"></i>
                       </button>
-                    )}
-
-                    {proyecto.linkDetalles && proyecto.id !== 'trackfile' && (
-                      <a
-                        href={proyecto.linkDetalles}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="btn btn-outline-light rounded-pill px-3"
-                      >
-                        <i className="fa-solid fa-file-lines me-2"></i>
-                        {proyecto.detalleLabel || 'Detalles'}
-                      </a>
-                    )}
-
-                    {proyecto.linkBackend && (
-                      <a
-                        href={proyecto.linkBackend}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="btn btn-outline-light rounded-pill px-3"
-                      >
-                        <i className="fa-brands fa-github me-2"></i>
-                        Backend
-                      </a>
-                    )}
+                      <div className="project-external-actions">
+                        <a href={proyecto.linkPagina} target="_blank" rel="noopener noreferrer" className="btn btn-outline-light">
+                          <i className="fa-solid fa-arrow-up-right-from-square me-2" aria-hidden="true"></i>
+                          {proyecto.id === 'cifrya' ? 'Abrir Cifrya' : 'Ver aplicación'}
+                        </a>
+                        {proyecto.linkDemo ? (
+                          <a href={proyecto.linkDemo} target="_blank" rel="noopener noreferrer" className="btn btn-outline-primary">
+                            <i className="fa-solid fa-flask me-2" aria-hidden="true"></i>Probar demo
+                          </a>
+                        ) : (
+                          <a href={proyecto.linkDetalles} target="_blank" rel="noopener noreferrer" className="btn btn-outline-primary">
+                            <i className="fa-regular fa-file-lines me-2" aria-hidden="true"></i>Ficha pública
+                          </a>
+                        )}
+                      </div>
+                    </div>
                   </div>
-                </div>
-              </article>
-            </div>
-          ))}
-        </div>
-
-        <CasoTecnico />
-
-        <details className="mt-3" id="otros-proyectos">
-          <summary className="text-center text-primary fw-bold mb-4" style={{ cursor: 'pointer', padding: '1rem' }}>
-            Explorar otros proyectos y ejercicios de formación
-          </summary>
-        <div className="d-flex align-items-center gap-3 mb-4">
-          <div style={{ height: '1px', backgroundColor: '#1e3a5f', flex: 1 }} />
-          <h3 className="text-white-50 m-0" style={{ fontSize: '0.95rem', letterSpacing: '0.08em' }}>
-            OTROS PROYECTOS · FORMACIÓN Y PRÁCTICA
-          </h3>
-          <div style={{ height: '1px', backgroundColor: '#1e3a5f', flex: 1 }} />
-        </div>
-
-        <div className="row g-4">
-          {otrosProyectos.map((proyecto) => (
-            <div key={proyecto.id} className="col-lg-4 col-md-6 col-12">
-              <div
-                className="card h-100 overflow-hidden"
-                style={{ backgroundColor: '#0a1428', border: '1px solid #1e3a5f', borderRadius: '15px' }}
-              >
-                <img
-                  src={proyecto.imagen}
-                  className="card-img-top"
-                  alt={proyecto.titulo}
-                  style={{ height: '180px', objectFit: 'cover', objectPosition: 'center' }}
-                />
-
-                <div className="card-body d-flex flex-column">
-                  <h5 className="card-title text-primary fw-bold" style={{ fontSize: '1.1rem' }}>
-                    {proyecto.titulo}
-                  </h5>
-                  <p
-                    className="card-text text-white"
-                    style={{ fontSize: '0.9rem', lineHeight: '1.5', flexGrow: 1 }}
-                  >
-                    {proyecto.descripcion}
-                  </p>
-
-                  <div className="d-flex gap-2 flex-wrap">
-                    <a
-                      href={proyecto.linkDetalles}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="btn btn-primary rounded-pill"
-                      style={{ fontSize: '0.85rem', padding: '0.5rem 1.25rem' }}
-                    >
-                      Detalles
-                    </a>
-                    <a
-                      href={proyecto.linkPagina}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="btn btn-outline-primary rounded-pill"
-                      style={{ fontSize: '0.85rem', padding: '0.5rem 1.25rem' }}
-                    >
-                      Ver página
-                    </a>
-                  </div>
-                </div>
+                </article>
               </div>
+            ))}
+          </div>
+
+          <details className="otros-proyectos-panel" id="otros-proyectos">
+            <summary className="otros-proyectos-toggle">
+              <span>
+                <strong>Explorar otros proyectos</strong>
+                <small>Ejercicios de formación y proyectos adicionales</small>
+              </span>
+              <i className="fa-solid fa-chevron-down" aria-hidden="true"></i>
+            </summary>
+            <div className="row g-4 pt-4">
+              {otrosProyectos.map((proyecto) => (
+                <div key={proyecto.id} className="col-lg-4 col-md-6 col-12">
+                  <article className="card h-100 overflow-hidden otros-proyecto-card">
+                    <img src={proyecto.imagen} className="card-img-top" alt={proyecto.titulo} loading="lazy" />
+                    <div className="card-body d-flex flex-column p-4">
+                      <h3 className="h5 text-primary fw-bold">{proyecto.titulo}</h3>
+                      <p className="text-white-50 flex-grow-1">{proyecto.descripcion}</p>
+                      <div className="d-flex gap-2 flex-wrap mt-2">
+                        <a href={proyecto.linkDetalles} target="_blank" rel="noopener noreferrer" className="btn btn-primary rounded-pill btn-sm px-3">Código / detalles</a>
+                        <a href={proyecto.linkPagina} target="_blank" rel="noopener noreferrer" className="btn btn-outline-light rounded-pill btn-sm px-3">Ver página</a>
+                      </div>
+                    </div>
+                  </article>
+                </div>
+              ))}
             </div>
-          ))}
+          </details>
         </div>
-        </details>
-      </div>
-    </section>
-    <FichaTrackFileModal open={fichaAbierta} onClose={() => setFichaAbierta(false)} />
+      </section>
+      <CasoTecnico proyectoId={proyectoActivo} onClose={cerrarCaso} />
     </>
   )
 }
