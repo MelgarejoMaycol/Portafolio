@@ -52,21 +52,44 @@ test('el portafolio no publica ni enlaza el documento interno de TrackFile', () 
   assert.ok(ficha.includes('TrackFile'))
 })
 
-test('se prioriza Frontend con modal y dos casos de estudio', () => {
+test('Frontend mantiene un modal para las tres versiones del CV', () => {
   const inicio = readFileSync(resolve(process.cwd(), 'src/components/Inicio.jsx'), 'utf8')
   const modal = readFileSync(resolve(process.cwd(), 'src/components/CVModal.jsx'), 'utf8')
-  const casos = readFileSync(resolve(process.cwd(), 'src/components/CasoTecnico.jsx'), 'utf8')
   assert.ok(inicio.includes('Desarrollador Frontend'))
+  assert.ok(inicio.includes('onOpenCV'))
   assert.ok(modal.includes('role="dialog"'))
   assert.ok(modal.includes('getCvPath'))
-  assert.ok(casos.includes('caso-cifrya') && casos.includes('caso-trackfile'))
+  assert.ok(!inicio.includes('inicio-evidencia'))
+  assert.ok(!inicio.includes('proyectos destacados'))
 })
 
-test('TrackFile muestra una ficha resumida en un modal accesible', () => {
+
+test('ambas tarjetas abren su caso dentro de un único modal y conservan enlaces externos', () => {
   const proyectos = readFileSync(resolve(process.cwd(), 'src/components/Proyectos.jsx'), 'utf8')
-  const ficha = readFileSync(resolve(process.cwd(), 'src/components/FichaTrackFileModal.jsx'), 'utf8')
-  assert.ok(proyectos.includes('<FichaTrackFileModal'))
-  assert.ok(proyectos.includes('setFichaAbierta(true)'))
-  assert.ok(ficha.includes('aria-modal="true"'))
-  assert.ok(!ficha.includes('F-DC-125'))
+  const casos = readFileSync(resolve(process.cwd(), 'src/components/CasoTecnico.jsx'), 'utf8')
+  assert.ok(proyectos.includes('project-card-hitarea'))
+  assert.ok(proyectos.includes("setProyectoActivo(proyecto.id)"))
+  assert.ok(proyectos.includes("id={'caso-' + proyecto.id}"))
+  assert.ok(proyectos.includes('<CasoTecnico'))
+  assert.ok(proyectos.includes('proyecto.linkDemo'))
+  assert.ok(casos.includes('cifrya:') && casos.includes('trackfile:'))
+  assert.ok(casos.includes('aria-modal="true"'))
+  assert.ok(!proyectos.includes('<CasoTecnico />'))
+  assert.ok(!proyectos.includes('<FichaTrackFileModal'))
+  assert.ok(!casos.includes('F-DC-125'))
+})
+
+test('Sobre mí conserva acceso al CV y presenta un diseño de dos columnas', () => {
+  const sobre = readFileSync(resolve(process.cwd(), 'src/components/SobreMi.jsx'), 'utf8')
+  const css = readFileSync(resolve(process.cwd(), 'src/index.css'), 'utf8')
+  assert.ok(sobre.includes('sobre-layout'))
+  assert.ok(sobre.includes('onOpenCV'))
+  assert.ok(css.includes('grid-template-columns: minmax(0, 1.2fr)'))
+  assert.ok(css.includes('@media (max-width: 991px)'))
+})
+
+test('se conservan los proyectos secundarios en desplegable', () => {
+  const proyectos = readFileSync(resolve(process.cwd(), 'src/components/Proyectos.jsx'), 'utf8')
+  assert.ok(proyectos.includes('<details className="otros-proyectos-panel"'))
+  assert.ok(proyectos.includes('otrosProyectos.map'))
 })
