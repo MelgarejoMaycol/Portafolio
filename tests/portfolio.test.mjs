@@ -14,10 +14,10 @@ test('se ofrecen las tres especializaciones y cada PDF es un documento válido',
   }
 })
 
-test('una especialización no reconocida conserva el CV Full Stack', () => {
-  assert.equal(getCvPath('unknown'), CV_FILES.fullstack)
-  assert.equal(getCvPath('__proto__'), CV_FILES.fullstack)
-  assert.equal(getCvPath(undefined), CV_FILES.fullstack)
+test('una especialización no reconocida utiliza el CV Frontend', () => {
+  assert.equal(getCvPath('unknown'), CV_FILES.frontend)
+  assert.equal(getCvPath('__proto__'), CV_FILES.frontend)
+  assert.equal(getCvPath(undefined), CV_FILES.frontend)
 })
 
 test('descargar CV selecciona el archivo solicitado', () => {
@@ -41,4 +41,23 @@ test('descargar CV selecciona el archivo solicitado', () => {
     if (previousDocument === undefined) delete globalThis.document
     else globalThis.document = previousDocument
   }
+})
+
+test('el portafolio no publica ni enlaza el documento interno de TrackFile', () => {
+  const catalogo = readFileSync(resolve(process.cwd(), 'src/data/proyectos.js'), 'utf8')
+  const ficha = readFileSync(resolve(process.cwd(), 'docs/TRACKFILE_CASO_TECNICO.md'), 'utf8')
+  assert.ok(catalogo.includes("linkCaseStudy: '#caso-trackfile'"))
+  assert.ok(catalogo.includes('TRACKFILE_CASO_TECNICO.md'))
+  assert.ok(!catalogo.includes('F-DC-125'))
+  assert.ok(ficha.includes('TrackFile'))
+})
+
+test('se prioriza Frontend con modal y dos casos de estudio', () => {
+  const inicio = readFileSync(resolve(process.cwd(), 'src/components/Inicio.jsx'), 'utf8')
+  const modal = readFileSync(resolve(process.cwd(), 'src/components/CVModal.jsx'), 'utf8')
+  const casos = readFileSync(resolve(process.cwd(), 'src/components/CasoTecnico.jsx'), 'utf8')
+  assert.ok(inicio.includes('Desarrollador Frontend'))
+  assert.ok(modal.includes('role="dialog"'))
+  assert.ok(modal.includes('getCvPath'))
+  assert.ok(casos.includes('caso-cifrya') && casos.includes('caso-trackfile'))
 })

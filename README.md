@@ -2,11 +2,12 @@
 
 Sitio web construido con **React 19 + Vite 8** y publicado en [Vercel](https://melgarejomaycol.vercel.app/).
 
-El propósito del portafolio es presentar proyectos verificables, competencias técnicas, contacto y versiones descargables de mi hoja de vida.
+El propósito del portafolio es presentar un perfil centrado en **Frontend (React, TypeScript y UI responsiva)**, proyectos verificables, contacto y las tres versiones de mi hoja de vida accesibles desde un solo modal.
 
 ## Especialización y otros conocimientos
 
-- **Stack principal:** React, TypeScript, JavaScript, Node.js, Express y PostgreSQL.
+- **Enfoque principal:** React, TypeScript, JavaScript, HTML, CSS, UI responsiva e integración de APIs.
+- **Stack de apoyo:** Node.js, Express y PostgreSQL.
 - **Experiencia técnica adicional:** Prisma, APIs REST, autenticación, pruebas, Git, Vercel y Render.
 - **Conocimientos complementarios:** Vue.js, PHP, Laravel, Java, Spring Boot, Flutter/Dart, MySQL, Three.js y Blender.
 
@@ -21,14 +22,14 @@ Otros proyectos formativos están disponibles en una sección secundaria del por
 
 ## Caso de estudio técnico
 
-La sección **«Caso de estudio · Cifrya»** del portafolio y [su documento técnico](docs/CIFRYA_CASO_TECNICO.md) describen el problema que resuelve,
+Las secciones de **casos de estudio** explican decisiones de interfaz y arquitectura de Cifrya y TrackFile. [La ficha de Cifrya](docs/CIFRYA_CASO_TECNICO.md) describe el problema que resuelve,
 la separación frontend/API/datos, las decisiones de ingeniería y las verificaciones CI.
 La demo es pública, pero los repositorios del producto siguen privados; no se afirman
-resultados de negocio ni métricas de uso sin datos verificables.
+resultados de negocio ni métricas de uso sin datos verificables. La [ficha pública de TrackFile](docs/TRACKFILE_CASO_TECNICO.md) reemplaza la memoria de grado: no contiene anexos internos ni datos sensibles.
 
 ## Hojas de vida
 
-Los tres PDF se mantienen en `public/cv/` y se descargan desde las secciones «Sobre mí» y «Contacto»:
+Los tres PDF se mantienen en `public/cv/`. El botón «CV» abre un modal con vista previa y descarga; **Frontend** es la opción predeterminada:
 
 - [Full Stack](public/cv/CV_Maycol_Melgarejo_Full_Stack.pdf)
 - [Frontend](public/cv/CV_Maycol_Melgarejo_Frontend.pdf)

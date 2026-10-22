@@ -1,8 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import emailjs from '@emailjs/browser'
-import { downloadCV } from '../utils/downloadCV'
 
-export default function Contacto() {
+export default function Contacto({ onOpenCV }) {
   const [formData, setFormData] = useState({
     nombre: '',
     email: '',
@@ -89,8 +88,7 @@ export default function Contacto() {
         <div className="text-center mb-5">
           <h2 className="section-title text-white mb-3">¡Contáctame!</h2>
           <p className="text-primary" style={{ fontSize: '1rem', maxWidth: '600px', margin: '0 auto' }}>
-            Tengo interés en escuchar sobre proyectos emocionantes y oportunidades de colaboración. 
-            Siéntete libre de contactarme.
+            Busco oportunidades Frontend Junior, especialmente con React y TypeScript. Si mi perfil se ajusta a tu equipo, conversemos.
           </p>
         </div>
 
@@ -238,23 +236,11 @@ export default function Contacto() {
 
               <h6 className="text-white fw-bold mb-3 mt-4">Documentos y perfil</h6>
               <div className="d-flex gap-2 flex-wrap">
-                <button
-                  onClick={() => downloadCV('fullstack')}
-                  className="btn btn-primary rounded-pill px-3 fw-bold"
-                  style={{ fontSize: '0.9rem' }}
-                >
-                  <i className="fa-solid fa-download me-2"></i>
-                  CV Full Stack
+                <button type="button" onClick={onOpenCV} className="btn btn-primary rounded-pill px-3 fw-bold">
+                  <i className="fa-regular fa-file-lines me-2" aria-hidden="true"></i> Ver CV
                 </button>
-                <button onClick={() => downloadCV('frontend')} type="button" className="btn btn-outline-primary rounded-pill px-3 fw-bold" style={{ fontSize: '0.9rem' }}>CV Frontend</button>
-                <button onClick={() => downloadCV('backend')} type="button" className="btn btn-outline-primary rounded-pill px-3 fw-bold" style={{ fontSize: '0.9rem' }}>CV Backend</button>
-                <a
-                  href="#certificaciones"
-                  className="btn btn-outline-primary rounded-pill px-3 fw-bold"
-                  style={{ fontSize: '0.9rem' }}
-                >
-                  <i className="fa-solid fa-award me-2"></i>
-                  Ver certificaciones
+                <a href="#certificaciones" className="btn btn-outline-primary rounded-pill px-3 fw-bold">
+                  <i className="fa-solid fa-award me-2" aria-hidden="true"></i> Ver certificaciones
                 </a>
               </div>
             </div>
