@@ -1,4 +1,5 @@
 import { useEffect, useRef } from 'react'
+import { proyectosPrincipales } from '../data/proyectos'
 
 const casos = {
   cifrya: {
@@ -75,7 +76,8 @@ export default function CasoTecnico({ proyectoId, onClose }) {
   }, [proyectoId, onClose])
 
   const caso = casos[proyectoId]
-  if (!caso) return null
+  const proyecto = proyectosPrincipales.find((item) => item.id === proyectoId)
+  if (!caso || !proyecto) return null
 
   return (
     <div className="cv-overlay project-case-overlay" onMouseDown={(event) => {
@@ -101,6 +103,7 @@ export default function CasoTecnico({ proyectoId, onClose }) {
         </header>
         <div className="project-case-body">
           <p id="project-case-intro" className="project-case-intro">{caso.introduccion}</p>
+          <p className="project-case-description">{proyecto.descripcionDetallada}</p>
           <div className="project-case-points">
             {caso.puntos.map((punto, index) => (
               <div className="project-case-point" key={punto.titulo}>
@@ -109,6 +112,12 @@ export default function CasoTecnico({ proyectoId, onClose }) {
                 <p>{punto.texto}</p>
               </div>
             ))}
+          </div>
+          <div className="project-case-technologies" aria-label={'Tecnologías de ' + proyecto.titulo}>
+            <h3>Tecnologías utilizadas</h3>
+            <div className="project-stack">
+              {proyecto.stack.map((tecnologia) => <span key={tecnologia}>{tecnologia}</span>)}
+            </div>
           </div>
           <p className="project-case-disclaimer">{caso.aclaracion}</p>
         </div>
