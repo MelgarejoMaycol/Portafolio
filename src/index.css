@@ -1514,6 +1514,10 @@ h2 {
   .project-card-actions .btn { font-size: .77rem; padding-inline: .5rem; }
   .project-case-body { padding: 1rem; }
 }
+@media (max-width: 420px) {
+  .project-card-actions { grid-template-columns: 1fr; }
+}
+
 @media (prefers-reduced-motion: reduce) {
   .project-card, .otros-proyectos-toggle i { transition: none; }
   .project-card:hover { transform: none; }
