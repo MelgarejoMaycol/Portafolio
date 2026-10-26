@@ -6,17 +6,13 @@ export default function Inicio({ onOpenCV }) {
       <div className="container d-flex align-items-center px-3 px-md-4 inicio-inner">
         <div className="row w-100 align-items-center g-4 g-lg-5">
           <div className="col-lg-7 text-white order-2 order-lg-1 ps-lg-5 inicio-copy">
-            <p className="lead text-primary fw-bold mb-3" style={{ fontSize: '0.95rem' }}>
-              Abierto a oportunidades Frontend Junior · Remoto / Colombia
-            </p>
-            <h1 className="fw-bold mb-3 inicio-title">
+            <p className="inicio-availability">Disponible para oportunidades Frontend Junior · Remoto</p>
+            <h1 className="fw-bold inicio-title">
               Maycol Melgarejo
-              <span className="d-block text-primary">Desarrollador Frontend · React y TypeScript</span>
+              <span className="d-block text-primary">Desarrollador Frontend</span>
             </h1>
-            <p className="mb-4 text-white-50 inicio-description">
-              Diseño y construyo interfaces web responsivas con React, TypeScript y atención al detalle visual.
-              Conecto experiencias de usuario con APIs reales, validaciones y estados de interfaz.
-              Mi base Full Stack me ayuda a entender el producto completo, pero mi enfoque es el frontend.
+            <p className="text-white-50 inicio-description">
+              Creo interfaces web claras y responsivas con React y TypeScript, conectadas a APIs reales.
             </p>
             <div className="d-flex gap-2 gap-md-3 flex-wrap inicio-actions">
               <a href="#proyectos" className="btn btn-primary rounded-pill px-4">Ver proyectos</a>
