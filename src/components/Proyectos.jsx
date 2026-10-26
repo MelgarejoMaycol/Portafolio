@@ -25,9 +25,7 @@ export default function Proyectos() {
           <div className="text-center mb-4 mb-md-5">
             <h2 className="section-title text-white mb-3">Proyectos</h2>
             <p className="text-white-50 proyectos-intro">
-              Dos proyectos con enfoques distintos, donde muestro interfaces,
-              integración con APIs y decisiones de diseño y desarrollo.
-              Selecciona una tarjeta para conocer su caso de estudio.
+              Una selección de proyectos reales. Explora cada caso para conocer los detalles.
             </p>
           </div>
 
@@ -44,39 +42,24 @@ export default function Proyectos() {
                   />
                   <div className={'project-card-media' + (proyecto.imagenContain ? ' project-card-media-contain' : '')}>
                     <img src={proyecto.imagen} alt={'Vista previa de ' + proyecto.titulo} loading="lazy" />
-                    <span className="project-card-view-hint" aria-hidden="true">
-                      <i className="fa-solid fa-up-right-and-down-left-from-center me-2"></i>
-                      Conocer el proyecto
-                    </span>
                   </div>
                   <div className="project-card-content">
                     <span className="project-card-badge">{proyecto.etiqueta}</span>
                     <h3>{proyecto.titulo}</h3>
                     <p className="project-card-description">{proyecto.descripcion}</p>
-                    <div className="project-stack" aria-label={'Tecnologías de ' + proyecto.titulo}>
-                      {proyecto.stack.map((tecnologia) => <span key={tecnologia}>{tecnologia}</span>)}
+                    <div className="project-stack" aria-label={'Tecnologías destacadas de ' + proyecto.titulo}>
+                      {proyecto.stack.slice(0, 3).map((tecnologia) => <span key={tecnologia}>{tecnologia}</span>)}
+                      {proyecto.stack.length > 3 && <span className="project-stack-more">+{proyecto.stack.length - 3}</span>}
                     </div>
                     <div className="project-card-actions">
                       <button type="button" onClick={() => setProyectoActivo(proyecto.id)} className="btn btn-primary project-case-cta">
-                        <i className="fa-solid fa-book-open me-2" aria-hidden="true"></i>
-                        Ver caso de estudio
-                        <i className="fa-solid fa-arrow-right ms-auto" aria-hidden="true"></i>
+                        Ver más información
+                        <i className="fa-solid fa-arrow-right ms-2" aria-hidden="true"></i>
                       </button>
-                      <div className="project-external-actions">
-                        <a href={proyecto.linkPagina} target="_blank" rel="noopener noreferrer" className="btn btn-outline-light">
-                          <i className="fa-solid fa-arrow-up-right-from-square me-2" aria-hidden="true"></i>
-                          {proyecto.id === 'cifrya' ? 'Abrir Cifrya' : 'Ver aplicación'}
-                        </a>
-                        {proyecto.linkDemo ? (
-                          <a href={proyecto.linkDemo} target="_blank" rel="noopener noreferrer" className="btn btn-outline-primary">
-                            <i className="fa-solid fa-flask me-2" aria-hidden="true"></i>Probar demo
-                          </a>
-                        ) : (
-                          <a href={proyecto.linkDetalles} target="_blank" rel="noopener noreferrer" className="btn btn-outline-primary">
-                            <i className="fa-regular fa-file-lines me-2" aria-hidden="true"></i>Ficha pública
-                          </a>
-                        )}
-                      </div>
+                      <a href={proyecto.linkDemo || proyecto.linkPagina} target="_blank" rel="noopener noreferrer" className="btn btn-outline-light project-external-link">
+                        <i className="fa-solid fa-arrow-up-right-from-square me-2" aria-hidden="true"></i>
+                        {proyecto.linkDemo ? 'Probar demo' : 'Ver aplicación'}
+                      </a>
                     </div>
                   </div>
                 </article>
