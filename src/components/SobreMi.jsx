@@ -1,23 +1,5 @@
 import avatar from '../../public/avatar2.jpeg'
 
-const fortalezas = [
-  {
-    icono: 'fa-solid fa-layer-group',
-    titulo: 'Interfaces y componentes',
-    descripcion: 'React, TypeScript y vistas responsivas fáciles de mantener.'
-  },
-  {
-    icono: 'fa-solid fa-wand-magic-sparkles',
-    titulo: 'Cuidado de la experiencia',
-    descripcion: 'Jerarquía visual, formularios claros y estados de interfaz.'
-  },
-  {
-    icono: 'fa-solid fa-code-branch',
-    titulo: 'Integración y calidad',
-    descripcion: 'APIs REST, Git y pruebas como parte del desarrollo.'
-  }
-]
-
 export default function SobreMi({ onOpenCV }) {
   return (
     <section className="sobre-mi py-4 py-md-5" id="sobre" aria-labelledby="sobre-titulo">
@@ -25,22 +7,17 @@ export default function SobreMi({ onOpenCV }) {
         <div className="sobre-layout">
           <div className="sobre-copy">
             <span className="sobre-eyebrow">CONOCE MI PERFIL</span>
-            <h2 id="sobre-titulo" className="section-title text-white mb-4">Sobre mí</h2>
+            <h2 id="sobre-titulo" className="section-title text-white mb-3">Sobre mí</h2>
             <h3 className="sobre-heading">
-              Creo experiencias web claras, funcionales y pensadas para las personas.
+              Tecnología y diseño para crear experiencias que funcionan.
             </h3>
             <p className="sobre-lead">
               Soy <strong>desarrollador Frontend junior</strong> y Tecnólogo en Desarrollo de Sistemas
-              Informáticos de las Unidades Tecnológicas de Santander.
-              Mi enfoque está en transformar necesidades en interfaces web intuitivas y responsivas.
-            </p>
-            <p className="sobre-secondary">
-              Trabajo principalmente con React, TypeScript, JavaScript, HTML y CSS.
-              En proyectos como Cifrya he integrado pantallas con APIs reales, formularios y validaciones.
-              También conozco Node.js y PostgreSQL, lo que me ayuda a entender el producto de extremo a extremo.
+              Informáticos de las Unidades Tecnológicas de Santander. Construyo interfaces intuitivas
+              y responsivas, desde el diseño hasta la integración con APIs.
             </p>
             <div className="sobre-tags" aria-label="Tecnologías principales">
-              {['React', 'TypeScript', 'JavaScript', 'HTML / CSS', 'UI responsiva'].map((tag) => (
+              {['React', 'TypeScript', 'JavaScript', 'HTML / CSS', 'APIs REST'].map((tag) => (
                 <span key={tag}>{tag}</span>
               ))}
             </div>
@@ -55,30 +32,15 @@ export default function SobreMi({ onOpenCV }) {
             </div>
           </div>
 
-          <aside className="sobre-profile-card" aria-label="Especialidades y enlaces profesionales">
-            <div className="sobre-profile-intro">
+          <aside className="sobre-visual" aria-label="Fotografía y enlaces profesionales">
+            <div className="sobre-portrait">
+              <div className="sobre-portrait-glow" aria-hidden="true"></div>
               <img src={avatar} alt="Maycol Melgarejo" className="sobre-photo" loading="lazy" />
-              <div>
-                <p className="sobre-card-eyebrow">EN QUÉ ME ENFOCO</p>
-                <h3>Frontend + sensibilidad por el diseño</h3>
-                <span>Colombia · Abierto a trabajo remoto</span>
-              </div>
+              <span className="sobre-portrait-detail" aria-hidden="true"></span>
             </div>
-            <div className="sobre-capabilities">
-              {fortalezas.map((fortaleza) => (
-                <div className="sobre-capability" key={fortaleza.titulo}>
-                  <span className="sobre-capability-icon">
-                    <i className={fortaleza.icono} aria-hidden="true"></i>
-                  </span>
-                  <div>
-                    <h4>{fortaleza.titulo}</h4>
-                    <p>{fortaleza.descripcion}</p>
-                  </div>
-                </div>
-              ))}
-            </div>
-            <div className="sobre-social">
-              <span>Encuentra mi trabajo</span>
+            <div className="sobre-visual-caption">
+              <span className="sobre-visual-kicker">DISEÑO + CÓDIGO</span>
+              <p>Interfaces intuitivas. Código mantenible.</p>
               <div className="sobre-social-links">
                 <a href="https://github.com/MelgarejoMaycol" target="_blank" rel="noopener noreferrer" aria-label="Visitar mi GitHub">
                   <i className="fa-brands fa-github" aria-hidden="true"></i> GitHub

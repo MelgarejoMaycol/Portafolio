@@ -93,3 +93,25 @@ test('se conservan los proyectos secundarios en desplegable', () => {
   assert.ok(proyectos.includes('<details className="otros-proyectos-panel"'))
   assert.ok(proyectos.includes('otrosProyectos.map'))
 })
+
+test('inicio y sobre mí priorizan una presentación breve y una fotografía orgánica', () => {
+  const inicio = readFileSync(resolve(process.cwd(), 'src/components/Inicio.jsx'), 'utf8')
+  const sobre = readFileSync(resolve(process.cwd(), 'src/components/SobreMi.jsx'), 'utf8')
+  const css = readFileSync(resolve(process.cwd(), 'src/index.css'), 'utf8')
+  assert.ok(inicio.includes('Creo interfaces web claras y responsivas'))
+  assert.ok(!inicio.includes('Mi base Full Stack'))
+  assert.ok(sobre.includes('sobre-visual'))
+  assert.ok(!sobre.includes('sobre-capabilities'))
+  assert.ok(css.includes('.sobre-portrait::before'))
+})
+
+test('tarjetas concisas conservan información ampliada en el modal', () => {
+  const proyectos = readFileSync(resolve(process.cwd(), 'src/components/Proyectos.jsx'), 'utf8')
+  const datos = readFileSync(resolve(process.cwd(), 'src/data/proyectos.js'), 'utf8')
+  const caso = readFileSync(resolve(process.cwd(), 'src/components/CasoTecnico.jsx'), 'utf8')
+  assert.ok(proyectos.includes('Ver más información'))
+  assert.ok(proyectos.includes('stack.slice(0, 3)'))
+  assert.ok(datos.includes('descripcionDetallada'))
+  assert.ok(caso.includes('proyecto.descripcionDetallada'))
+  assert.ok(caso.includes('proyecto.stack.map'))
+})
