@@ -14,20 +14,22 @@ export const proyectosPrincipales = [
       id: 'cifrya',
       titulo: 'Cifrya — Finanzas Personales',
       descripcion:
-        'Aplicación de finanzas personales con paneles, formularios y flujos de cuentas, movimientos y presupuestos. Construí interfaces en React y TypeScript conectadas con una API real, estados de carga y una demo pública navegable.',
+        'Finanzas personales con cuentas, movimientos y presupuestos en una interfaz clara.',
+      descripcionDetallada: 'Aplicación de finanzas personales con paneles, formularios y flujos de cuentas, movimientos y presupuestos. Construí interfaces en React y TypeScript conectadas con una API real, estados de carga y una demo pública navegable.',
       imagen: imagenCifrya,
       imagenContain: false,
       stack: ['React', 'TypeScript', 'Node.js', 'Express', 'PostgreSQL', 'Prisma'],
       linkPagina: 'https://cifrya.com/',
       linkDemo: 'https://cifrya.com/demo',
       linkCaseStudy: '#caso-cifrya',
-      etiqueta: 'Proyecto personal · React/TypeScript'
+      etiqueta: 'Aplicación web · Full Stack'
     },
     {
       id: 'trackfile',
       titulo: 'TrackFile — Gestión Documental',
       descripcion:
-        'Proyecto de grado de gestión documental para transporte. Incluye flujos para archivos, usuarios, vehículos, solicitudes, mantenimiento y alertas; interfaz Flutter conectada con servicios Spring Boot y PostgreSQL.',
+        'Gestión documental y seguimiento de procesos para el sector transporte.',
+      descripcionDetallada: 'Proyecto de grado de gestión documental para transporte. Incluye flujos para archivos, usuarios, vehículos, solicitudes, mantenimiento y alertas; interfaz Flutter conectada con servicios Spring Boot y PostgreSQL.',
       imagen: proyectoTrackFile,
       imagenContain: true,
       stack: ['Flutter', 'Dart', 'Java', 'Spring Boot', 'PostgreSQL'],
@@ -35,7 +37,7 @@ export const proyectosPrincipales = [
       linkCaseStudy: '#caso-trackfile',
       linkDetalles: 'https://github.com/MelgarejoMaycol/Portafolio/blob/main/docs/TRACKFILE_CASO_TECNICO.md',
       detalleLabel: 'Ficha técnica',
-      etiqueta: 'Proyecto principal · Proyecto de grado'
+      etiqueta: 'Proyecto de grado · Flutter'
     }
   ]
 
@@ -44,7 +46,7 @@ export const otrosProyectos = [
       id: 1,
       titulo: 'Sistema To Do',
       descripcion:
-        'Sistema completo de gestión de tareas con backend Django REST Framework y frontend React, incluyendo CI/CD con pruebas automáticas.',
+        'Gestor de tareas con React, Django REST y pruebas automáticas.',
       imagen: proyectoToDo,
       linkDetalles: 'https://github.com/MelgarejoMaycol/SISTEMA_TO_DO-1',
       linkPagina: 'https://to-do-topaz-sigma.vercel.app/'
@@ -53,7 +55,7 @@ export const otrosProyectos = [
       id: 2,
       titulo: 'Empresa Taxis',
       descripcion:
-        'Página web desarrollada como proyecto universitario para una empresa de transporte en Bucaramanga, Santander.',
+        'Sitio universitario para una empresa de transporte.',
       imagen: proyectoTaxis,
       linkDetalles: 'https://github.com/MelgarejoMaycol/Empresa_Taxis',
       linkPagina: 'https://empresa-taxis.vercel.app/'
@@ -62,7 +64,7 @@ export const otrosProyectos = [
       id: 3,
       titulo: 'Series de Netflix',
       descripcion:
-        'Proyecto inicial de HTML y CSS enfocado en estructura semántica, estilos y presentación de información sobre series de Netflix.',
+        'Sitio de series construido con HTML y CSS.',
       imagen: ProyectoSeries,
       linkDetalles: 'https://github.com/MelgarejoMaycol/Series-de-Netflix',
       linkPagina: 'https://melgarejomaycol.github.io/Series-de-Netflix/'
@@ -71,7 +73,7 @@ export const otrosProyectos = [
       id: 4,
       titulo: 'COMPU3D',
       descripcion:
-        'Aplicación web interactiva que simula una tienda especializada en componentes de computadora e integra experiencias visuales 3D.',
+        'Tienda de componentes con experiencias visuales 3D.',
       imagen: proyectoCompu,
       linkDetalles: 'https://github.com/MelgarejoMaycol/Objetos_Web',
       linkPagina: 'https://tiendaobjetos.vercel.app/'
@@ -80,7 +82,7 @@ export const otrosProyectos = [
       id: 6,
       titulo: 'PokeVerso',
       descripcion:
-        'Aplicación desarrollada con React y Vite que consume la PokeAPI para consultar Pokémon, realizar búsquedas y gestionar favoritos.',
+        'Explorador de Pokémon con búsquedas y favoritos.',
       imagen: ProyectoPokeVerso,
       linkDetalles: 'https://github.com/MelgarejoMaycol/PokeVerso',
       linkPagina: 'https://poke-verso.vercel.app/'
@@ -89,7 +91,7 @@ export const otrosProyectos = [
       id: 7,
       titulo: 'Recetas-Api',
       descripcion:
-        'API REST para gestionar recetas, usuarios, categorías, ingredientes, preparaciones, comentarios y favoritos.',
+        'API REST para gestionar recetas y usuarios.',
       imagen: ProyectoRecetas_Api,
       linkDetalles: 'https://github.com/MelgarejoMaycol/recetas-api',
       linkPagina: 'https://recetas-api-j4p8.onrender.com/'
@@ -98,7 +100,7 @@ export const otrosProyectos = [
       id: 8,
       titulo: 'Recetas-Front-TS',
       descripcion:
-        'Frontend de la aplicación de recetas desarrollado con React y TypeScript, integrado con una API REST para gestionar recetas, usuarios y favoritos.',
+        'Frontend de recetas con React, TypeScript y API REST.',
       imagen: RecetasFrontTS,
       linkDetalles: 'https://github.com/MelgarejoMaycol/Recetas-TS',
       linkPagina: 'https://recetas-ts.vercel.app/'
