@@ -13,7 +13,7 @@ export const proyectosPrincipales = [
   {
     id: 'cifrya',
     titulo: 'Cifrya — Finanzas Personales',
-    descripcion: 'Plataforma financiera que desarrollo de extremo a extremo. Interfaces React/TypeScript por funcionalidades, formularios validados, integración REST y gestión de datos. Demo pública sin registro.',
+    descripcion: 'Desarrollo Cifrya por mi cuenta, desde las pantallas en React y TypeScript hasta su API. Puedes explorar cuentas, movimientos y presupuestos sin registrarte.',
     imagen: imagenCifrya,
     imagenContain: false,
     stack: ['React', 'TypeScript', 'Node.js', 'PostgreSQL'],
@@ -25,7 +25,7 @@ export const proyectosPrincipales = [
   {
     id: 'recetas-ts',
     titulo: 'Recetas TS — React y TypeScript',
-    descripcion: 'Aplicación de recetas con consulta de API, búsqueda, rutas y presentación de contenido. Código público con pruebas de lógica de interfaz y verificación automática mediante GitHub Actions.',
+    descripcion: 'Una aplicación para buscar recetas y consultar ingredientes. El código es público e incluye pruebas para la búsqueda, las traducciones y la presentación de resultados.',
     imagen: RecetasFrontTS,
     imagenContain: true,
     stack: ['React', 'TypeScript', 'Vite', 'GitHub Actions'],
@@ -38,7 +38,7 @@ export const proyectosPrincipales = [
   {
     id: 'trackfile',
     titulo: 'TrackFile — Gestión Documental',
-    descripcion: 'Proyecto de grado en equipo. Diseñé y documenté PostgreSQL, desarrollé el frontend Flutter/Dart, realicé pruebas y preparé la versión web y APK; el backend fue liderado por mi compañera.',
+    descripcion: 'En este proyecto de grado en equipo diseñé la base de datos y desarrollé la aplicación Flutter para web y Android. Mi compañera se encargó principalmente del backend.',
     imagen: proyectoTrackFile,
     imagenContain: true,
     stack: ['Flutter', 'Dart', 'PostgreSQL', 'REST'],

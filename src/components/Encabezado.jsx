@@ -10,7 +10,7 @@ export default function Encabezado({ onOpenCV }) {
       // Solo actualizar si el usuario no acaba de hacer click en un botón
       if (isUserClickRef.current) return
 
-      const sections = ['inicio', 'sobre', 'proyectos', 'herramientas', 'certificaciones', 'contacto']
+      const sections = ['inicio', 'proyectos', 'sobre', 'herramientas', 'contacto', 'certificaciones']
       let current = 'inicio'
 
       for (const section of sections) {
@@ -115,19 +115,19 @@ export default function Encabezado({ onOpenCV }) {
               <a className={`nav-link ${activeSection === 'inicio' ? 'active' : ''}`} href="#inicio" onClick={(e) => handleNavLinkClick(e, 'inicio')}>Inicio</a>
             </li>
             <li className="nav-item text-center text-lg-start">
-              <a className={`nav-link ${activeSection === 'sobre' ? 'active' : ''}`} href="#sobre" onClick={(e) => handleNavLinkClick(e, 'sobre')}>Sobre mí</a>
+              <a className={`nav-link ${activeSection === 'proyectos' ? 'active' : ''}`} href="#proyectos" onClick={(e) => handleNavLinkClick(e, 'proyectos')}>Proyectos</a>
             </li>
             <li className="nav-item text-center text-lg-start">
-              <a className={`nav-link ${activeSection === 'proyectos' ? 'active' : ''}`} href="#proyectos" onClick={(e) => handleNavLinkClick(e, 'proyectos')}>Proyectos</a>
+              <a className={`nav-link ${activeSection === 'sobre' ? 'active' : ''}`} href="#sobre" onClick={(e) => handleNavLinkClick(e, 'sobre')}>Sobre mí</a>
             </li>
             <li className="nav-item text-center text-lg-start">
               <a className={`nav-link ${activeSection === 'herramientas' ? 'active' : ''}`} href="#herramientas" onClick={(e) => handleNavLinkClick(e, 'herramientas')}>Herramientas</a>
             </li>
             <li className="nav-item text-center text-lg-start">
-              <a className={`nav-link ${activeSection === 'certificaciones' ? 'active' : ''}`} href="#certificaciones" onClick={(e) => handleNavLinkClick(e, 'certificaciones')}>Certificaciones</a>
+              <a className={`nav-link ${activeSection === 'contacto' ? 'active' : ''}`} href="#contacto" onClick={(e) => handleNavLinkClick(e, 'contacto')}>Contáctame</a>
             </li>
             <li className="nav-item text-center text-lg-start">
-              <a className={`nav-link ${activeSection === 'contacto' ? 'active' : ''}`} href="#contacto" onClick={(e) => handleNavLinkClick(e, 'contacto')}>Contáctame</a>
+              <a className={`nav-link ${activeSection === 'certificaciones' ? 'active' : ''}`} href="#certificaciones" onClick={(e) => handleNavLinkClick(e, 'certificaciones')}>Certificaciones</a>
             </li>
           </ul>
 

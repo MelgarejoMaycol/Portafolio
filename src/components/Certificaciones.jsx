@@ -188,7 +188,7 @@ const certificados = [
 const filtros = ['Todos', 'Desarrollo', 'IA', 'Ciberseguridad', 'Formación']
 const destacadosPreferidos = [
   'CS50x: Introduction to Computer Science',
-  'Desarrollo con Node.js: Aplicación, Testing y Seguridad',
+  'Accesibilidad Web',
   'TypeScript para principiantes desde 0'
 ]
 
@@ -203,13 +203,12 @@ export default function Certificaciones() {
     [filtro]
   )
 
-  const destacados = useMemo(() => {
-    if (filtro !== 'Todos') return filtrados.slice(0, Math.min(3, filtrados.length))
-
-    return destacadosPreferidos
+  const destacados = useMemo(
+    () => destacadosPreferidos
       .map((titulo) => certificados.find((certificado) => certificado.titulo === titulo))
-      .filter(Boolean)
-  }, [filtro, filtrados])
+      .filter(Boolean),
+    []
+  )
 
   const archivo = useMemo(
     () => filtrados.filter((certificado) => !destacados.includes(certificado)),
@@ -225,10 +224,6 @@ export default function Certificaciones() {
     [archivo]
   )
 
-  const instituciones = useMemo(
-    () => new Set(certificados.map((certificado) => certificado.institucion)).size,
-    []
-  )
 
   useEffect(() => {
     if (!seleccionado) return
@@ -255,45 +250,12 @@ export default function Certificaciones() {
       <div className="container px-3 px-md-4">
         <div className="certificaciones-hero">
           <div className="certificaciones-hero-copy">
-            <span className="certificaciones-eyebrow">Aprendizaje continuo</span>
-            <h2 className="certificaciones-title">Certificaciones que respaldan lo que sé hacer.</h2>
+            <span className="certificaciones-eyebrow">Formación complementaria</span>
+            <h2 className="certificaciones-title">Cursos y certificaciones</h2>
             <p>
-              Formación práctica en desarrollo de software, inteligencia artificial y tecnología,
-              con credenciales verificables y certificados reales de cada institución.
+              Estos son los cursos que más relación tienen con mi trabajo en desarrollo web.
+              Los demás siguen disponibles en el archivo.
             </p>
-          </div>
-
-          <div className="certificaciones-stats" aria-label="Resumen de certificaciones">
-            <div>
-              <strong>{certificados.length}</strong>
-              <span>credenciales</span>
-            </div>
-            <div>
-              <strong>{instituciones}</strong>
-              <span>instituciones</span>
-            </div>
-            <div>
-              <strong>2023—26</strong>
-              <span>formación reciente</span>
-            </div>
-          </div>
-        </div>
-
-        <div className="certificaciones-toolbar">
-          <div>
-            <span className="certificaciones-toolbar-label">Explorar por área</span>
-          </div>
-          <div className="certificaciones-filtros" role="group" aria-label="Filtrar certificaciones">
-            {filtros.map((item) => (
-              <button
-                type="button"
-                key={item}
-                className={`certificaciones-filtro ${filtro === item ? 'active' : ''}`}
-                onClick={() => setFiltro(item)}
-              >
-                {item}
-              </button>
-            ))}
           </div>
         </div>
 
@@ -301,7 +263,7 @@ export default function Certificaciones() {
           <div className="certificaciones-destacadas">
             <div className="certificaciones-section-heading">
               <span>Selección destacada</span>
-              <p>{filtro === 'Todos' ? 'Las credenciales que mejor resumen mi perfil actual.' : `Lo más relevante en ${filtro}.`}</p>
+              <p>{filtro === 'Todos' ? 'Tres cursos que complementan los proyectos que muestro arriba.' : `Lo más relevante en ${filtro}.`}</p>
             </div>
 
             <div className="certificaciones-featured-grid">
@@ -333,10 +295,36 @@ export default function Certificaciones() {
           </div>
         )}
 
-        <div className="certificaciones-archivo">
+        <details className="certificaciones-archivo-panel">
+          <summary className="certificaciones-archivo-toggle">
+            <span>
+              <strong>Ver el archivo completo</strong>
+              <small>{certificados.length - destacados.length} certificados adicionales, organizados por año</small>
+            </span>
+            <i className="fa-solid fa-chevron-down" aria-hidden="true"></i>
+          </summary>
+          <div className="certificaciones-archivo">
+        <div className="certificaciones-toolbar">
+          <div>
+            <span className="certificaciones-toolbar-label">Explorar por área</span>
+          </div>
+          <div className="certificaciones-filtros" role="group" aria-label="Filtrar certificaciones">
+            {filtros.map((item) => (
+              <button
+                type="button"
+                key={item}
+                className={`certificaciones-filtro ${filtro === item ? 'active' : ''}`}
+                onClick={() => setFiltro(item)}
+              >
+                {item}
+              </button>
+            ))}
+          </div>
+        </div>
+
           <div className="certificaciones-section-heading archivo-heading">
-            <span>Archivo de credenciales</span>
-            <p>{archivo.length} certificaciones organizadas por año.</p>
+            <span>Archivo de cursos y certificados</span>
+            <p>{archivo.length} {archivo.length === 1 ? 'certificado' : 'certificados'} en esta vista.</p>
           </div>
 
           {Object.entries(gruposPorAnio)
@@ -377,6 +365,8 @@ export default function Certificaciones() {
               </div>
             ))}
         </div>
+
+        </details>
 
         <div className="certificaciones-footer-note">
           <div>

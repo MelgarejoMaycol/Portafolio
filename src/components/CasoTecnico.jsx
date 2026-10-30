@@ -4,48 +4,51 @@ const casos = {
   cifrya: {
     numero: '01',
     tipo: 'Proyecto personal',
-    titulo: 'Cifrya: interfaces financieras comprensibles',
-    introduccion: 'El reto es presentar cuentas, movimientos y presupuestos de manera comprensible en diferentes dispositivos, mientras la interfaz trabaja con datos reales de una API.',
+    titulo: 'Cifrya: cuentas y saldos que se mantienen al día',
+    introduccion: 'Desarrollo esta aplicación para organizar cuentas, movimientos y presupuestos en un mismo lugar. Mi trabajo incluye el frontend y los servicios que lo alimentan.',
     puntos: [
-      { titulo: 'Necesidad del usuario', texto: 'Consultar el dinero disponible y registrar movimientos con el contexto correcto de cuenta y categoría.' },
-      { titulo: 'Decisiones de interfaz', texto: 'Componentes React reutilizables, TypeScript, formularios con validación, jerarquía visual y estados de carga y error.' },
-      { titulo: 'Integración y calidad', texto: 'Conexión con una API Express/PostgreSQL, autenticación, pruebas automatizadas y demo navegable sin registro.' }
+      { titulo: 'El problema', texto: 'Cuando una cuenta cambia, sus datos también aparecen en el dashboard y en las proyecciones. Es fácil que otra pantalla quede mostrando información anterior.' },
+      { titulo: 'Mi aporte', texto: 'Organicé las pantallas de cuentas con React y TypeScript, integré sus formularios y conecté las acciones con una API propia en Node.js.' },
+      { titulo: 'Una decisión técnica', texto: 'Uso TanStack Query con claves por espacio de trabajo. Después de crear o editar una cuenta, invalido las consultas de cuentas, dashboard y proyecciones para solicitar los datos actualizados.' },
+      { titulo: 'Dónde verlo', texto: 'La demo permite recorrer las funciones principales sin registrarse. El código de producción es privado y no atribuyo resultados comerciales que no he medido.' }
     ],
-    aclaracion: 'Proyecto de desarrollo propio. No se presentan cifras de clientes ni de uso sin evidencia.',
+    aclaracion: 'La descripción se basa en el código del proyecto. La demo no equivale a una auditoría de todas las operaciones financieras.',
     enlaces: [
-      { texto: 'Probar demo', url: 'https://cifrya.com/demo', principal: true },
+      { texto: 'Abrir demo', url: 'https://cifrya.com/demo', principal: true },
       { texto: 'Leer ficha técnica', url: 'https://github.com/MelgarejoMaycol/Portafolio/blob/main/docs/CIFRYA_CASO_TECNICO.md' }
     ]
   },
   'recetas-ts': {
     numero: '02',
-    tipo: 'Proyecto personal con código público',
-    titulo: 'Recetas TS: React con calidad comprobable',
-    introduccion: 'Aplicación de recetas que permite buscar y consultar contenido desde una API, con navegación en React y utilidades de presentación.',
+    tipo: 'Proyecto personal · Código público',
+    titulo: 'Recetas TS: búsqueda, presentación y pruebas',
+    introduccion: 'Construí esta aplicación para practicar una interfaz React conectada a datos externos y dejar el código disponible para revisión.',
     puntos: [
-      { titulo: 'Interfaz y navegación', texto: 'React, TypeScript, Vite y React Router para organizar las pantallas y búsquedas de recetas.' },
-      { titulo: 'Integración de datos', texto: 'Consultas a API, presentación de ingredientes, puntuaciones y traducción de textos a español.' },
-      { titulo: 'Verificación del código', texto: 'Pruebas de lógica de búsqueda, traducción y presentación, junto con GitHub Actions para ejecutar lint, pruebas y compilación.' }
+      { titulo: 'El problema', texto: 'Los datos de recetas incluyen ingredientes, puntuaciones y textos que deben mostrarse de forma consistente para que la búsqueda resulte útil.' },
+      { titulo: 'Mi aporte', texto: 'Desarrollé las pantallas con React, TypeScript y React Router, e integré las consultas a la API de recetas.' },
+      { titulo: 'Una decisión técnica', texto: 'Separé las utilidades de traducción y presentación de las pantallas. Añadí pruebas de búsqueda, ingredientes, puntuaciones y textos, ejecutadas junto con lint y build en GitHub Actions.' },
+      { titulo: 'Dónde verlo', texto: 'La aplicación y el repositorio son públicos. Se pueden revisar las utilidades, los tests y el flujo de integración continua.' }
     ],
-    aclaracion: 'Proyecto personal formativo: el repositorio es público y permite inspeccionar la implementación y las pruebas.',
+    aclaracion: 'Es un proyecto formativo; no le atribuyo usuarios de producción ni métricas de negocio.',
     enlaces: [
-      { texto: 'Probar demo', url: 'https://recetas-ts.vercel.app/', principal: true },
-      { texto: 'Ver código', url: 'https://github.com/MelgarejoMaycol/Recetas-TS' }
+      { texto: 'Abrir aplicación', url: 'https://recetas-ts.vercel.app/', principal: true },
+      { texto: 'Ver repositorio', url: 'https://github.com/MelgarejoMaycol/Recetas-TS' }
     ]
   },
   trackfile: {
     numero: '03',
-    tipo: 'Proyecto académico de grado',
-    titulo: 'TrackFile: organizar procesos documentales',
-    introduccion: 'El proyecto plantea una solución para consultar documentos, vehículos, usuarios, solicitudes y mantenimiento en un mismo sistema.',
+    tipo: 'Proyecto de grado en equipo',
+    titulo: 'TrackFile: documentos y vehículos en una sola aplicación',
+    introduccion: 'Junto con mi compañera definimos las funciones y los roles que necesitaba el sistema para organizar procesos documentales de transporte.',
     puntos: [
-      { titulo: 'Problema', texto: 'La información y el estado de los trámites pueden quedar repartidos en diferentes registros.' },
-      { titulo: 'Experiencia e interfaz', texto: 'Cliente Flutter/Dart con navegación por tareas, vistas de consulta, formularios y seguimiento de registros.' },
-      { titulo: 'Arquitectura', texto: 'Interfaz conectada con una API Java/Spring Boot y almacenamiento PostgreSQL.' }
+      { titulo: 'El problema', texto: 'Documentos, vehículos, mantenimientos y usuarios necesitaban consultarse desde un mismo lugar, según el rol de cada persona.' },
+      { titulo: 'Mi aporte', texto: 'Diseñé y documenté la base de datos PostgreSQL y programé el frontend en Flutter/Dart. También realicé pruebas y preparé la aplicación web y su APK de Android.' },
+      { titulo: 'Cómo trabajamos', texto: 'Revisamos requisitos y diseños entre los dos. Yo lideré el frontend y mi compañera desarrolló principalmente el backend Spring Boot y su despliegue.' },
+      { titulo: 'Dónde verlo', texto: 'La aplicación web y la ficha pública muestran el alcance del proyecto. No publico documentación privada ni afirmo uso empresarial que no haya verificado.' }
     ],
-    aclaracion: 'Proyecto realizado en equipo: participé en requisitos, diseñé la base de datos y programé el frontend; mi compañera lideró el backend. No se atribuyen cifras de operación empresarial.',
+    aclaracion: 'Es un proyecto académico colaborativo, no una experiencia laboral contratada como desarrollador.',
     enlaces: [
-      { texto: 'Ver aplicación', url: 'https://trackfile.vercel.app/', principal: true },
+      { texto: 'Abrir aplicación', url: 'https://trackfile.vercel.app/', principal: true },
       { texto: 'Leer ficha pública', url: 'https://github.com/MelgarejoMaycol/Portafolio/blob/main/docs/TRACKFILE_CASO_TECNICO.md' }
     ]
   }

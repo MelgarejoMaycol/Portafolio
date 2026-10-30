@@ -88,7 +88,7 @@ export default function Contacto({ onOpenCV }) {
         <div className="text-center mb-5">
           <h2 className="section-title text-white mb-3">¡Contáctame!</h2>
           <p className="text-primary" style={{ fontSize: '1rem', maxWidth: '600px', margin: '0 auto' }}>
-            Busco oportunidades Frontend Junior, especialmente con React y TypeScript. Si mi perfil se ajusta a tu equipo, conversemos.
+            Estoy disponible para oportunidades Frontend Junior con React y TypeScript, especialmente remotas. Puedes escribirme sobre una vacante o un proyecto.
           </p>
         </div>
 
@@ -172,7 +172,7 @@ export default function Contacto({ onOpenCV }) {
 
               {error && (
                 <div className="alert alert-danger mt-3" role="alert" style={{ backgroundColor: 'rgba(220, 53, 69, 0.2)', border: '1px solid #dc3545', color: '#ff6b6b' }}>
-                  ✗ Error al enviar. Verifica que EmailJS esté configurado correctamente.
+                  ✗ No se pudo enviar el mensaje. Puedes escribirme directamente a mfmelgarejo04@gmail.com.
                 </div>
               )}
             </form>
@@ -219,13 +219,10 @@ export default function Contacto({ onOpenCV }) {
 
               <hr style={{ borderColor: 'rgba(13, 110, 253, 0.3)' }} />
 
-              <h6 className="text-white fw-bold mb-3 mt-4">Sígueme en redes sociales</h6>
+              <h6 className="text-white fw-bold mb-3 mt-4">Perfiles profesionales</h6>
               <div className="d-flex gap-3">
                 <a href="https://github.com/MelgarejoMaycol" aria-label="Perfil de GitHub" target="_blank" rel="noopener noreferrer" className="btn btn-outline-primary rounded-circle p-2" style={{ width: '45px', height: '45px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
                   <i className="fab fa-github"></i>
-                </a>
-                <a href="https://instagram.com/melgarejo_mayc/" aria-label="Perfil de Instagram" target="_blank" rel="noopener noreferrer" className="btn btn-outline-primary rounded-circle p-2" style={{ width: '45px', height: '45px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-                  <i className="fab fa-instagram"></i>
                 </a>
                 <a href="https://www.linkedin.com/in/maycol-melgarejo-a59bb9322" aria-label="Perfil de LinkedIn" target="_blank" rel="noopener noreferrer" className="btn btn-outline-primary rounded-circle p-2" style={{ width: '45px', height: '45px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
                   <i className="fab fa-linkedin"></i>

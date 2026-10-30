@@ -1,168 +1,46 @@
-import React from 'react'
+const principales = [
+  { nombre: 'React', icono: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg' },
+  { nombre: 'TypeScript', icono: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg' },
+  { nombre: 'JavaScript', icono: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg' },
+  { nombre: 'HTML5', icono: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg' },
+  { nombre: 'CSS3', icono: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg' },
+  { nombre: 'Git', icono: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg' }
+]
+
+const capacidades = ['Integración de APIs REST', 'Diseño responsivo', 'Formularios y validaciones']
+const complementarias = ['Node.js', 'Express', 'PostgreSQL', 'Flutter / Dart', 'Vue.js', 'PHP / Laravel', 'Java / Spring Boot', 'MySQL']
+
 export default function Herramientas() {
-  const pilas = [
-    {
-      titulo: 'Frontend',
-      herramientas: [
-        {
-          nombre: 'React',
-          logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg',
-          url: 'https://reactjs.org/'
-        },
-        {
-          nombre: 'TypeScript',
-          logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg',
-          url: 'https://www.typescriptlang.org/'
-        },
-        {
-          nombre: 'JavaScript',
-          logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg',
-          url: 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/'
-        },
-        {
-          nombre: 'Vue.js',
-          logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vuejs/vuejs-original.svg',
-          url: 'https://vuejs.org/'
-        },
-        {
-          nombre: 'HTML5',
-          logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg',
-          url: 'https://developer.mozilla.org/en-US/docs/Web/HTML/'
-        },
-        {
-          nombre: 'CSS3',
-          logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg',
-          url: 'https://developer.mozilla.org/en-US/docs/Web/CSS/'
-        },
-        {
-          nombre: 'Bootstrap',
-          logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/bootstrap/bootstrap-original.svg',
-          url: 'https://getbootstrap.com/'
-        }
-      ]
-    },
-    {
-      titulo: 'Backend',
-      herramientas: [
-        {
-          nombre: 'Node.js',
-          logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg',
-          url: 'https://nodejs.org/'
-        },
-        {
-          nombre: 'Express',
-          logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/express/express-original.svg',
-          url: 'https://expressjs.com/'
-        },
-        {
-          nombre: 'Laravel',
-          logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/laravel/laravel-original.svg',
-          url: 'https://laravel.com/'
-        },
-        {
-          nombre: 'PHP',
-          logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/php/php-original.svg',
-          url: 'https://www.php.net/'
-        },
-        {
-          nombre: 'Java',
-          logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-original.svg',
-          url: 'https://www.java.com/'
-        },
-        {
-          nombre: 'Spring Boot',
-          logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/spring/spring-original.svg',
-          url: 'https://spring.io/projects/spring-boot/'
-        }
-      ]
-    },
-    {
-      titulo: 'Datos y flujo',
-      herramientas: [
-        {
-          nombre: 'PostgreSQL',
-          logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-original.svg',
-          url: 'https://www.postgresql.org/'
-        },
-        {
-          nombre: 'MySQL',
-          logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg',
-          url: 'https://www.mysql.com/'
-        },
-        {
-          nombre: 'Git',
-          logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg',
-          url: 'https://git-scm.com/'
-        },
-        {
-          nombre: 'XAMPP',
-          logo: 'https://cdn.simpleicons.org/xampp/FB7A24',
-          url: 'https://www.apachefriends.org/'
-        }
-      ]
-    }
-  ]
-
   return (
-    <section className="herramientas py-3 py-md-5" id="herramientas" style={{ backgroundColor: '#00091c', minHeight: 'auto', position: 'relative', overflow: 'hidden' }}>
-      <div
-        style={{
-          position: 'absolute',
-          width: '500px',
-          height: '500px',
-          background: 'radial-gradient(circle, rgba(13, 110, 253, 0.15) 0%, transparent 70%)',
-          borderRadius: '50%',
-          top: '45%',
-          left: '50%',
-          transform: 'translate(-50%, -50%)',
-          filter: 'blur(80px)',
-          zIndex: 0,
-          pointerEvents: 'none'
-        }}
-      />
-
-      <div className="container px-2 px-md-4" style={{ position: 'relative', zIndex: 1 }}>
-        <div className="text-center mb-4 mb-md-5">
-          <h2 className="section-title text-white mb-3 mb-md-4">Herramientas y tecnologías</h2>
+    <section className="herramientas py-4 py-md-5" id="herramientas" aria-labelledby="herramientas-titulo">
+      <div className="container px-3 px-md-4">
+        <div className="text-center mb-4">
+          <h2 id="herramientas-titulo" className="section-title text-white mb-3">Herramientas y tecnologías</h2>
+          <p className="herramientas-intro">Estas son las herramientas que más utilizo. También he trabajado con otras tecnologías en proyectos y formación.</p>
         </div>
-
-        <div className="text-center mb-5">
-          <p className="text-primary fw-bold herramientas-resumen">
-            Mi enfoque principal: React · TypeScript · JavaScript · HTML · CSS · diseño de interfaces
-          </p>
-          <p className="text-white-50" style={{ maxWidth: '850px', margin: '0 auto' }}>
-            Además de maquetación responsiva, integración de APIs y pruebas, tengo conocimientos complementarios de Node.js, PostgreSQL, Vue.js, PHP, Laravel, Java y Flutter.
-          </p>
-        </div>
-
-        <div className="herramientas-pilas">
-          {pilas.map((pila) => (
-            <div className="herramientas-pila" key={pila.titulo}>
-              <h3>{pila.titulo}</h3>
-              <div className="herramientas-stack">
-                {pila.herramientas.map((herramienta) => (
-                  <a
-                    key={herramienta.nombre}
-                    href={herramienta.url}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="herramientas-item"
-                    title={herramienta.nombre}
-                  >
-                    <div className="herramientas-icon">
-                      <img
-                        src={herramienta.logo}
-                        alt={herramienta.nombre}
-                      />
-                    </div>
-                    <span>{herramienta.nombre}</span>
-                  </a>
-                ))}
-              </div>
+        <div className="habilidades-layout">
+          <div className="habilidades-principales">
+            <h3>Mi trabajo en frontend</h3>
+            <div className="habilidades-grid">
+              {principales.map((item) => (
+                <div className="habilidad-principal" key={item.nombre}>
+                  <img src={item.icono} alt="" loading="lazy" aria-hidden="true" />
+                  <strong>{item.nombre}</strong>
+                </div>
+              ))}
             </div>
-          ))}
+            <div className="habilidades-capacidades">
+              {capacidades.map((item) => <span key={item}>{item}</span>)}
+            </div>
+          </div>
+          <aside className="habilidades-complementarias">
+            <h3>También he utilizado</h3>
+            <p>En Cifrya, TrackFile y proyectos académicos.</p>
+            <div className="habilidades-etiquetas">
+              {complementarias.map((item) => <span key={item}>{item}</span>)}
+            </div>
+          </aside>
         </div>
-
       </div>
     </section>
   )

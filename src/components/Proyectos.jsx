@@ -25,9 +25,7 @@ export default function Proyectos() {
           <div className="text-center mb-4 mb-md-5">
             <h2 className="section-title text-white mb-3">Proyectos</h2>
             <p className="text-white-50 proyectos-intro">
-              Tres proyectos que muestran React/TypeScript, código verificable,
-              integración con APIs y colaboración en aplicaciones reales.
-              Selecciona una tarjeta para conocer su caso de estudio.
+              Estos son los proyectos que mejor muestran cómo trabajo. Puedes abrir cada uno y revisar qué hice.
             </p>
           </div>
 

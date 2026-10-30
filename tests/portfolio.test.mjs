@@ -121,3 +121,39 @@ test('las tres tarjetas tienen exactamente dos enlaces externos más su caso de 
   assert.ok(proyectos.includes("proyecto.id === 'recetas-ts' ? 'Ver código'"))
   assert.ok(catalogo.includes("linkDetalles: 'https://github.com/MelgarejoMaycol/Recetas-TS'"))
 })
+
+test('proyectos antes de formación y contacto a la vista', () => {
+  const app = readFileSync(resolve(process.cwd(), 'src/components/Portafolio.jsx'), 'utf8')
+  assert.ok(app.indexOf('<Proyectos />') < app.indexOf('<SobreMi'))
+  assert.ok(app.indexOf('<Contacto') < app.indexOf('<Certificaciones'))
+})
+
+test('los certificados adicionales están en un desplegable', () => {
+  const cursos = readFileSync(resolve(process.cwd(), 'src/components/Certificaciones.jsx'), 'utf8')
+  assert.ok(cursos.includes('<details className="certificaciones-archivo-panel">'))
+  assert.ok(cursos.includes('Ver el archivo completo'))
+  assert.ok(cursos.includes("'Accesibilidad Web'"))
+})
+
+test('las herramientas separan frontend y conocimientos complementarios', () => {
+  const herramientas = readFileSync(resolve(process.cwd(), 'src/components/Herramientas.jsx'), 'utf8')
+  assert.ok(herramientas.includes('habilidades-principales'))
+  assert.ok(herramientas.includes('habilidades-complementarias'))
+  assert.ok(herramientas.includes('Integración de APIs REST'))
+})
+
+test('los casos explican aportes, problemas y decisiones concretas', () => {
+  const casos = readFileSync(resolve(process.cwd(), 'src/components/CasoTecnico.jsx'), 'utf8')
+  assert.equal((casos.match(/titulo: 'El problema'/g) || []).length, 3)
+  assert.equal((casos.match(/titulo: 'Mi aporte'/g) || []).length, 3)
+  assert.ok(casos.includes('TanStack Query'))
+  assert.ok(casos.includes('pruebas de búsqueda'))
+  assert.ok(casos.includes('backend Spring Boot'))
+})
+
+test('el contacto da prioridad a GitHub y LinkedIn', () => {
+  const contacto = readFileSync(resolve(process.cwd(), 'src/components/Contacto.jsx'), 'utf8')
+  assert.ok(contacto.includes('github.com/MelgarejoMaycol'))
+  assert.ok(contacto.includes('linkedin.com/in/maycol-melgarejo'))
+  assert.ok(!contacto.includes('instagram.com/'))
+})

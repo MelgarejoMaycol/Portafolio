@@ -1,4 +1,4 @@
-import Imagen from '../../public/avatar.jpg'
+import Imagen from '../../public/foto-profesional.jpg'
 
 export default function Inicio({ onOpenCV }) {
   return (

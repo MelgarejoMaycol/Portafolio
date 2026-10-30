@@ -1,20 +1,20 @@
-import avatar from '../../public/avatar2.jpeg'
+import avatar from '../../public/foto-profesional.jpg'
 
 const fortalezas = [
   {
     icono: 'fa-solid fa-layer-group',
     titulo: 'Interfaces y componentes',
-    descripcion: 'React, TypeScript y vistas responsivas fáciles de mantener.'
+    descripcion: 'Componentes React, TypeScript y diseños que funcionan en móvil.'
   },
   {
     icono: 'fa-solid fa-wand-magic-sparkles',
     titulo: 'Cuidado de la experiencia',
-    descripcion: 'Jerarquía visual, formularios claros y estados de interfaz.'
+    descripcion: 'Formularios, estados de carga y mensajes de error comprensibles.'
   },
   {
     icono: 'fa-solid fa-code-branch',
     titulo: 'Integración y calidad',
-    descripcion: 'APIs REST, Git y pruebas como parte del desarrollo.'
+    descripcion: 'Integración REST, Git y pruebas en proyectos propios.'
   }
 ]
 
@@ -27,17 +27,16 @@ export default function SobreMi({ onOpenCV }) {
             <span className="sobre-eyebrow">CONOCE MI PERFIL</span>
             <h2 id="sobre-titulo" className="section-title text-white mb-4">Sobre mí</h2>
             <h3 className="sobre-heading">
-              Creo experiencias web claras, funcionales y pensadas para las personas.
+              Me gusta construir interfaces que funcionen bien y sean fáciles de usar.
             </h3>
             <p className="sobre-lead">
-              Soy <strong>desarrollador Frontend junior</strong> y finalicé los estudios de Tecnología en Desarrollo de Sistemas
-              Informáticos en las Unidades Tecnológicas de Santander.
-              Mi enfoque está en transformar necesidades en interfaces web intuitivas y responsivas.
+              Soy <strong>desarrollador Frontend junior</strong> y terminé los estudios de Tecnología
+              en Desarrollo de Sistemas Informáticos en las Unidades Tecnológicas de Santander.
             </p>
             <p className="sobre-secondary">
-              Trabajo principalmente con React, TypeScript, JavaScript, HTML y CSS.
-              En proyectos como Cifrya he integrado pantallas con APIs reales, formularios y validaciones.
-              También conozco Node.js y PostgreSQL, lo que me ayuda a entender el producto de extremo a extremo.
+              Trabajo principalmente con React y TypeScript. En Cifrya construyo las pantallas
+              de cuentas, movimientos y presupuestos, y las conecto con una API que también desarrollo.
+              En Recetas TS puedes revisar mi código y las pruebas automatizadas.
             </p>
             <div className="sobre-tags" aria-label="Tecnologías principales">
               {['React', 'TypeScript', 'JavaScript', 'HTML / CSS', 'UI responsiva'].map((tag) => (
@@ -60,7 +59,7 @@ export default function SobreMi({ onOpenCV }) {
               <img src={avatar} alt="Maycol Melgarejo" className="sobre-photo" loading="lazy" />
               <div>
                 <p className="sobre-card-eyebrow">EN QUÉ ME ENFOCO</p>
-                <h3>Frontend + sensibilidad por el diseño</h3>
+                <h3>Frontend, con atención al detalle</h3>
                 <span>Colombia · Abierto a trabajo remoto</span>
               </div>
             </div>

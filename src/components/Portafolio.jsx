@@ -17,11 +17,11 @@ export default function Portafolio() {
     <>
       <Encabezado onOpenCV={abrirCV} />
       <Inicio onOpenCV={abrirCV} />
-      <SobreMi onOpenCV={abrirCV} />
       <Proyectos />
+      <SobreMi onOpenCV={abrirCV} />
       <Herramientas />
-      <Certificaciones />
       <Contacto onOpenCV={abrirCV} />
+      <Certificaciones />
       <CVModal open={cvAbierto} onClose={cerrarCV} />
     </>
   )
