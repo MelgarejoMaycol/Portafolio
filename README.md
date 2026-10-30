@@ -63,3 +63,14 @@ npm run dev
 - [Correo](mailto:mfmelgarejo04@gmail.com)
 
 El código histórico permanece disponible como ejercicio formativo; el enfoque profesional principal está en los tres proyectos destacados.
+
+## Comprobar demos antes de postular
+
+El workflow [Comprobar demos públicas](.github/workflows/public-demos.yml) revisa semanalmente y también puede ejecutarse manualmente desde **Actions → Comprobar demos públicas → Run workflow**.
+
+Comprueba que el portafolio, Cifrya, Recetas TS y TrackFile entreguen HTML, que Recetas API responda en `/health` y que publique rutas en `/api-docs.json`. Reintenta las respuestas lentas por el arranque de servidores. No crea usuarios ni modifica datos.
+
+También puedes ejecutar `node scripts/check-public-demos.mjs` desde un equipo con acceso a Internet.
+
+**Alcance:** una respuesta HTTP correcta no garantiza que todas las funciones, el login o los formularios funcionen. La validación visual en móvil y el envío real de contacto siguen siendo pruebas independientes.
+
