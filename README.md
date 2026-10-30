@@ -15,14 +15,15 @@ El nivel de experiencia varía entre herramientas. Las competencias se respaldan
 
 ## Proyectos destacados
 
-1. **Cifrya** — plataforma Full Stack de finanzas personales con [demo pública](https://cifrya.com/demo). Código del producto en repositorios privados.
-2. **TrackFile** — proyecto académico de gestión documental con [frontend Flutter](https://github.com/MelgarejoMaycol/TRACKFILE) y [API Spring Boot](https://github.com/MelgarejoMaycol/BackTrackfile).
+1. **Cifrya** — plataforma Full Stack de finanzas personales de desarrollo propio con [demo pública](https://cifrya.com/demo). Código privado.
+2. **Recetas TS** — aplicación React/TypeScript con [demo](https://recetas-ts.vercel.app/) y [código público y pruebas/CI](https://github.com/MelgarejoMaycol/Recetas-TS).
+3. **TrackFile** — proyecto académico en equipo: desarrollé [frontend Flutter](https://github.com/MelgarejoMaycol/TRACKFILE), diseñé/documenté PostgreSQL, realicé pruebas y despliegue web/Android. Mi compañera lideró [API Spring Boot](https://github.com/MelgarejoMaycol/BackTrackfile).
 
-Otros proyectos formativos están disponibles en una sección secundaria del portafolio.
+La captura de Cifrya en el portafolio procede de una sesión de demostración real de octubre de 2026, sin datos personales. Los proyectos secundarios se agrupan debajo de los destacados.
 
 ## Caso de estudio técnico
 
-Los **casos de estudio** se abren desde sus respectivas tarjetas (clic en cualquier zona libre de la tarjeta o en «Ver caso de estudio»); los enlaces externos siguen siendo independientes. Estas fichas explican decisiones de interfaz y arquitectura de Cifrya y TrackFile. [La ficha de Cifrya](docs/CIFRYA_CASO_TECNICO.md) describe el problema que resuelve,
+Los **casos de estudio** se abren desde sus respectivas tarjetas (clic en cualquier zona libre de la tarjeta o en «Ver caso de estudio»); los enlaces externos siguen siendo independientes. Estas fichas explican decisiones de interfaz, integración y calidad de Cifrya, Recetas TS y TrackFile. [La ficha de Cifrya](docs/CIFRYA_CASO_TECNICO.md) describe el problema que resuelve,
 la separación frontend/API/datos, las decisiones de ingeniería y las verificaciones CI.
 La demo es pública, pero los repositorios del producto siguen privados; no se afirman
 resultados de negocio ni métricas de uso sin datos verificables. La [ficha pública de TrackFile](docs/TRACKFILE_CASO_TECNICO.md) reemplaza la memoria de grado: no contiene anexos internos ni datos sensibles.
@@ -61,4 +62,4 @@ npm run dev
 - [GitHub](https://github.com/MelgarejoMaycol)
 - [Correo](mailto:mfmelgarejo04@gmail.com)
 
-El código histórico permanece disponible como ejercicio formativo; el enfoque profesional principal está en los dos proyectos destacados.
+El código histórico permanece disponible como ejercicio formativo; el enfoque profesional principal está en los tres proyectos destacados.

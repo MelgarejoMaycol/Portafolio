@@ -2,7 +2,7 @@ import { useCallback, useEffect, useState } from 'react'
 import CasoTecnico from './CasoTecnico'
 import { proyectosPrincipales, otrosProyectos } from '../data/proyectos'
 
-const casosDisponibles = new Set(['cifrya', 'trackfile'])
+const casosDisponibles = new Set(['cifrya', 'recetas-ts', 'trackfile'])
 
 export default function Proyectos() {
   const [proyectoActivo, setProyectoActivo] = useState(null)
@@ -25,15 +25,15 @@ export default function Proyectos() {
           <div className="text-center mb-4 mb-md-5">
             <h2 className="section-title text-white mb-3">Proyectos</h2>
             <p className="text-white-50 proyectos-intro">
-              Dos proyectos con enfoques distintos, donde muestro interfaces,
-              integración con APIs y decisiones de diseño y desarrollo.
+              Tres proyectos que muestran React/TypeScript, código verificable,
+              integración con APIs y colaboración en aplicaciones reales.
               Selecciona una tarjeta para conocer su caso de estudio.
             </p>
           </div>
 
           <div className="row g-4 mb-5 proyectos-destacados">
             {proyectosPrincipales.map((proyecto) => (
-              <div key={proyecto.id} className="col-lg-6 col-12 d-flex">
+              <div key={proyecto.id} className="col-lg-4 col-md-6 col-12 d-flex">
                 <article className="project-card w-100 h-100" id={'caso-' + proyecto.id}>
                   <button
                     type="button"
@@ -73,7 +73,12 @@ export default function Proyectos() {
                           </a>
                         ) : (
                           <a href={proyecto.linkDetalles} target="_blank" rel="noopener noreferrer" className="btn btn-outline-primary">
-                            <i className="fa-regular fa-file-lines me-2" aria-hidden="true"></i>Ficha pública
+                            <i className="fa-regular fa-file-lines me-2" aria-hidden="true"></i>{proyecto.detalleLabel || 'Ficha pública'}
+                          </a>
+                        )}
+                        {proyecto.id === 'recetas-ts' && (
+                          <a href={proyecto.linkDetalles} target="_blank" rel="noopener noreferrer" className="btn btn-outline-light">
+                            <i className="fa-brands fa-github me-2" aria-hidden="true"></i>Ver código
                           </a>
                         )}
                       </div>

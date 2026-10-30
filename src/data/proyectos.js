@@ -10,34 +10,45 @@ import RecetasFrontTS from '../../public/ProyectoRecetas_Front_TS.png'
 const imagenCifrya = '/cifrya-dashboard.webp'
 
 export const proyectosPrincipales = [
-    {
-      id: 'cifrya',
-      titulo: 'Cifrya — Finanzas Personales',
-      descripcion:
-        'Aplicación de finanzas personales con paneles, formularios y flujos de cuentas, movimientos y presupuestos. Construí interfaces en React y TypeScript conectadas con una API real, estados de carga y una demo pública navegable.',
-      imagen: imagenCifrya,
-      imagenContain: false,
-      stack: ['React', 'TypeScript', 'Node.js', 'Express', 'PostgreSQL', 'Prisma'],
-      linkPagina: 'https://cifrya.com/',
-      linkDemo: 'https://cifrya.com/demo',
-      linkCaseStudy: '#caso-cifrya',
-      etiqueta: 'Proyecto personal · React/TypeScript'
-    },
-    {
-      id: 'trackfile',
-      titulo: 'TrackFile — Gestión Documental',
-      descripcion:
-        'Proyecto de grado de gestión documental para transporte. Incluye flujos para archivos, usuarios, vehículos, solicitudes, mantenimiento y alertas; interfaz Flutter conectada con servicios Spring Boot y PostgreSQL.',
-      imagen: proyectoTrackFile,
-      imagenContain: true,
-      stack: ['Flutter', 'Dart', 'Java', 'Spring Boot', 'PostgreSQL'],
-      linkPagina: 'https://trackfile.vercel.app/',
-      linkCaseStudy: '#caso-trackfile',
-      linkDetalles: 'https://github.com/MelgarejoMaycol/Portafolio/blob/main/docs/TRACKFILE_CASO_TECNICO.md',
-      detalleLabel: 'Ficha técnica',
-      etiqueta: 'Proyecto principal · Proyecto de grado'
-    }
-  ]
+  {
+    id: 'cifrya',
+    titulo: 'Cifrya — Finanzas Personales',
+    descripcion: 'Plataforma financiera que desarrollo de extremo a extremo. Interfaces React/TypeScript por funcionalidades, formularios validados, integración REST y gestión de datos. Demo pública sin registro.',
+    imagen: imagenCifrya,
+    imagenContain: false,
+    stack: ['React', 'TypeScript', 'Node.js', 'PostgreSQL'],
+    linkPagina: 'https://cifrya.com/',
+    linkDemo: 'https://cifrya.com/demo',
+    linkCaseStudy: '#caso-cifrya',
+    etiqueta: 'Proyecto personal · Frontend y backend'
+  },
+  {
+    id: 'recetas-ts',
+    titulo: 'Recetas TS — React y TypeScript',
+    descripcion: 'Aplicación de recetas con consulta de API, búsqueda, rutas y presentación de contenido. Código público con pruebas de lógica de interfaz y verificación automática mediante GitHub Actions.',
+    imagen: RecetasFrontTS,
+    imagenContain: true,
+    stack: ['React', 'TypeScript', 'Vite', 'GitHub Actions'],
+    linkPagina: 'https://recetas-ts.vercel.app/',
+    linkDemo: 'https://recetas-ts.vercel.app/',
+    linkDetalles: 'https://github.com/MelgarejoMaycol/Recetas-TS',
+    linkCaseStudy: '#caso-recetas-ts',
+    etiqueta: 'Proyecto personal · Código público'
+  },
+  {
+    id: 'trackfile',
+    titulo: 'TrackFile — Gestión Documental',
+    descripcion: 'Proyecto de grado en equipo. Diseñé y documenté PostgreSQL, desarrollé el frontend Flutter/Dart, realicé pruebas y preparé la versión web y APK; el backend fue liderado por mi compañera.',
+    imagen: proyectoTrackFile,
+    imagenContain: true,
+    stack: ['Flutter', 'Dart', 'PostgreSQL', 'REST'],
+    linkPagina: 'https://trackfile.vercel.app/',
+    linkCaseStudy: '#caso-trackfile',
+    linkDetalles: 'https://github.com/MelgarejoMaycol/TRACKFILE',
+    detalleLabel: 'Código frontend',
+    etiqueta: 'Proyecto de grado · En equipo'
+  }
+]
 
 export const otrosProyectos = [
     {
@@ -94,13 +105,5 @@ export const otrosProyectos = [
       linkDetalles: 'https://github.com/MelgarejoMaycol/recetas-api',
       linkPagina: 'https://recetas-api-j4p8.onrender.com/'
     },
-    {
-      id: 8,
-      titulo: 'Recetas-Front-TS',
-      descripcion:
-        'Frontend de la aplicación de recetas desarrollado con React y TypeScript, integrado con una API REST para gestionar recetas, usuarios y favoritos.',
-      imagen: RecetasFrontTS,
-      linkDetalles: 'https://github.com/MelgarejoMaycol/Recetas-TS',
-      linkPagina: 'https://recetas-ts.vercel.app/'
-    }
+
   ]

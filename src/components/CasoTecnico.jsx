@@ -17,8 +17,24 @@ const casos = {
       { texto: 'Leer ficha técnica', url: 'https://github.com/MelgarejoMaycol/Portafolio/blob/main/docs/CIFRYA_CASO_TECNICO.md' }
     ]
   },
-  trackfile: {
+  'recetas-ts': {
     numero: '02',
+    tipo: 'Proyecto personal con código público',
+    titulo: 'Recetas TS: React con calidad comprobable',
+    introduccion: 'Aplicación de recetas que permite buscar y consultar contenido desde una API, con navegación en React y utilidades de presentación.',
+    puntos: [
+      { titulo: 'Interfaz y navegación', texto: 'React, TypeScript, Vite y React Router para organizar las pantallas y búsquedas de recetas.' },
+      { titulo: 'Integración de datos', texto: 'Consultas a API, presentación de ingredientes, puntuaciones y traducción de textos a español.' },
+      { titulo: 'Verificación del código', texto: 'Pruebas de lógica de búsqueda, traducción y presentación, junto con GitHub Actions para ejecutar lint, pruebas y compilación.' }
+    ],
+    aclaracion: 'Proyecto personal formativo: el repositorio es público y permite inspeccionar la implementación y las pruebas.',
+    enlaces: [
+      { texto: 'Probar demo', url: 'https://recetas-ts.vercel.app/', principal: true },
+      { texto: 'Ver código', url: 'https://github.com/MelgarejoMaycol/Recetas-TS' }
+    ]
+  },
+  trackfile: {
+    numero: '03',
     tipo: 'Proyecto académico de grado',
     titulo: 'TrackFile: organizar procesos documentales',
     introduccion: 'El proyecto plantea una solución para consultar documentos, vehículos, usuarios, solicitudes y mantenimiento en un mismo sistema.',
@@ -27,7 +43,7 @@ const casos = {
       { titulo: 'Experiencia e interfaz', texto: 'Cliente Flutter/Dart con navegación por tareas, vistas de consulta, formularios y seguimiento de registros.' },
       { titulo: 'Arquitectura', texto: 'Interfaz conectada con una API Java/Spring Boot y almacenamiento PostgreSQL.' }
     ],
-    aclaracion: 'Alcance académico: la memoria de grado y los anexos internos no se publican, ni se atribuyen cifras de operación empresarial.',
+    aclaracion: 'Proyecto realizado en equipo: participé en requisitos, diseñé la base de datos y programé el frontend; mi compañera lideró el backend. No se atribuyen cifras de operación empresarial.',
     enlaces: [
       { texto: 'Ver aplicación', url: 'https://trackfile.vercel.app/', principal: true },
       { texto: 'Leer ficha pública', url: 'https://github.com/MelgarejoMaycol/Portafolio/blob/main/docs/TRACKFILE_CASO_TECNICO.md' }

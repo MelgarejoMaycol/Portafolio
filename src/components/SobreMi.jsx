@@ -30,8 +30,8 @@ export default function SobreMi({ onOpenCV }) {
               Creo experiencias web claras, funcionales y pensadas para las personas.
             </h3>
             <p className="sobre-lead">
-              Soy <strong>desarrollador Frontend junior</strong> y Tecnólogo en Desarrollo de Sistemas
-              Informáticos de las Unidades Tecnológicas de Santander.
+              Soy <strong>desarrollador Frontend junior</strong> y finalicé los estudios de Tecnología en Desarrollo de Sistemas
+              Informáticos en las Unidades Tecnológicas de Santander.
               Mi enfoque está en transformar necesidades en interfaces web intuitivas y responsivas.
             </p>
             <p className="sobre-secondary">
