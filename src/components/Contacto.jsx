@@ -12,6 +12,7 @@ export default function Contacto({ onOpenCV }) {
   const [enviado, setEnviado] = useState(false)
   const [error, setError] = useState(false)
   const [cargando, setCargando] = useState(false)
+  const [campoTrampa, setCampoTrampa] = useState('')
 
   // Inicializar EmailJS
   useEffect(() => {
@@ -28,6 +29,7 @@ export default function Contacto({ onOpenCV }) {
 
   const handleSubmit = (e) => {
     e.preventDefault()
+    if (cargando || campoTrampa.trim()) return
     setCargando(true)
     setError(false)
     setEnviado(false)
@@ -103,6 +105,8 @@ export default function Contacto({ onOpenCV }) {
                   className="form-control"
                   id="nombre"
                   name="nombre"
+                  maxLength={80}
+                  autoComplete="name"
                   value={formData.nombre}
                   onChange={handleChange}
                   required
@@ -118,6 +122,8 @@ export default function Contacto({ onOpenCV }) {
                   className="form-control"
                   id="email"
                   name="email"
+                  maxLength={254}
+                  autoComplete="email"
                   value={formData.email}
                   onChange={handleChange}
                   required
@@ -133,6 +139,7 @@ export default function Contacto({ onOpenCV }) {
                   className="form-control"
                   id="asunto"
                   name="asunto"
+                  maxLength={120}
                   value={formData.asunto}
                   onChange={handleChange}
                   required
@@ -147,12 +154,27 @@ export default function Contacto({ onOpenCV }) {
                   className="form-control"
                   id="mensaje"
                   name="mensaje"
+                  maxLength={3000}
+                  minLength={10}
                   rows="5"
                   value={formData.mensaje}
                   onChange={handleChange}
                   required
                   style={{ backgroundColor: 'rgba(255, 255, 255, 0.08)', border: '1px solid rgba(13, 110, 253, 0.3)', color: 'white', resize: 'none' }}
                   placeholder="Tu mensaje..."
+                />
+              </div>
+
+              <div className="contacto-honeypot" aria-hidden="true">
+                <label htmlFor="web_contacto">Deja este campo vacío</label>
+                <input
+                  id="web_contacto"
+                  type="text"
+                  name="website"
+                  value={campoTrampa}
+                  onChange={(event) => setCampoTrampa(event.target.value)}
+                  tabIndex={-1}
+                  autoComplete="off"
                 />
               </div>
 
@@ -166,13 +188,13 @@ export default function Contacto({ onOpenCV }) {
 
               {enviado && (
                 <div className="alert alert-success mt-3" role="status" aria-live="polite" style={{ backgroundColor: 'rgba(25, 135, 84, 0.2)', border: '1px solid #198754', color: '#90EE90' }}>
-                  ✓ ¡Mensaje enviado exitosamente! Pronto me pondré en contacto contigo.
+                  ✓ Mensaje enviado correctamente.
                 </div>
               )}
 
               {error && (
                 <div className="alert alert-danger mt-3" role="alert" style={{ backgroundColor: 'rgba(220, 53, 69, 0.2)', border: '1px solid #dc3545', color: '#ff6b6b' }}>
-                  ✗ No se pudo enviar el mensaje. Puedes escribirme directamente a mfmelgarejo04@gmail.com.
+                  ✗ No se pudo enviar. Puedes escribirme directamente a mfmelgarejo04@gmail.com.
                 </div>
               )}
             </form>

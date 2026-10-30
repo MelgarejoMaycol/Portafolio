@@ -4,7 +4,6 @@ import proyectoCompu from '../../public/ProyectoCompu3D.png'
 import proyectoTrackFile from '../../public/ProyectoTrackFile.png'
 import ProyectoSeries from '../../public/ProyectoSeries.png'
 import ProyectoPokeVerso from '../../public/ProyectoPokeVerso.png'
-import ProyectoRecetas_Api from '../../public/ProyectoRecetas_Api.png'
 import RecetasFrontTS from '../../public/ProyectoRecetas_Front_TS.png'
 
 const imagenCifrya = '/cifrya-dashboard.webp'
@@ -96,14 +95,6 @@ export const otrosProyectos = [
       linkDetalles: 'https://github.com/MelgarejoMaycol/PokeVerso',
       linkPagina: 'https://poke-verso.vercel.app/'
     },
-    {
-      id: 7,
-      titulo: 'Recetas-Api',
-      descripcion:
-        'API REST para gestionar recetas, usuarios, categorías, ingredientes, preparaciones, comentarios y favoritos.',
-      imagen: ProyectoRecetas_Api,
-      linkDetalles: 'https://github.com/MelgarejoMaycol/recetas-api',
-      linkPagina: 'https://recetas-api-j4p8.onrender.com/'
-    },
+
 
   ]

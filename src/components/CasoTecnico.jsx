@@ -12,6 +12,12 @@ const casos = {
       { titulo: 'Una decisión técnica', texto: 'Uso TanStack Query con claves por espacio de trabajo. Después de crear o editar una cuenta, invalido las consultas de cuentas, dashboard y proyecciones para solicitar los datos actualizados.' },
       { titulo: 'Dónde verlo', texto: 'La demo permite recorrer las funciones principales sin registrarse. El código de producción es privado y no atribuyo resultados comerciales que no he medido.' }
     ],
+    evidencia: {
+      titulo: 'Una implementación que puedes preguntar en entrevista',
+      detalle: 'En los hooks de cuentas, la invalidación de consultas incluye cuentas, dashboard y proyecciones después de una mutación. Esto ayuda a evitar vistas desactualizadas sin recalcular saldos independientemente en cada pantalla.',
+      enlace: 'https://github.com/MelgarejoMaycol/Portafolio/blob/main/docs/CIFRYA_CASO_TECNICO.md',
+      textoEnlace: 'Ver explicación de arquitectura'
+    },
     aclaracion: 'La descripción se basa en el código del proyecto. La demo no equivale a una auditoría de todas las operaciones financieras.',
     enlaces: [
       { texto: 'Abrir demo', url: 'https://cifrya.com/demo', principal: true },
@@ -29,6 +35,12 @@ const casos = {
       { titulo: 'Una decisión técnica', texto: 'Separé las utilidades de traducción y presentación de las pantallas. Añadí pruebas de búsqueda, ingredientes, puntuaciones y textos, ejecutadas junto con lint y build en GitHub Actions.' },
       { titulo: 'Dónde verlo', texto: 'La aplicación y el repositorio son públicos. Se pueden revisar las utilidades, los tests y el flujo de integración continua.' }
     ],
+    evidencia: {
+      titulo: 'Pruebas públicas del proyecto',
+      detalle: 'El repositorio contiene utilidades para traducir y presentar recetas y una CI que ejecuta lint, pruebas TypeScript y build. Puedes comprobarlo sin iniciar sesión.',
+      enlace: 'https://github.com/MelgarejoMaycol/Recetas-TS/actions/workflows/ci.yml',
+      textoEnlace: 'Ver ejecuciones de pruebas'
+    },
     aclaracion: 'Es un proyecto formativo; no le atribuyo usuarios de producción ni métricas de negocio.',
     enlaces: [
       { texto: 'Abrir aplicación', url: 'https://recetas-ts.vercel.app/', principal: true },
@@ -46,6 +58,12 @@ const casos = {
       { titulo: 'Cómo trabajamos', texto: 'Revisamos requisitos y diseños entre los dos. Yo lideré el frontend y mi compañera desarrolló principalmente el backend Spring Boot y su despliegue.' },
       { titulo: 'Dónde verlo', texto: 'La aplicación web y la ficha pública muestran el alcance del proyecto. No publico documentación privada ni afirmo uso empresarial que no haya verificado.' }
     ],
+    evidencia: {
+      titulo: 'Interfaz desarrollada en equipo',
+      detalle: 'El frontend Flutter permite consultar registros y gestionar documentos según los roles del sistema. Diseñé la base de datos y programé el cliente; el servidor Spring Boot fue desarrollado principalmente por mi compañera.',
+      enlace: 'https://github.com/MelgarejoMaycol/TRACKFILE',
+      textoEnlace: 'Ver frontend en GitHub'
+    },
     aclaracion: 'Es un proyecto académico colaborativo, no una experiencia laboral contratada como desarrollador.',
     enlaces: [
       { texto: 'Abrir aplicación', url: 'https://trackfile.vercel.app/', principal: true },
@@ -129,6 +147,18 @@ export default function CasoTecnico({ proyectoId, onClose }) {
               </div>
             ))}
           </div>
+          {caso.evidencia && (
+            <div className="project-case-evidence">
+              <div>
+                <h3>{caso.evidencia.titulo}</h3>
+                <p>{caso.evidencia.detalle}</p>
+              </div>
+              <a href={caso.evidencia.enlace} target="_blank" rel="noopener noreferrer">
+                {caso.evidencia.textoEnlace}
+                <i className="fa-solid fa-arrow-up-right-from-square ms-2" aria-hidden="true"></i>
+              </a>
+            </div>
+          )}
           <p className="project-case-disclaimer">{caso.aclaracion}</p>
         </div>
         <footer className="cv-dialog-footer project-case-footer">

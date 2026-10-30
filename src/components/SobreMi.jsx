@@ -1,5 +1,3 @@
-import avatar from '../../public/foto-profesional.jpg'
-
 const fortalezas = [
   {
     icono: 'fa-solid fa-layer-group',
@@ -36,7 +34,8 @@ export default function SobreMi({ onOpenCV }) {
             <p className="sobre-secondary">
               Trabajo principalmente con React y TypeScript. En Cifrya construyo las pantallas
               de cuentas, movimientos y presupuestos, y las conecto con una API que también desarrollo.
-              En Recetas TS puedes revisar mi código y las pruebas automatizadas.
+              En Recetas TS puedes revisar mi código y las pruebas automatizadas. También he
+              desarrollado servicios Backend con Node.js y PostgreSQL.
             </p>
             <div className="sobre-tags" aria-label="Tecnologías principales">
               {['React', 'TypeScript', 'JavaScript', 'HTML / CSS', 'UI responsiva'].map((tag) => (
@@ -55,12 +54,12 @@ export default function SobreMi({ onOpenCV }) {
           </div>
 
           <aside className="sobre-profile-card" aria-label="Especialidades y enlaces profesionales">
-            <div className="sobre-profile-intro">
-              <img src={avatar} alt="Maycol Melgarejo" className="sobre-photo" loading="lazy" />
+            <div className="sobre-profile-intro sobre-profile-tech">
+              <span className="sobre-tech-icon" aria-hidden="true"><i className="fa-solid fa-code-branch"></i></span>
               <div>
-                <p className="sobre-card-eyebrow">EN QUÉ ME ENFOCO</p>
-                <h3>Frontend, con atención al detalle</h3>
-                <span>Colombia · Abierto a trabajo remoto</span>
+                <p className="sobre-card-eyebrow">DEL PROYECTO AL CÓDIGO</p>
+                <h3>Interfaces, APIs y pruebas</h3>
+                <span>Frontend como especialidad · Full Stack como práctica</span>
               </div>
             </div>
             <div className="sobre-capabilities">

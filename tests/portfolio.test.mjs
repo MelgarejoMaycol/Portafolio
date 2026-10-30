@@ -116,9 +116,9 @@ test('Inicio presenta un mensaje breve y mantiene las tres llamadas a la acción
 test('las tres tarjetas tienen exactamente dos enlaces externos más su caso de estudio', () => {
   const proyectos = readFileSync(resolve(process.cwd(), 'src/components/Proyectos.jsx'), 'utf8')
   const catalogo = readFileSync(resolve(process.cwd(), 'src/data/proyectos.js'), 'utf8')
-  assert.ok(proyectos.includes('proyecto.linkDemo !== proyecto.linkPagina'))
-  assert.ok(!proyectos.includes("proyecto.id === 'recetas-ts' && ("))
-  assert.ok(proyectos.includes("proyecto.id === 'recetas-ts' ? 'Ver código'"))
+  assert.ok(proyectos.includes('project-primary-actions'))
+  assert.ok(proyectos.includes("proyecto.id === 'cifrya' ? 'Probar demo'"))
+  assert.ok(proyectos.includes('Consultar código en GitHub'))
   assert.ok(catalogo.includes("linkDetalles: 'https://github.com/MelgarejoMaycol/Recetas-TS'"))
 })
 
@@ -156,4 +156,32 @@ test('el contacto da prioridad a GitHub y LinkedIn', () => {
   assert.ok(contacto.includes('github.com/MelgarejoMaycol'))
   assert.ok(contacto.includes('linkedin.com/in/maycol-melgarejo'))
   assert.ok(!contacto.includes('instagram.com/'))
+})
+
+test('Recetas API se presenta sin desplazar los tres proyectos frontend', () => {
+  const proyectos = readFileSync(resolve(process.cwd(), 'src/components/Proyectos.jsx'), 'utf8')
+  const catalogo = readFileSync(resolve(process.cwd(), 'src/data/proyectos.js'), 'utf8')
+  assert.ok(proyectos.includes('className="backend-feature"'))
+  assert.ok(proyectos.includes('https://recetas-api-j4p8.onrender.com/api-docs'))
+  assert.ok(proyectos.includes('https://github.com/MelgarejoMaycol/recetas-api'))
+  assert.ok(catalogo.includes("id: 'cifrya'") && catalogo.includes("id: 'recetas-ts'") && catalogo.includes("id: 'trackfile'"))
+  assert.ok(!catalogo.includes("id: 7,"))
+})
+
+test('los casos incluyen evidencia técnica enlazada', () => {
+  const casos = readFileSync(resolve(process.cwd(), 'src/components/CasoTecnico.jsx'), 'utf8')
+  assert.equal((casos.match(/evidencia: \{/g) || []).length, 3)
+  assert.ok(casos.includes('project-case-evidence'))
+  assert.ok(casos.includes('Recetas-TS/actions/workflows/ci.yml'))
+  assert.ok(casos.includes('MelgarejoMaycol/TRACKFILE'))
+})
+
+test('el formulario limita campos y ofrece alternativa de contacto', () => {
+  const formulario = readFileSync(resolve(process.cwd(), 'src/components/Contacto.jsx'), 'utf8')
+  assert.ok(formulario.includes('maxLength={80}'))
+  assert.ok(formulario.includes('maxLength={254}'))
+  assert.ok(formulario.includes('maxLength={120}'))
+  assert.ok(formulario.includes('maxLength={3000}'))
+  assert.ok(formulario.includes('campoTrampa'))
+  assert.ok(formulario.includes('mailto:mfmelgarejo04@gmail.com'))
 })

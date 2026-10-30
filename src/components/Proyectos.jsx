@@ -55,33 +55,60 @@ export default function Proyectos() {
                       {proyecto.stack.map((tecnologia) => <span key={tecnologia}>{tecnologia}</span>)}
                     </div>
                     <div className="project-card-actions">
-                      <button type="button" onClick={() => setProyectoActivo(proyecto.id)} className="btn btn-primary project-case-cta">
-                        <i className="fa-solid fa-book-open me-2" aria-hidden="true"></i>
-                        Ver caso de estudio
-                        <i className="fa-solid fa-arrow-right ms-auto" aria-hidden="true"></i>
-                      </button>
-                      <div className="project-external-actions">
-                        <a href={proyecto.linkPagina} target="_blank" rel="noopener noreferrer" className="btn btn-outline-light">
+                      <div className="project-primary-actions">
+                        <a
+                          href={proyecto.linkDemo || proyecto.linkPagina}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="btn btn-primary"
+                        >
                           <i className="fa-solid fa-arrow-up-right-from-square me-2" aria-hidden="true"></i>
-                          {proyecto.id === 'cifrya' ? 'Abrir Cifrya' : 'Ver aplicación'}
+                          {proyecto.id === 'cifrya' ? 'Probar demo' : 'Ver aplicación'}
                         </a>
-                        {proyecto.linkDemo && proyecto.linkDemo !== proyecto.linkPagina ? (
-                          <a href={proyecto.linkDemo} target="_blank" rel="noopener noreferrer" className="btn btn-outline-primary">
-                            <i className="fa-solid fa-flask me-2" aria-hidden="true"></i>Probar demo
-                          </a>
-                        ) : (
-                          <a href={proyecto.linkDetalles} target="_blank" rel="noopener noreferrer" className="btn btn-outline-primary">
-                            <i className="fa-regular fa-file-lines me-2" aria-hidden="true"></i>
-                            {proyecto.id === 'recetas-ts' ? 'Ver código' : (proyecto.detalleLabel || 'Ficha pública')}
-                          </a>
-                        )}
+                        <button
+                          type="button"
+                          onClick={() => setProyectoActivo(proyecto.id)}
+                          className="btn btn-outline-light project-case-cta"
+                        >
+                          Caso técnico
+                        </button>
                       </div>
+                      {proyecto.linkDetalles && (
+                        <a className="project-code-link" href={proyecto.linkDetalles} target="_blank" rel="noopener noreferrer">
+                          {proyecto.id === 'recetas-ts' ? 'Consultar código en GitHub' : (proyecto.detalleLabel || 'Leer documentación')}
+                          <i className="fa-solid fa-arrow-up-right-from-square ms-2" aria-hidden="true"></i>
+                        </a>
+                      )}
                     </div>
                   </div>
                 </article>
               </div>
             ))}
           </div>
+
+          <aside className="backend-feature" aria-labelledby="recetas-api-title">
+            <div className="backend-feature-icon" aria-hidden="true"><i className="fa-solid fa-server"></i></div>
+            <div className="backend-feature-copy">
+              <span className="backend-feature-eyebrow">También trabajo en Backend</span>
+              <h3 id="recetas-api-title">Recetas API</h3>
+              <p>
+                Una API REST que desarrollé con Node.js, Express y PostgreSQL.
+                Incluye autenticación JWT, rutas para recetas y usuarios,
+                documentación Swagger y pruebas automatizadas.
+              </p>
+              <div className="backend-feature-stack" aria-label="Tecnologías de Recetas API">
+                {['Node.js', 'Express', 'PostgreSQL', 'JWT', 'OpenAPI'].map(item => <span key={item}>{item}</span>)}
+              </div>
+            </div>
+            <div className="backend-feature-actions">
+              <a className="btn btn-primary" href="https://recetas-api-j4p8.onrender.com/api-docs" target="_blank" rel="noopener noreferrer">
+                Ver documentación API
+              </a>
+              <a href="https://github.com/MelgarejoMaycol/recetas-api" target="_blank" rel="noopener noreferrer">
+                Código y pruebas <i className="fa-solid fa-arrow-up-right-from-square ms-1" aria-hidden="true"></i>
+              </a>
+            </div>
+          </aside>
 
           <details className="otros-proyectos-panel" id="otros-proyectos">
             <summary className="otros-proyectos-toggle">
