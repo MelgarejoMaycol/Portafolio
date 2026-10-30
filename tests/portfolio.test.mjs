@@ -64,7 +64,7 @@ test('Frontend mantiene un modal para las tres versiones del CV', () => {
 })
 
 
-test('ambas tarjetas abren su caso dentro de un único modal y conservan enlaces externos', () => {
+test('las tres tarjetas abren su caso dentro de un único modal y conservan enlaces externos', () => {
   const proyectos = readFileSync(resolve(process.cwd(), 'src/components/Proyectos.jsx'), 'utf8')
   const casos = readFileSync(resolve(process.cwd(), 'src/components/CasoTecnico.jsx'), 'utf8')
   assert.ok(proyectos.includes('project-card-hitarea'))
@@ -72,7 +72,7 @@ test('ambas tarjetas abren su caso dentro de un único modal y conservan enlaces
   assert.ok(proyectos.includes("id={'caso-' + proyecto.id}"))
   assert.ok(proyectos.includes('<CasoTecnico'))
   assert.ok(proyectos.includes('proyecto.linkDemo'))
-  assert.ok(casos.includes('cifrya:') && casos.includes('trackfile:'))
+  assert.ok(casos.includes('cifrya:') && casos.includes("'recetas-ts':") && casos.includes('trackfile:'))
   assert.ok(casos.includes('aria-modal="true"'))
   assert.ok(!proyectos.includes('<CasoTecnico />'))
   assert.ok(!proyectos.includes('<FichaTrackFileModal'))
@@ -86,6 +86,17 @@ test('Sobre mí conserva acceso al CV y presenta un diseño de dos columnas', ()
   assert.ok(sobre.includes('onOpenCV'))
   assert.ok(css.includes('grid-template-columns: minmax(0, 1.2fr)'))
   assert.ok(css.includes('@media (max-width: 991px)'))
+})
+
+test('los proyectos principales destacan React y Cifrya tiene imagen actualizada', () => {
+  const catalogo = readFileSync(resolve(process.cwd(), 'src/data/proyectos.js'), 'utf8')
+  const start = catalogo.indexOf('export const proyectosPrincipales = [')
+  const end = catalogo.indexOf('export const otrosProyectos = [')
+  const principal = catalogo.slice(start, end)
+  assert.ok(principal.indexOf("id: 'cifrya'") < principal.indexOf("id: 'recetas-ts'"))
+  assert.ok(principal.indexOf("id: 'recetas-ts'") < principal.indexOf("id: 'trackfile'"))
+  assert.equal(principal.match(/\bid: '/g)?.length, 3)
+  assert.ok(statSync(resolve(process.cwd(), 'public/cifrya-dashboard.webp')).size > 15_000)
 })
 
 test('se conservan los proyectos secundarios en desplegable', () => {

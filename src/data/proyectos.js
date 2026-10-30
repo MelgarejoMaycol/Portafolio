@@ -44,8 +44,8 @@ export const proyectosPrincipales = [
     stack: ['Flutter', 'Dart', 'PostgreSQL', 'REST'],
     linkPagina: 'https://trackfile.vercel.app/',
     linkCaseStudy: '#caso-trackfile',
-    linkDetalles: 'https://github.com/MelgarejoMaycol/TRACKFILE',
-    detalleLabel: 'Código frontend',
+    linkDetalles: 'https://github.com/MelgarejoMaycol/Portafolio/blob/main/docs/TRACKFILE_CASO_TECNICO.md',
+    detalleLabel: 'Ficha técnica',
     etiqueta: 'Proyecto de grado · En equipo'
   }
 ]
