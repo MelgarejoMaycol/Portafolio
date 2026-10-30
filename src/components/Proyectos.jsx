@@ -67,18 +67,14 @@ export default function Proyectos() {
                           <i className="fa-solid fa-arrow-up-right-from-square me-2" aria-hidden="true"></i>
                           {proyecto.id === 'cifrya' ? 'Abrir Cifrya' : 'Ver aplicación'}
                         </a>
-                        {proyecto.linkDemo ? (
+                        {proyecto.linkDemo && proyecto.linkDemo !== proyecto.linkPagina ? (
                           <a href={proyecto.linkDemo} target="_blank" rel="noopener noreferrer" className="btn btn-outline-primary">
                             <i className="fa-solid fa-flask me-2" aria-hidden="true"></i>Probar demo
                           </a>
                         ) : (
                           <a href={proyecto.linkDetalles} target="_blank" rel="noopener noreferrer" className="btn btn-outline-primary">
-                            <i className="fa-regular fa-file-lines me-2" aria-hidden="true"></i>{proyecto.detalleLabel || 'Ficha pública'}
-                          </a>
-                        )}
-                        {proyecto.id === 'recetas-ts' && (
-                          <a href={proyecto.linkDetalles} target="_blank" rel="noopener noreferrer" className="btn btn-outline-light">
-                            <i className="fa-brands fa-github me-2" aria-hidden="true"></i>Ver código
+                            <i className="fa-regular fa-file-lines me-2" aria-hidden="true"></i>
+                            {proyecto.id === 'recetas-ts' ? 'Ver código' : (proyecto.detalleLabel || 'Ficha pública')}
                           </a>
                         )}
                       </div>

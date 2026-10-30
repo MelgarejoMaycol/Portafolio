@@ -55,7 +55,7 @@ test('el portafolio no publica ni enlaza el documento interno de TrackFile', () 
 test('Frontend mantiene un modal para las tres versiones del CV', () => {
   const inicio = readFileSync(resolve(process.cwd(), 'src/components/Inicio.jsx'), 'utf8')
   const modal = readFileSync(resolve(process.cwd(), 'src/components/CVModal.jsx'), 'utf8')
-  assert.ok(inicio.includes('Desarrollador Frontend'))
+  assert.ok(inicio.includes('inicio-role-first') && inicio.includes('inicio-role-last'))
   assert.ok(inicio.includes('onOpenCV'))
   assert.ok(modal.includes('role="dialog"'))
   assert.ok(modal.includes('getCvPath'))
@@ -103,4 +103,21 @@ test('se conservan los proyectos secundarios en desplegable', () => {
   const proyectos = readFileSync(resolve(process.cwd(), 'src/components/Proyectos.jsx'), 'utf8')
   assert.ok(proyectos.includes('<details className="otros-proyectos-panel"'))
   assert.ok(proyectos.includes('otrosProyectos.map'))
+})
+
+test('Inicio presenta un mensaje breve y mantiene las tres llamadas a la acción', () => {
+  const inicio = readFileSync(resolve(process.cwd(), 'src/components/Inicio.jsx'), 'utf8')
+  assert.ok(!inicio.includes('inicio-description'))
+  assert.ok(inicio.includes('inicio-title-name') && inicio.includes('inicio-title-tech'))
+  assert.ok(inicio.includes('inicio-name-last') && inicio.includes('inicio-role-first'))
+  assert.ok(inicio.includes('Ver proyectos') && inicio.includes('Ver CV') && inicio.includes('Contactar'))
+})
+
+test('las tres tarjetas tienen exactamente dos enlaces externos más su caso de estudio', () => {
+  const proyectos = readFileSync(resolve(process.cwd(), 'src/components/Proyectos.jsx'), 'utf8')
+  const catalogo = readFileSync(resolve(process.cwd(), 'src/data/proyectos.js'), 'utf8')
+  assert.ok(proyectos.includes('proyecto.linkDemo !== proyecto.linkPagina'))
+  assert.ok(!proyectos.includes("proyecto.id === 'recetas-ts' && ("))
+  assert.ok(proyectos.includes("proyecto.id === 'recetas-ts' ? 'Ver código'"))
+  assert.ok(catalogo.includes("linkDetalles: 'https://github.com/MelgarejoMaycol/Recetas-TS'"))
 })
