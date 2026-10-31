@@ -1826,7 +1826,7 @@ h2 {
 .proyectos .backend-feature-actions .btn { padding: .55rem .75rem; font-size: .78rem; white-space: normal; border-radius: 9px; }
 .proyectos .backend-feature-actions .btn-outline-light { color: #d5e5f4; border-color: #426388; }
 @media (max-width: 991px) {
-  .proyectos-destacados { grid-template-columns: repeat(min(2,var(--project-columns,3)),minmax(0,1fr)); max-width: 890px; }
+  .proyectos-destacados { grid-template-columns: repeat(2,minmax(0,1fr)); max-width: 890px; }
   .proyectos .backend-feature { grid-template-columns: minmax(0,1fr) minmax(180px,.7fr); }
   .proyectos .backend-feature-actions { grid-column: 1 / -1; display: flex; flex-wrap: wrap; }
 }
