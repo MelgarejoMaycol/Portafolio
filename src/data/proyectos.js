@@ -12,40 +12,45 @@ export const proyectosPrincipales = [
   {
     id: 'cifrya',
     titulo: 'Cifrya — Finanzas Personales',
-    descripcion: 'Desarrollo Cifrya por mi cuenta, desde las pantallas en React y TypeScript hasta su API. Puedes explorar cuentas, movimientos y presupuestos sin registrarte.',
+    descripcion: 'Finanzas personales con cuentas, movimientos y presupuestos.',
+    categorias: ['frontend', 'backend', 'fullstack'],
     imagen: imagenCifrya,
     imagenContain: false,
     stack: ['React', 'TypeScript', 'Node.js', 'PostgreSQL'],
     linkPagina: 'https://cifrya.com/',
     linkDemo: 'https://cifrya.com/demo',
     linkCaseStudy: '#caso-cifrya',
-    etiqueta: 'Proyecto personal · Frontend y backend'
+    etiqueta: 'Full Stack · Proyecto personal'
   },
   {
     id: 'recetas-ts',
     titulo: 'Recetas TS — React y TypeScript',
-    descripcion: 'Una aplicación para buscar recetas y consultar ingredientes. El código es público e incluye pruebas para la búsqueda, las traducciones y la presentación de resultados.',
+    descripcion: 'Buscador de recetas con integración de API y pruebas automatizadas.',
+    categorias: ['frontend'],
     imagen: RecetasFrontTS,
     imagenContain: true,
     stack: ['React', 'TypeScript', 'Vite', 'GitHub Actions'],
     linkPagina: 'https://recetas-ts.vercel.app/',
     linkDemo: 'https://recetas-ts.vercel.app/',
     linkDetalles: 'https://github.com/MelgarejoMaycol/Recetas-TS',
+    linkCodigo: 'https://github.com/MelgarejoMaycol/Recetas-TS',
     linkCaseStudy: '#caso-recetas-ts',
-    etiqueta: 'Proyecto personal · Código público'
+    etiqueta: 'Frontend · Código público'
   },
   {
     id: 'trackfile',
     titulo: 'TrackFile — Gestión Documental',
-    descripcion: 'En este proyecto de grado en equipo diseñé la base de datos y desarrollé la aplicación Flutter para web y Android. Mi compañera se encargó principalmente del backend.',
+    descripcion: 'Gestión documental para transporte, desarrollada en equipo.',
+    categorias: ['frontend', 'fullstack'],
     imagen: proyectoTrackFile,
     imagenContain: true,
     stack: ['Flutter', 'Dart', 'PostgreSQL', 'REST'],
     linkPagina: 'https://trackfile.vercel.app/',
     linkCaseStudy: '#caso-trackfile',
     linkDetalles: 'https://github.com/MelgarejoMaycol/Portafolio/blob/main/docs/TRACKFILE_CASO_TECNICO.md',
+    linkCodigo: 'https://github.com/MelgarejoMaycol/TRACKFILE',
     detalleLabel: 'Ficha técnica',
-    etiqueta: 'Proyecto de grado · En equipo'
+    etiqueta: 'Frontend · En equipo'
   }
 ]
 

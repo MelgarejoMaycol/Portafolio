@@ -185,3 +185,40 @@ test('el formulario limita campos y ofrece alternativa de contacto', () => {
   assert.ok(formulario.includes('campoTrampa'))
   assert.ok(formulario.includes('mailto:mfmelgarejo04@gmail.com'))
 })
+
+test('los filtros de proyectos distinguen frontend, backend y full stack', async () => {
+  const { filtrarProyectos, mostrarRecetasAPI } = await import('../src/utils/projectFilters.js')
+  const proyectos = [
+    { id: 'cifrya', categorias: ['frontend', 'backend', 'fullstack'] },
+    { id: 'recetas-ts', categorias: ['frontend'] },
+    { id: 'trackfile', categorias: ['frontend', 'fullstack'] }
+  ]
+  assert.deepEqual(filtrarProyectos(proyectos, 'todos').map((p) => p.id), ['cifrya', 'recetas-ts', 'trackfile'])
+  assert.deepEqual(filtrarProyectos(proyectos, 'frontend').map((p) => p.id), ['cifrya', 'recetas-ts', 'trackfile'])
+  assert.deepEqual(filtrarProyectos(proyectos, 'backend').map((p) => p.id), ['cifrya'])
+  assert.deepEqual(filtrarProyectos(proyectos, 'fullstack').map((p) => p.id), ['cifrya', 'trackfile'])
+  assert.equal(mostrarRecetasAPI('backend'), true)
+  assert.equal(mostrarRecetasAPI('todos'), true)
+  assert.equal(mostrarRecetasAPI('frontend'), false)
+  assert.equal(mostrarRecetasAPI('fullstack'), false)
+})
+
+test('los botones de filtros son accesibles y muestran resultados relacionados', () => {
+  const vista = readFileSync(resolve(process.cwd(), 'src/components/Proyectos.jsx'), 'utf8')
+  assert.ok(vista.includes('aria-pressed={filtroActivo === filtro.id}'))
+  assert.ok(vista.includes('aria-live="polite"'))
+  assert.ok(vista.includes('filtrarProyectos(proyectosPrincipales, filtroActivo)'))
+  assert.ok(vista.includes('mostrarRecetasAPI(filtroActivo)'))
+})
+
+test('las cuatro vistas usan capturas reales guardadas en el repositorio', () => {
+  const vista = readFileSync(resolve(process.cwd(), 'src/components/Proyectos.jsx'), 'utf8')
+  const data = readFileSync(resolve(process.cwd(), 'src/data/proyectos.js'), 'utf8')
+  assert.ok(vista.includes("ProyectoRecetas_Api.png"))
+  assert.ok(data.includes("ProyectoRecetas_Front_TS.png"))
+  assert.ok(data.includes("ProyectoTrackFile.png"))
+  assert.ok(data.includes("cifrya-dashboard.webp"))
+  for (const img of ['cifrya-dashboard.webp', 'ProyectoRecetas_Front_TS.png', 'ProyectoTrackFile.png', 'ProyectoRecetas_Api.png']) {
+    assert.ok(statSync(resolve(process.cwd(), 'public', img)).size > 15_000, img)
+  }
+})
