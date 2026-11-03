@@ -36,7 +36,7 @@ Los tres PDF se mantienen en `public/cv/`. El botón «CV» abre un modal con vi
 - [Frontend](public/cv/CV_Maycol_Melgarejo_Frontend.pdf)
 - [Backend](public/cv/CV_Maycol_Melgarejo_Backend.pdf)
 
-Los PDF se generan a partir de sus respectivas versiones editables de Google Docs para mantener una fuente editable y una exportación idéntica. Cuando cambie Google Docs, hay que volver a exportar y sustituir los PDF en este repositorio.
+Las tres versiones publicadas se sincronizan con los PDF vigentes de la carpeta de CV en Google Drive. Todos conservan el mismo formato de una página. La cuarta versión, **Software Engineer**, se utiliza únicamente para postulaciones específicas y no aparece en el selector del sitio. Cuando cambie un CV en Drive, es necesario sustituir su PDF correspondiente en `public/cv/` para mantener ambas copias iguales.
 
 ## Instalación y verificación
 
