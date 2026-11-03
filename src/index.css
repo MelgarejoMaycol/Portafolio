@@ -102,7 +102,6 @@ h2 {
   height: 140px;
   object-fit: cover;
   border: 4px solid white;
-  clipPath: polygon(20% 0%, 80% 0%, 100% 20%, 100% 80%, 80% 100%, 20% 100%, 0% 80%, 0% 20%);
   border-radius: 40% 70% 80% 30% / 40% 30% 80% 50%;
   position: relative;
   z-index: 1;
@@ -1884,4 +1883,156 @@ h2 {
   font-size: .72rem;
   font-weight: 700;
   letter-spacing: .025em;
+}
+
+
+/* Mejora UX noviembre 2026: capturas completas y ampliación accesible. */
+.proyectos-destacados .project-card-media--contain {
+  background: linear-gradient(145deg, #e8f2fa, #dceaf2);
+}
+.proyectos-destacados .project-card-media--contain img {
+  object-fit: contain;
+  padding: .7rem;
+}
+.project-preview-trigger {
+  position: absolute;
+  z-index: 4;
+  bottom: .75rem;
+  right: .75rem;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  gap: .4rem;
+  min-height: 44px;
+  padding: .5rem .8rem;
+  border: 1px solid rgba(198, 230, 249, .55);
+  border-radius: 9px;
+  color: #fff;
+  background: rgba(5, 24, 46, .92);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, .24);
+  font-size: .79rem;
+  font-weight: 700;
+  cursor: zoom-in;
+  transition: background-color .18s ease, transform .18s ease, border-color .18s ease;
+}
+.project-preview-trigger:hover,
+.project-preview-trigger:focus-visible {
+  color: #fff;
+  border-color: #b4e6ff;
+  background: #1163a1;
+  transform: translateY(-2px);
+}
+.project-preview-trigger:focus-visible {
+  outline: 3px solid #a7e6ff;
+  outline-offset: 3px;
+}
+.proyectos .backend-feature-preview { position: relative; }
+.proyectos .backend-feature-preview .project-preview-trigger { bottom: .5rem; right: .5rem; }
+.image-preview-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 2800;
+  display: grid;
+  place-items: center;
+  padding: 1.25rem;
+  background: rgba(0, 8, 22, .92);
+  backdrop-filter: blur(11px);
+}
+.image-preview-dialog {
+  display: flex;
+  flex-direction: column;
+  width: min(1060px, 100%);
+  max-height: min(92dvh, 900px);
+  overflow: hidden;
+  border-radius: 18px;
+  border: 1px solid #416080;
+  background: #081a2c;
+  box-shadow: 0 26px 90px rgba(0, 0, 0, .56);
+  outline: none;
+}
+.image-preview-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.2rem;
+  padding: 1rem 1.2rem;
+}
+.image-preview-header span {
+  display: block;
+  margin-bottom: .2rem;
+  font-size: .69rem;
+  letter-spacing: .14em;
+  font-weight: 800;
+  color: #74c8e8;
+}
+.image-preview-header h2 { font-size: 1.08rem !important; margin: 0; color: #f2f7fc; }
+.image-preview-close {
+  display: grid;
+  flex: 0 0 44px;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  border: 1px solid #496984;
+  border-radius: 50%;
+  background: #17344e;
+  color: white;
+}
+.image-preview-close:hover,
+.image-preview-close:focus-visible { background: #285b80; }
+.image-preview-content {
+  flex: 1 1 auto;
+  min-height: 0;
+  overflow: auto;
+  display: grid;
+  place-items: center;
+  padding: 1rem;
+  background: #e8eff5;
+}
+.image-preview-content img {
+  display: block;
+  max-width: 100%;
+  max-height: 72dvh;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+  border-radius: 6px;
+  box-shadow: 0 8px 27px rgba(14, 28, 44, .16);
+}
+.image-preview-help { margin: 0; padding: .65rem 1.2rem .9rem; color: #a4c1d8; font-size: .76rem; }
+
+/* Vista previa de PDF: el contenido y los botones permanecen utilizables en móvil. */
+.cv-dialog { height: min(92dvh, 920px); }
+.cv-dialog-header,
+.cv-options,
+.cv-dialog-description,
+.cv-dialog-footer { flex-shrink: 0; }
+.cv-viewer { flex: 1 1 0; min-height: 0; }
+.cv-viewer iframe { height: 100%; min-height: 0; }
+.cv-viewer-note { color: #adbed3; font-size: .77rem; line-height: 1.4; }
+.cv-actions .btn { min-height: 44px; }
+@media (max-width: 575px) {
+  .image-preview-overlay { padding: 0; }
+  .image-preview-dialog { width: 100%; height: 100dvh; max-height: 100dvh; border-radius: 0; }
+  .image-preview-content { padding: .65rem; }
+  .image-preview-content img { max-height: 78dvh; }
+  .cv-dialog { min-height: 0; height: 100dvh; max-height: 100dvh; }
+  .cv-dialog-header h2 { font-size: 1.28rem !important; }
+  .cv-dialog-description { font-size: .83rem; line-height: 1.38; }
+  .cv-options { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .cv-options button { min-width: 0; padding: .5rem .25rem; font-size: .73rem; line-height: 1.25; }
+  .cv-viewer { margin: 0 .75rem; min-height: 115px; }
+  .cv-viewer iframe { height: 100%; }
+  .cv-dialog-footer { padding: .65rem .75rem .8rem; }
+  .cv-dialog-footer .cv-actions { width: 100%; }
+  .cv-dialog-footer .cv-actions .btn { flex: 1 1 0; padding-left: .3rem !important; padding-right: .3rem !important; }
+  .cv-viewer-note { font-size: .71rem; }
+}
+@media (max-height: 540px) {
+  .cv-dialog-description { display: none; }
+  .cv-dialog-footer { padding-block: .45rem; }
+  .image-preview-help { display: none; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .project-preview-trigger { transition: none; }
+  .project-preview-trigger:hover { transform: none; }
 }

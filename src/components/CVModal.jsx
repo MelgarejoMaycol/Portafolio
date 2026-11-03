@@ -75,13 +75,20 @@ export default function CVModal({ open, onClose }) {
           ))}
         </div>
         <div className="cv-viewer">
-          <iframe key={path} src={path + '#toolbar=0'} title={'Vista previa de CV ' + opcion.etiqueta} />
+          <iframe key={path} src={path + '#toolbar=0&navpanes=0&view=FitH'}
+            title={'Vista previa de CV ' + opcion.etiqueta} loading="lazy" />
         </div>
         <div className="cv-dialog-footer">
-          <p>Versión seleccionada: <strong>{opcion.etiqueta}</strong></p>
+          <div className="cv-selection-status">
+            <p>Versión seleccionada: <strong>{opcion.etiqueta}</strong></p>
+            <p className="cv-viewer-note">Si tu navegador no muestra la vista previa, abre el archivo PDF directamente.</p>
+          </div>
           <div className="cv-actions">
-            <a href={path} target="_blank" rel="noopener noreferrer" className="btn btn-outline-light rounded-pill px-3">Abrir PDF</a>
-            <a href={path} download className="btn btn-primary rounded-pill px-3">
+            <a href={path} target="_blank" rel="noopener noreferrer"
+              aria-label={'Abrir PDF de la especialidad ' + opcion.etiqueta}
+              className="btn btn-outline-light rounded-pill px-3">Abrir PDF</a>
+            <a href={path} download={path.split('/').pop()} aria-label={'Descargar CV ' + opcion.etiqueta}
+              className="btn btn-primary rounded-pill px-3">
               <i className="fa-solid fa-download me-2" aria-hidden="true"></i>Descargar CV
             </a>
           </div>
