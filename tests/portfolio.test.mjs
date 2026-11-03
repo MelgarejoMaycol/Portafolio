@@ -99,10 +99,12 @@ test('los proyectos principales destacan React y Cifrya tiene imagen actualizada
   assert.ok(statSync(resolve(process.cwd(), 'public/cifrya-dashboard.webp')).size > 15_000)
 })
 
-test('se conservan los proyectos secundarios en desplegable', () => {
+test('otros proyectos permanece plegado en Todos y aparece desplegado en filtros específicos', () => {
   const proyectos = readFileSync(resolve(process.cwd(), 'src/components/Proyectos.jsx'), 'utf8')
-  assert.ok(proyectos.includes('<details className="otros-proyectos-panel"'))
-  assert.ok(proyectos.includes('otrosProyectos.map'))
+  assert.ok(proyectos.includes('className="otros-proyectos-panel"'))
+  assert.ok(proyectos.includes("open={filtroActivo !== 'todos'}"))
+  assert.ok(proyectos.includes('otrosVisibles.map'))
+  assert.ok(proyectos.includes('filtrarProyectos(otrosProyectos, filtroActivo)'))
 })
 
 test('Inicio presenta un mensaje breve y mantiene las tres llamadas a la acción', () => {
@@ -140,6 +142,8 @@ test('las herramientas separan frontend y conocimientos complementarios', () => 
   assert.ok(herramientas.includes('habilidades-principales'))
   assert.ok(herramientas.includes('habilidades-complementarias'))
   assert.ok(herramientas.includes('Integración de APIs REST'))
+  assert.ok(herramientas.includes('complementarias.map((item)'))
+  assert.ok(herramientas.includes('<img src={item.icono}'))
 })
 
 test('los casos explican aportes, problemas y decisiones concretas', () => {
@@ -189,18 +193,29 @@ test('el formulario limita campos y ofrece alternativa de contacto', () => {
 test('los filtros de proyectos distinguen frontend, backend y full stack', async () => {
   const { filtrarProyectos, mostrarRecetasAPI } = await import('../src/utils/projectFilters.js')
   const proyectos = [
-    { id: 'cifrya', categorias: ['frontend', 'backend', 'fullstack'] },
+    { id: 'cifrya', categorias: ['fullstack'] },
     { id: 'recetas-ts', categorias: ['frontend'] },
-    { id: 'trackfile', categorias: ['frontend', 'fullstack'] }
+    { id: 'trackfile', categorias: ['fullstack'] }
   ]
   assert.deepEqual(filtrarProyectos(proyectos, 'todos').map((p) => p.id), ['cifrya', 'recetas-ts', 'trackfile'])
-  assert.deepEqual(filtrarProyectos(proyectos, 'frontend').map((p) => p.id), ['cifrya', 'recetas-ts', 'trackfile'])
-  assert.deepEqual(filtrarProyectos(proyectos, 'backend').map((p) => p.id), ['cifrya'])
+  assert.deepEqual(filtrarProyectos(proyectos, 'frontend').map((p) => p.id), ['recetas-ts'])
+  assert.deepEqual(filtrarProyectos(proyectos, 'backend').map((p) => p.id), [])
   assert.deepEqual(filtrarProyectos(proyectos, 'fullstack').map((p) => p.id), ['cifrya', 'trackfile'])
   assert.equal(mostrarRecetasAPI('backend'), true)
   assert.equal(mostrarRecetasAPI('todos'), true)
   assert.equal(mostrarRecetasAPI('frontend'), false)
   assert.equal(mostrarRecetasAPI('fullstack'), false)
+})
+
+test('el catálogo asigna especialidades reales a los proyectos destacados y secundarios', () => {
+  const catalogo = readFileSync(resolve(process.cwd(), 'src/data/proyectos.js'), 'utf8')
+  const [principales, secundarios] = catalogo.split('export const otrosProyectos = [')
+  const tiposPrincipales = [...principales.matchAll(/id: '([^']+)'[\s\S]*?categorias: \['(\w+)'\]/g)]
+    .map((m) => [m[1], m[2]])
+  const tiposSecundarios = [...secundarios.matchAll(/id: (\d+),[\s\S]*?categorias: \['(\w+)'\]/g)]
+    .map((m) => [Number(m[1]), m[2]])
+  assert.deepEqual(tiposPrincipales, [['cifrya', 'fullstack'], ['recetas-ts', 'frontend'], ['trackfile', 'fullstack']])
+  assert.deepEqual(tiposSecundarios, [[1, 'fullstack'], [2, 'frontend'], [3, 'frontend'], [4, 'frontend'], [6, 'frontend']])
 })
 
 test('los botones de filtros son accesibles y muestran resultados relacionados', () => {
