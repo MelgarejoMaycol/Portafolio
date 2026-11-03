@@ -1,0 +1,118 @@
+name: Auditoría visual y descargas (Chromium)
+
+on:
+  pull_request:
+    branches: [main]
+    paths:
+      - 'src/**'
+      - 'public/**'
+      - 'scripts/qa-responsive.mjs'
+      - '.github/workflows/qa-responsive.yml'
+  push:
+    branches: [main]
+    paths:
+      - 'src/**'
+      - 'public/**'
+      - 'scripts/qa-responsive.mjs'
+      - '.github/workflows/qa-responsive.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  browser-qa:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - name: Descargar código
+        uses: actions/checkout@v4
+
+      - name: Instalar Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: 'npm'
+
+      - name: Instalar dependencias y navegador de pruebas
+        run: |
+          npm ci --legacy-peer-deps
+          npm install --no-save --package-lock=false --legacy-peer-deps playwright@1.56.1
+          npx playwright install --with-deps chromium
+
+      - name: Compilar versión de producción
+        run: npm run build
+
+      - name: Iniciar servidor local del build
+        shell: bash
+        run: |
+          nohup npm run preview -- --host 127.0.0.1 --port 4173 > /tmp/portfolio-preview.log 2>&1 &
+          for i in $(seq 1 40); do
+            if curl -fsS http://127.0.0.1:4173/ >/dev/null; then
+              exit 0
+            fi
+            sleep 2
+          done
+          cat /tmp/portfolio-preview.log
+          exit 1
+
+      - name: Probar PC, tablet, móvil, modales, enlaces y PDF
+        env:
+          QA_BASE_URL: http://127.0.0.1:4173
+        run: node scripts/qa-responsive.mjs
+
+      - name: Conservar capturas y resultados para revisión
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: evidencia-portafolio-chromium
+          path: qa-evidence/
+          if-no-files-found: warn
+          retention-days: 14
+
+
+  production-qa:
+    name: Validación real del sitio publicado
+    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+    needs: browser-qa
+    runs-on: ubuntu-latest
+    timeout-minutes: 18
+    steps:
+      - name: Descargar código publicado
+        uses: actions/checkout@v4
+      - name: Instalar Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: 'npm'
+      - name: Instalar Chromium de auditoría
+        run: |
+          npm ci --legacy-peer-deps
+          npm install --no-save --package-lock=false --legacy-peer-deps playwright@1.56.1
+          npx playwright install --with-deps chromium
+      - name: Esperar a que Vercel publique las miniaturas nuevas
+        shell: bash
+        run: |
+          set -euo pipefail
+          for i in $(seq 1 30); do
+            if curl -fsSL --connect-timeout 8 --max-time 20               "https://melgarejomaycol.vercel.app/cv/previews/frontend.png?qa=$GITHUB_SHA"               -o /tmp/cv-prev.png && file /tmp/cv-prev.png | grep -q 'PNG image data'; then
+              echo "Nueva versión servida por Vercel"
+              exit 0
+            fi
+            echo "Esperando publicación: intento $i de 30"
+            sleep 6
+          done
+          echo "El nuevo recurso aún no está disponible en el dominio público"
+          exit 1
+      - name: Auditar navegador contra Vercel público
+        env:
+          QA_BASE_URL: https://melgarejomaycol.vercel.app
+        run: node scripts/qa-responsive.mjs
+      - name: Guardar capturas de producción
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: evidencia-vercel-publico-chromium
+          path: qa-evidence/
+          if-no-files-found: warn
+          retention-days: 14
