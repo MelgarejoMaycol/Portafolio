@@ -38,16 +38,40 @@ for (const size of sizes) {
     await page.locator('.inicio-actions button').filter({ hasText: 'Ver CV' }).click()
     await page.locator('#cv-dialog-title').waitFor()
     await inspect('cv')
+    await page.keyboard.press('Shift+Tab')
+    if (!(await page.locator('.cv-dialog .cv-actions a[download]').evaluate(el => el === document.activeElement))) {
+      throw new Error('El foco de Shift+Tab debe permanecer en el modal CV')
+    }
+    await page.keyboard.press('Tab')
+    if (!(await page.locator('.cv-dialog-close').evaluate(el => el === document.activeElement))) {
+      throw new Error('Tab desde la última acción debe volver al botón Cerrar CV')
+    }
     await page.keyboard.press('Escape')
     await page.locator('.cv-dialog').waitFor({ state: 'hidden' })
     await page.locator('.project-card').first().locator('.project-preview-trigger').click()
     await page.locator('.image-preview-dialog').waitFor()
     await inspect('image')
+    await page.keyboard.press('Shift+Tab')
+    if (!(await page.locator('.image-preview-close').evaluate(el => el === document.activeElement))) {
+      throw new Error('El visor de imagen debe mantener el foco dentro de Cerrar')
+    }
     await page.keyboard.press('Escape')
     await page.locator('.image-preview-dialog').waitFor({ state: 'hidden' })
     await page.locator('.project-card').first().locator('.project-case-cta').click()
     await page.locator('.project-case-dialog').waitFor()
     await inspect('case')
+    await page.keyboard.press('Shift+Tab')
+    if (!(await page.locator('.project-case-dialog .cv-dialog-footer a').last()
+      .evaluate(el => el === document.activeElement))) {
+      throw new Error('Shift+Tab no está atrapado en el caso técnico')
+    }
+    await page.keyboard.press('Tab')
+    if (!(await page.locator('.project-case-dialog .cv-dialog-close')
+      .evaluate(el => el === document.activeElement))) {
+      throw new Error('Tab no retorna al botón Cerrar caso técnico')
+    }
+    await page.keyboard.press('Escape')
+    await page.locator('.project-case-dialog').waitFor({ state: 'hidden' })
   } catch (error) {
     report.push({ size: size.name, state: 'error', error: String(error?.stack || error) })
     console.error('ERROR '+size.name+': '+String(error))
