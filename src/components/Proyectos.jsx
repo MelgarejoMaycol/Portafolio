@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useMemo, useState } from 'react'
+import { useCallback, useEffect, useMemo, useRef, useState } from 'react'
 import CasoTecnico from './CasoTecnico'
 import { proyectosPrincipales, otrosProyectos } from '../data/proyectos'
 import { filtrosProyectos, filtrarProyectos, mostrarRecetasAPI } from '../utils/projectFilters'
@@ -8,8 +8,11 @@ const casosDisponibles = new Set(['cifrya', 'recetas-ts', 'trackfile'])
 
 export default function Proyectos() {
   const [proyectoActivo, setProyectoActivo] = useState(null)
+  const [capturaActiva, setCapturaActiva] = useState(null)
+  const visorRef = useRef(null)
   const [filtroActivo, setFiltroActivo] = useState('todos')
   const cerrarCaso = useCallback(() => setProyectoActivo(null), [])
+  const cerrarCaptura = useCallback(() => setCapturaActiva(null), [])
   const proyectosVisibles = useMemo(
     () => filtrarProyectos(proyectosPrincipales, filtroActivo),
     [filtroActivo]
@@ -29,6 +32,24 @@ export default function Proyectos() {
     window.addEventListener('hashchange', abrirDesdeEnlace)
     return () => window.removeEventListener('hashchange', abrirDesdeEnlace)
   }, [])
+
+  useEffect(() => {
+    if (!capturaActiva) return undefined
+    const focusAnterior = document.activeElement
+    const overflowAnterior = document.body.style.overflow
+    document.body.style.overflow = 'hidden'
+    const frame = window.requestAnimationFrame(() => visorRef.current?.focus())
+    const manejarTecla = (event) => {
+      if (event.key === 'Escape') cerrarCaptura()
+    }
+    document.addEventListener('keydown', manejarTecla)
+    return () => {
+      window.cancelAnimationFrame(frame)
+      document.removeEventListener('keydown', manejarTecla)
+      document.body.style.overflow = overflowAnterior
+      focusAnterior?.focus?.()
+    }
+  }, [capturaActiva, cerrarCaptura])
 
   return (
     <>
@@ -73,9 +94,15 @@ export default function Proyectos() {
                   aria-label={'Ver caso de estudio de ' + proyecto.titulo}
                   aria-haspopup="dialog"
                 />
-                <div className="project-card-media">
+                <div className={'project-card-media' + (proyecto.imagenContain ? ' project-card-media--contain' : '')}>
                   <img src={proyecto.imagen} alt={'Captura real de ' + proyecto.titulo} loading="lazy" decoding="async" />
                   <span className="project-card-badge">{proyecto.etiqueta}</span>
+                  <button type="button" className="project-preview-trigger"
+                    onClick={() => setCapturaActiva({ titulo: proyecto.titulo, imagen: proyecto.imagen })}
+                    aria-label={'Ampliar captura de ' + proyecto.titulo} title="Ampliar captura del proyecto">
+                    <i className="fa-solid fa-expand" aria-hidden="true" />
+                    <span>Ampliar</span>
+                  </button>
                 </div>
                 <div className="project-card-content">
                   <h3>{proyecto.titulo}</h3>
@@ -117,10 +144,19 @@ export default function Proyectos() {
               </div>
               <div className="backend-feature-preview">
                 <img src={capturaRecetasAPI} alt="Captura real de la página de Recetas API" loading="lazy" decoding="async" />
+                <button type="button" className="project-preview-trigger"
+                  onClick={() => setCapturaActiva({ titulo: 'Recetas API', imagen: capturaRecetasAPI })}
+                  aria-label="Ampliar captura de Recetas API">
+                  <i className="fa-solid fa-expand" aria-hidden="true" />
+                  <span>Ampliar</span>
+                </button>
               </div>
               <div className="backend-feature-actions">
-                <a className="btn btn-primary" href="https://recetas-api-j4p8.onrender.com/api-docs" target="_blank" rel="noopener noreferrer">
+                <a className="btn btn-primary" href="https://recetas-api-k91i.onrender.com/api-docs" target="_blank" rel="noopener noreferrer">
                   Ver documentación
+                </a>
+                <a className="btn btn-outline-light" href="https://recetas-api-k91i.onrender.com/" target="_blank" rel="noopener noreferrer">
+                  Inicio API
                 </a>
                 <a className="btn btn-outline-light" href="https://github.com/MelgarejoMaycol/recetas-api" target="_blank" rel="noopener noreferrer">
                   Código en GitHub
@@ -166,6 +202,29 @@ export default function Proyectos() {
         </div>
       </section>
       <CasoTecnico proyectoId={proyectoActivo} onClose={cerrarCaso} />
+      {capturaActiva && (
+        <div className="image-preview-overlay" onMouseDown={(event) => {
+          if (event.target === event.currentTarget) cerrarCaptura()
+        }}>
+          <section className="image-preview-dialog" role="dialog" aria-modal="true"
+            aria-label={'Captura ampliada de ' + capturaActiva.titulo} tabIndex={-1} ref={visorRef}>
+            <header className="image-preview-header">
+              <div>
+                <span>VISTA DEL PROYECTO</span>
+                <h2>{capturaActiva.titulo}</h2>
+              </div>
+              <button className="image-preview-close" type="button"
+                aria-label="Cerrar vista ampliada" onClick={cerrarCaptura}>
+                <i className="fa-solid fa-xmark" aria-hidden="true" />
+              </button>
+            </header>
+            <div className="image-preview-content">
+              <img src={capturaActiva.imagen} alt={'Captura de pantalla ampliada de ' + capturaActiva.titulo} />
+            </div>
+            <p className="image-preview-help">Pulsa Escape o cerrar para regresar a los proyectos.</p>
+          </section>
+        </div>
+      )}
     </>
   )
 }
