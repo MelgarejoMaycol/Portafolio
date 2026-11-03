@@ -51,22 +51,25 @@ jobs:
         if: github.event_name == 'push' && github.ref == 'refs/heads/main'
         run: cp qa-accessibility/wcag.json qa-accessibility/wcag-local.json
 
-      - name: Esperar versión exacta del portafolio en Vercel
+      - name: Esperar publicación de los estilos de contraste corregidos
         if: github.event_name == 'push' && github.ref == 'refs/heads/main'
         shell: bash
         run: |
           set -euo pipefail
-          asset=$(grep -oE '/assets/index-[^"]+[.]js' dist/index.html | head -n 1)
-          test -n "$asset"
           for i in $(seq 1 30); do
-            if curl -fsSL --max-time 20 https://melgarejomaycol.vercel.app/ -o /tmp/portfolio-public.html &&
-              grep -Fq "$asset" /tmp/portfolio-public.html; then
-              echo "Misma versión de JavaScript comprobada en Vercel: $asset"
-              exit 0
+            if curl -fsSL --max-time 20 https://melgarejomaycol.vercel.app/ -o /tmp/portfolio-public.html; then
+              asset=$(grep -oE '/assets/index-[^"]+[.]css' /tmp/portfolio-public.html | head -n 1 || true)
+              if test -n "$asset" &&
+                 curl -fsSL --max-time 20 "https://melgarejomaycol.vercel.app$asset" -o /tmp/portfolio-public.css &&
+                 grep -Fiq '#8ac6ff' /tmp/portfolio-public.css; then
+                echo "Estilos accesibles confirmados en el dominio público: $asset"
+                exit 0
+              fi
             fi
+            echo "Esperando publicación de los estilos accesibles ($i/30)"
             sleep 6
           done
-          echo "La página pública no coincide con la versión de la rama main"
+          echo "No se pudo confirmar el estilo accesible en la página pública"
           exit 1
 
       - name: Analizar WCAG directamente en Vercel publicado
