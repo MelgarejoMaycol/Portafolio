@@ -2094,3 +2094,17 @@ h2 {
   #contacto,
   #certificaciones { scroll-margin-top: 78px; }
 }
+
+
+/* WCAG AA: azul legible en superficies oscuras del portafolio. */
+.inicio-actions .btn-outline-primary:not(:hover):not(:focus-visible),
+.contacto .btn-outline-primary:not(:hover):not(:focus-visible) {
+  color: #8ac6ff;
+  border-color: #64aafa;
+}
+.contacto .text-primary {
+  color: #8ac6ff !important;
+}
+.cv-dialog-header .text-primary {
+  color: #8ac6ff !important;
+}

@@ -93,7 +93,7 @@ export default function CasoTecnico({ proyectoId, onClose }) {
 
       const focusable = [...panelRef.current.querySelectorAll('button:not([disabled]), a[href]')]
       if (!focusable.length) return
-      if (event.shiftKey && document.activeElement === focusable[0]) {
+      if (event.shiftKey && (document.activeElement === focusable[0] || document.activeElement === panelRef.current)) {
         event.preventDefault()
         focusable[focusable.length - 1].focus()
       } else if (!event.shiftKey && document.activeElement === focusable[focusable.length - 1]) {
