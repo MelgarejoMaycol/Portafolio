@@ -14,6 +14,10 @@ export default function Proyectos() {
     () => filtrarProyectos(proyectosPrincipales, filtroActivo),
     [filtroActivo]
   )
+  const otrosVisibles = useMemo(
+    () => filtrarProyectos(otrosProyectos, filtroActivo),
+    [filtroActivo]
+  )
   const verAPI = mostrarRecetasAPI(filtroActivo)
 
   useEffect(() => {
@@ -53,7 +57,7 @@ export default function Proyectos() {
             ))}
           </div>
           <p className="visually-hidden" role="status" aria-live="polite">
-            {proyectosVisibles.length + (verAPI ? 1 : 0)} proyectos en la selección actual
+            {proyectosVisibles.length + otrosVisibles.length + (verAPI ? 1 : 0)} proyectos disponibles en la selección actual
           </p>
 
           <div
@@ -125,21 +129,27 @@ export default function Proyectos() {
             </aside>
           )}
 
-          {filtroActivo === 'todos' && (
-            <details className="otros-proyectos-panel" id="otros-proyectos">
+          {otrosVisibles.length > 0 && (
+            <details
+              key={filtroActivo}
+              className="otros-proyectos-panel"
+              id="otros-proyectos"
+              open={filtroActivo !== 'todos'}
+            >
               <summary className="otros-proyectos-toggle">
                 <span>
-                  <strong>Otros proyectos</strong>
-                  <small>Trabajos académicos y de formación</small>
+                  <strong>{filtroActivo === 'todos' ? 'Otros proyectos' : `Más proyectos ${filtroActivo === 'frontend' ? 'Frontend' : 'Full Stack'}`}</strong>
+                  <small>{filtroActivo === 'todos' ? 'Trabajos académicos y de formación' : 'Proyectos adicionales de esta especialidad'}</small>
                 </span>
                 <i className="fa-solid fa-chevron-down" aria-hidden="true" />
               </summary>
               <div className="row g-4 pt-4">
-                {otrosProyectos.map((proyecto) => (
+                {otrosVisibles.map((proyecto) => (
                   <div key={proyecto.id} className="col-lg-4 col-md-6 col-12">
                     <article className="card h-100 overflow-hidden otros-proyecto-card">
                       <img src={proyecto.imagen} className="card-img-top" alt={'Captura de ' + proyecto.titulo} loading="lazy" />
                       <div className="card-body d-flex flex-column p-4">
+                        <span className="otros-proyecto-tipo">{proyecto.categorias.includes('fullstack') ? 'Full Stack' : 'Frontend'}</span>
                         <h3 className="h5 text-primary fw-bold">{proyecto.titulo}</h3>
                         <p className="text-white-50 flex-grow-1">{proyecto.descripcion}</p>
                         <div className="d-flex gap-2 flex-wrap mt-2">
