@@ -56,7 +56,7 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
-          asset=$(grep -oE '/assets/index-[^"]+\\.js' dist/index.html | head -n 1)
+          asset=$(grep -oE '/assets/index-[^"]+[.]js' dist/index.html | head -n 1)
           test -n "$asset"
           for i in $(seq 1 30); do
             if curl -fsSL --max-time 20 https://melgarejomaycol.vercel.app/ -o /tmp/portfolio-public.html &&
