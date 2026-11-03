@@ -74,14 +74,25 @@ export default function CVModal({ open, onClose }) {
             </button>
           ))}
         </div>
-        <div className="cv-viewer">
-          <iframe key={path} src={path + '#toolbar=0&navpanes=0&view=FitH'}
-            title={'Vista previa de CV ' + opcion.etiqueta} loading="lazy" />
+        <div className="cv-viewer cv-viewer--snapshot">
+          <a href={path} target="_blank" rel="noopener noreferrer"
+            className="cv-preview-link"
+            aria-label={'Ver la página completa del CV ' + opcion.etiqueta + ' en PDF'}
+            title="Abrir PDF para consultar el texto y los enlaces">
+            <img
+              key={tipo}
+              src={'/cv/previews/' + tipo + '.png'}
+              alt={'Vista previa fiel de la primera página del CV ' + opcion.etiqueta}
+              className="cv-preview-image"
+              loading="eager"
+              decoding="async"
+            />
+          </a>
         </div>
         <div className="cv-dialog-footer">
           <div className="cv-selection-status">
             <p>Versión seleccionada: <strong>{opcion.etiqueta}</strong></p>
-            <p className="cv-viewer-note">Si tu navegador no muestra la vista previa, abre el archivo PDF directamente.</p>
+            <p className="cv-viewer-note">Toca la página para ver el PDF completo, seleccionar texto o abrir sus enlaces.</p>
           </div>
           <div className="cv-actions">
             <a href={path} target="_blank" rel="noopener noreferrer"
