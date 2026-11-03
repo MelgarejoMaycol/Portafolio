@@ -13,7 +13,7 @@ export const proyectosPrincipales = [
     id: 'cifrya',
     titulo: 'Cifrya — Finanzas Personales',
     descripcion: 'Finanzas personales con cuentas, movimientos y presupuestos.',
-    categorias: ['frontend', 'backend', 'fullstack'],
+    categorias: ['fullstack'],
     imagen: imagenCifrya,
     imagenContain: false,
     stack: ['React', 'TypeScript', 'Node.js', 'PostgreSQL'],
@@ -41,16 +41,16 @@ export const proyectosPrincipales = [
     id: 'trackfile',
     titulo: 'TrackFile — Gestión Documental',
     descripcion: 'Gestión documental para transporte, desarrollada en equipo.',
-    categorias: ['frontend', 'fullstack'],
+    categorias: ['fullstack'],
     imagen: proyectoTrackFile,
     imagenContain: true,
-    stack: ['Flutter', 'Dart', 'PostgreSQL', 'REST'],
+    stack: ['Flutter', 'Dart', 'Spring Boot', 'PostgreSQL'],
     linkPagina: 'https://trackfile.vercel.app/',
     linkCaseStudy: '#caso-trackfile',
     linkDetalles: 'https://github.com/MelgarejoMaycol/Portafolio/blob/main/docs/TRACKFILE_CASO_TECNICO.md',
     linkCodigo: 'https://github.com/MelgarejoMaycol/TRACKFILE',
     detalleLabel: 'Ficha técnica',
-    etiqueta: 'Frontend · En equipo'
+    etiqueta: 'Full Stack · En equipo'
   }
 ]
 
@@ -58,6 +58,7 @@ export const otrosProyectos = [
     {
       id: 1,
       titulo: 'Sistema To Do',
+      categorias: ['fullstack'],
       descripcion:
         'Sistema completo de gestión de tareas con backend Django REST Framework y frontend React, incluyendo CI/CD con pruebas automáticas.',
       imagen: proyectoToDo,
@@ -67,6 +68,7 @@ export const otrosProyectos = [
     {
       id: 2,
       titulo: 'Empresa Taxis',
+      categorias: ['frontend'],
       descripcion:
         'Página web desarrollada como proyecto universitario para una empresa de transporte en Bucaramanga, Santander.',
       imagen: proyectoTaxis,
@@ -76,6 +78,7 @@ export const otrosProyectos = [
     {
       id: 3,
       titulo: 'Series de Netflix',
+      categorias: ['frontend'],
       descripcion:
         'Proyecto inicial de HTML y CSS enfocado en estructura semántica, estilos y presentación de información sobre series de Netflix.',
       imagen: ProyectoSeries,
@@ -85,6 +88,7 @@ export const otrosProyectos = [
     {
       id: 4,
       titulo: 'COMPU3D',
+      categorias: ['frontend'],
       descripcion:
         'Aplicación web interactiva que simula una tienda especializada en componentes de computadora e integra experiencias visuales 3D.',
       imagen: proyectoCompu,
@@ -94,6 +98,7 @@ export const otrosProyectos = [
     {
       id: 6,
       titulo: 'PokeVerso',
+      categorias: ['frontend'],
       descripcion:
         'Aplicación desarrollada con React y Vite que consume la PokeAPI para consultar Pokémon, realizar búsquedas y gestionar favoritos.',
       imagen: ProyectoPokeVerso,
