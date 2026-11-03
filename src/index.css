@@ -1417,6 +1417,17 @@ h2 {
 .inicio-portrait .inicio-image { width: clamp(250px, 31vw, 400px); height: clamp(250px, 31vw, 400px); object-fit: cover; }
 .inicio-actions { margin-top: .5rem; }
 
+.inicio-proof {
+  max-width: 35rem;
+  color: #c5d9ef;
+  font-size: clamp(.94rem, 1.15vw, 1.04rem);
+  line-height: 1.55;
+  margin: .7rem 0 .95rem;
+}
+@media (max-width: 575px) {
+  .inicio-proof { font-size: .94rem; line-height: 1.45; margin: .5rem 0 .8rem; }
+}
+
 /* Sobre mí: dos columnas que no compiten por el mismo espacio */
 .sobre-mi { background-color: #00091c; scroll-margin-top: 5rem; }
 .sobre-layout { display: grid; grid-template-columns: minmax(0, 1.2fr) minmax(320px, .8fr); gap: clamp(1.5rem, 5vw, 5rem); align-items: center; }
