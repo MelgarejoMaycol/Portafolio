@@ -72,6 +72,16 @@ for (const size of sizes) {
     assert.equal(await page.locator('.inicio-actions a, .inicio-actions button').count(), 3)
     logs.push('Portada y tres acciones visibles')
 
+    await page.locator('.inicio-actions a[href="#proyectos"]').click()
+    await page.waitForTimeout(350)
+    const navAndTitle = await page.evaluate(() => ({
+      navBottom: document.querySelector('.navbar').getBoundingClientRect().bottom,
+      titleTop: document.querySelector('#proyectos-titulo').getBoundingClientRect().top
+    }))
+    assert.ok(navAndTitle.titleTop >= navAndTitle.navBottom - 5,
+      'El título de Proyectos queda oculto por el menú fijo: ' + JSON.stringify(navAndTitle))
+    logs.push('Navegación a Proyectos sin título oculto')
+
     const hashes = await page.locator('a[href^="#"]').evaluateAll(links =>
       links.map(a => a.getAttribute('href')).filter(h => h.length > 1 && !document.querySelector(h))
     )
@@ -127,6 +137,13 @@ for (const size of sizes) {
     await page.locator('.inicio-actions button').filter({ hasText: 'Ver CV' }).click()
     await page.locator('#cv-dialog-title').waitFor({ state: 'visible' })
     await noHorizontalOverflow(page, size.name + ' modal CV')
+    const thumbnail = page.locator('.cv-preview-image')
+    await thumbnail.waitFor({ state: 'visible' })
+    await thumbnail.evaluate(img => new Promise((resolve, reject) => {
+      if (img.complete) return img.naturalWidth > 0 ? resolve() : reject(new Error('Miniatura PDF no cargó'))
+      img.addEventListener('load', resolve, { once: true })
+      img.addEventListener('error', () => reject(new Error('Miniatura PDF no cargó')), { once: true })
+    }))
     await page.screenshot({ path: resolve(folder, size.name + '-cv.png'), animations: 'disabled' })
     await visibleInsideViewport(page, '.cv-dialog-close', 'Cerrar CV')
     await visibleInsideViewport(page, '.cv-dialog-footer .cv-actions', 'Abrir y descargar CV')
@@ -135,6 +152,11 @@ for (const size of sizes) {
     for (const [role, filename] of Object.entries(fileNames)) {
       const option = role === 'frontend' ? 'Frontend' : role === 'fullstack' ? 'Full Stack' : 'Backend'
       await page.locator('.cv-options button').filter({ hasText: option }).click()
+      await page.locator('.cv-preview-image').evaluate(img => new Promise((resolve, reject) => {
+        if (img.complete) return img.naturalWidth > 0 ? resolve() : reject(new Error('Miniatura PDF rota: ' + img.src))
+        img.addEventListener('load', resolve, { once: true })
+        img.addEventListener('error', () => reject(new Error('Miniatura PDF rota: ' + img.src)), { once: true })
+      }))
       const downloadLink = page.locator('.cv-actions a[download]')
       assert.equal(await downloadLink.getAttribute('href'), '/cv/' + filename)
       const pdf = await checkPdf(page, role, filename)
