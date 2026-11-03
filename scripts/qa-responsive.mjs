@@ -67,6 +67,11 @@ for (const size of sizes) {
     const response = await page.goto(base + '/', { waitUntil: 'domcontentloaded', timeout: 30000 })
     assert.equal(response.status(), 200, size.name + ': portada HTTP')
     await page.locator('#inicio h1').waitFor({ state: 'visible' })
+    await page.locator('.inicio-image').evaluate(img => new Promise((resolve, reject) => {
+      if (img.complete) return img.naturalWidth > 0 ? resolve() : reject(new Error('Retrato principal roto'))
+      img.addEventListener('load', resolve, { once: true })
+      img.addEventListener('error', () => reject(new Error('Retrato principal roto')), { once: true })
+    }))
     await page.screenshot({ path: resolve(folder, size.name + '-inicio.png'), animations: 'disabled' })
     await noHorizontalOverflow(page, size.name + ' portada')
     assert.equal(await page.locator('.inicio-actions a, .inicio-actions button').count(), 3)
