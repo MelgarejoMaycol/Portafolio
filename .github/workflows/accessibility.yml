@@ -85,6 +85,6 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: informe-accesibilidad-wcag
-          path: qa-accessibility/wcag.json
+          path: qa-accessibility/
           if-no-files-found: warn
           retention-days: 14
