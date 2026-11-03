@@ -24,6 +24,10 @@ export default function Inicio({ onOpenCV }) {
                 <span className="inicio-tech-typescript">TypeScript</span>
               </span>
             </h1>
+            <p className="inicio-proof">
+              Construyo interfaces responsivas, formularios e integraciones REST.
+              Puedes explorar las demos y revisar código y pruebas públicas.
+            </p>
             <div className="d-flex gap-2 gap-md-3 flex-wrap inicio-actions">
               <a href="#proyectos" className="btn btn-primary rounded-pill px-4">Ver proyectos</a>
               <button type="button" onClick={onOpenCV} className="btn btn-outline-light rounded-pill px-4">
