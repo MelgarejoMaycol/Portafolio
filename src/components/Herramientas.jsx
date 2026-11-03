@@ -8,7 +8,20 @@ const principales = [
 ]
 
 const capacidades = ['Integración de APIs REST', 'Diseño responsivo', 'Formularios y validaciones']
-const complementarias = ['Node.js', 'Express', 'PostgreSQL', 'Flutter / Dart', 'Vue.js', 'PHP / Laravel', 'Java / Spring Boot', 'MySQL']
+
+const complementarias = [
+  { nombre: 'Node.js', icono: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg' },
+  { nombre: 'Express', icono: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/express/express-original.svg', monocromo: true },
+  { nombre: 'PostgreSQL', icono: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-original.svg' },
+  { nombre: 'Flutter', icono: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/flutter/flutter-original.svg' },
+  { nombre: 'Dart', icono: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/dart/dart-original.svg' },
+  { nombre: 'Vue.js', icono: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vuejs/vuejs-original.svg' },
+  { nombre: 'PHP', icono: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/php/php-original.svg' },
+  { nombre: 'Laravel', icono: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/laravel/laravel-original.svg' },
+  { nombre: 'Java', icono: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-original.svg' },
+  { nombre: 'Spring Boot', icono: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/spring/spring-original.svg' },
+  { nombre: 'MySQL', icono: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg' }
+]
 
 export default function Herramientas() {
   return (
@@ -37,7 +50,15 @@ export default function Herramientas() {
             <h3>También he utilizado</h3>
             <p>En Cifrya, TrackFile y proyectos académicos.</p>
             <div className="habilidades-etiquetas">
-              {complementarias.map((item) => <span key={item}>{item}</span>)}
+              {complementarias.map((item) => (
+                <div
+                  key={item.nombre}
+                  className={'habilidad-complementaria' + (item.monocromo ? ' is-monochrome' : '')}
+                >
+                  <img src={item.icono} alt="" loading="lazy" aria-hidden="true" />
+                  <strong>{item.nombre}</strong>
+                </div>
+              ))}
             </div>
           </aside>
         </div>
