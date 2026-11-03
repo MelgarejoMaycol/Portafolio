@@ -25,7 +25,15 @@ for (const size of sizes){
   if(r.status()!==200)throw Error('HTTP '+r.status())
   await page.waitForURL(/\/app\/dashboard(?:[?#]|$)/,{timeout:45000})
   await page.getByRole('heading',{name:'Inicio',exact:true}).waitFor({timeout:20000})
-  await page.getByText('Usuario Demo').first().waitFor({timeout:15000})
+  // En móvil el nombre de usuario está dentro del menú contraído: no es un error de la demo.
+  await page.getByText('Usuario Demo').first().waitFor({state:'attached',timeout:15000})
+  if(size.width<768){
+    const menu=page.getByRole('button',{name:'Abrir menú principal'})
+    await menu.click()
+    await page.getByRole('link',{name:'Cuentas'}).first().waitFor({state:'visible',timeout:10000})
+    await page.getByText('Usuario Demo').first().waitFor({state:'visible',timeout:10000})
+    await menu.click()
+  }
   await page.getByText('Bancolombia').first().waitFor()
   await page.screenshot({path:resolve(dir,size.name+'-dashboard.png'),fullPage:true,animations:'disabled'})
  })
