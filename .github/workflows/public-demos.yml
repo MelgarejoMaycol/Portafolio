@@ -2,6 +2,11 @@ name: Comprobar demos públicas
 
 on:
   workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - 'scripts/check-public-demos.mjs'
+      - '.github/workflows/public-demos.yml'
   schedule:
     - cron: '17 14 * * 1'
 

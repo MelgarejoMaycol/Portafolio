@@ -256,3 +256,16 @@ test('las tres rutas PDF del sitio siguen disponibles y la versión Software Eng
   assert.ok(modal.includes('cv-viewer-note'))
   assert.ok(!modal.includes('software-engineer'))
 })
+
+test('el monitor público comprueba Recetas API actual y los tres PDF vigentes', () => {
+  const monitor = readFileSync(resolve(process.cwd(), 'scripts/check-public-demos.mjs'), 'utf8')
+  assert.ok(monitor.includes('https://recetas-api-k91i.onrender.com'))
+  assert.ok(!monitor.includes('recetas-api-j4p8.onrender.com'))
+  for (const file of Object.values(CV_FILES)) {
+    assert.ok(monitor.includes(file), file + ' debe estar monitorizado')
+  }
+  assert.ok(monitor.includes("'/api-docs/'"))
+  assert.ok(monitor.includes("'/api-docs.json'"))
+  assert.ok(monitor.includes("kind: 'pdf'"))
+  assert.ok(monitor.includes("new TextDecoder().decode(bytes.subarray(0, 5)) !== '%PDF-'"))
+})
