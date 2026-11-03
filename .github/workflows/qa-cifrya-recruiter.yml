@@ -1,0 +1,45 @@
+name: Revisión real de demo Cifrya para reclutadores
+
+on:
+  pull_request:
+    branches: [main]
+    paths:
+      - scripts/qa-cifrya-recruiter.mjs
+      - .github/workflows/qa-cifrya-recruiter.yml
+  push:
+    branches: [main]
+    paths:
+      - scripts/qa-cifrya-recruiter.mjs
+      - .github/workflows/qa-cifrya-recruiter.yml
+  workflow_dispatch:
+  schedule:
+    - cron: '23 15 * * 2'
+
+permissions:
+  contents: read
+
+jobs:
+  recruiter-demo:
+    runs-on: ubuntu-latest
+    timeout-minutes: 16
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: npm
+      - name: Instalar Chromium para pruebas de interfaz
+        run: |
+          npm ci --legacy-peer-deps
+          npm install --no-save --package-lock=false --legacy-peer-deps playwright@1.56.1
+          npx playwright install --with-deps chromium
+      - name: Probar acceso demo, navegación, saldos y movimientos aislados
+        run: node scripts/qa-cifrya-recruiter.mjs
+      - name: Conservar capturas y diagnóstico
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: evidencia-reclutador-cifrya
+          path: qa-cifrya-recruiter/
+          retention-days: 14
+          if-no-files-found: warn
