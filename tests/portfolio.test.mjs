@@ -166,7 +166,7 @@ test('Recetas API se presenta sin desplazar los tres proyectos frontend', () => 
   const proyectos = readFileSync(resolve(process.cwd(), 'src/components/Proyectos.jsx'), 'utf8')
   const catalogo = readFileSync(resolve(process.cwd(), 'src/data/proyectos.js'), 'utf8')
   assert.ok(proyectos.includes('className="backend-feature"'))
-  assert.ok(proyectos.includes('https://recetas-api-j4p8.onrender.com/api-docs'))
+  assert.ok(proyectos.includes('https://recetas-api-k91i.onrender.com/api-docs'))
   assert.ok(proyectos.includes('https://github.com/MelgarejoMaycol/recetas-api'))
   assert.ok(catalogo.includes("id: 'cifrya'") && catalogo.includes("id: 'recetas-ts'") && catalogo.includes("id: 'trackfile'"))
   assert.ok(!catalogo.includes("id: 7,"))
@@ -236,4 +236,23 @@ test('las cuatro vistas usan capturas reales guardadas en el repositorio', () =>
   for (const img of ['cifrya-dashboard.webp', 'ProyectoRecetas_Front_TS.png', 'ProyectoTrackFile.png', 'ProyectoRecetas_Api.png']) {
     assert.ok(statSync(resolve(process.cwd(), 'public', img)).size > 15_000, img)
   }
+})
+
+test('las capturas ofrecen ampliación y respetan su proporción original', () => {
+  const vista = readFileSync(resolve(process.cwd(), 'src/components/Proyectos.jsx'), 'utf8')
+  const css = readFileSync(resolve(process.cwd(), 'src/index.css'), 'utf8')
+  assert.ok(vista.includes('project-card-media--contain'))
+  assert.ok(vista.includes('proyecto.imagenContain'))
+  assert.ok(vista.includes('project-preview-trigger'))
+  assert.ok(vista.includes('image-preview-dialog'))
+  assert.ok(css.includes('object-fit: contain;'))
+  assert.ok(css.includes('max-height: 100dvh'))
+})
+
+test('las tres rutas PDF del sitio siguen disponibles y la versión Software Engineer permanece fuera del selector', () => {
+  assert.deepEqual(Object.keys(CV_FILES).sort(), ['backend', 'frontend', 'fullstack'])
+  const modal = readFileSync(resolve(process.cwd(), 'src/components/CVModal.jsx'), 'utf8')
+  assert.ok(modal.includes('download={path.split'))
+  assert.ok(modal.includes('cv-viewer-note'))
+  assert.ok(!modal.includes('software-engineer'))
 })
