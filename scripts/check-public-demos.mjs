@@ -59,7 +59,13 @@ async function probe({ name, url, kind }) {
     try {
       const response = await fetch(url, {
         redirect: 'follow',
-        headers: { 'User-Agent': 'Maycol-Portfolio-Public-Demo-Check/1.1' },
+        headers: {
+          'User-Agent': 'Maycol-Portfolio-Public-Demo-Check/1.2',
+          // Vercel solo aplica la reescritura SPA cuando Accept incluye text/html.
+          Accept: kind === 'html'
+            ? 'text/html,application/xhtml+xml;q=0.9,*/*;q=0.8'
+            : kind === 'pdf' ? 'application/pdf,*/*;q=0.8' : 'application/json,*/*;q=0.8',
+        },
         signal: AbortSignal.timeout(60000),
       })
       if (!response.ok) throw new Error('HTTP ' + response.status)
