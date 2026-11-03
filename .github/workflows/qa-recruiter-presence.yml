@@ -1,0 +1,38 @@
+name: Auditoría visual de presencia profesional
+
+on:
+  pull_request:
+    branches: [main]
+    paths:
+      - scripts/qa-recruiter-presence.mjs
+      - .github/workflows/qa-recruiter-presence.yml
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  public-review:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: npm
+      - name: Instalar navegador
+        run: |
+          npm ci --legacy-peer-deps
+          npm install --no-save --package-lock=false --legacy-peer-deps playwright@1.56.1
+          npx playwright install --with-deps chromium
+      - name: Capturar vistas públicas de reclutador
+        run: node scripts/qa-recruiter-presence.mjs
+      - name: Conservar capturas y reporte
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: presencia-profesional-publica
+          path: qa-recruiter-presence/
+          retention-days: 14
+          if-no-files-found: warn
