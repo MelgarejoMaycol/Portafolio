@@ -1843,3 +1843,45 @@ h2 {
 @media (prefers-reduced-motion: reduce) {
   .proyectos-destacados .project-card, .proyectos-filtro { transition: none; }
 }
+
+
+/* Logos de tecnologías complementarias: mismas tarjetas y densidad visual en todas las pantallas. */
+.habilidades-etiquetas {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: .55rem;
+}
+.habilidad-complementaria {
+  display: flex;
+  align-items: center;
+  gap: .5rem;
+  min-width: 0;
+  padding: .52rem .55rem;
+  background: #10243b;
+  border: 1px solid #29415e;
+  border-radius: 9px;
+}
+.habilidad-complementaria img {
+  width: 25px;
+  height: 25px;
+  flex: 0 0 auto;
+  object-fit: contain;
+}
+.habilidad-complementaria.is-monochrome img { filter: brightness(0) invert(1); }
+.habilidad-complementaria strong {
+  min-width: 0;
+  color: #d2e3f3;
+  font-size: .79rem;
+  font-weight: 650;
+  line-height: 1.3;
+  overflow-wrap: anywhere;
+}
+.otros-proyecto-tipo {
+  display: inline-block;
+  align-self: flex-start;
+  margin-bottom: .6rem;
+  color: #98c2e9;
+  font-size: .72rem;
+  font-weight: 700;
+  letter-spacing: .025em;
+}
