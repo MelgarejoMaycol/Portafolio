@@ -40,7 +40,17 @@ export default function Proyectos() {
     document.body.style.overflow = 'hidden'
     const frame = window.requestAnimationFrame(() => visorRef.current?.focus())
     const manejarTecla = (event) => {
-      if (event.key === 'Escape') cerrarCaptura()
+      if (event.key === 'Escape') {
+        event.preventDefault()
+        cerrarCaptura()
+      }
+      if (event.key === 'Tab') {
+        const cerrar = visorRef.current?.querySelector('.image-preview-close')
+        if (cerrar) {
+          event.preventDefault()
+          cerrar.focus()
+        }
+      }
     }
     document.addEventListener('keydown', manejarTecla)
     return () => {
