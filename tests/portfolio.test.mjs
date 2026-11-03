@@ -269,3 +269,10 @@ test('el monitor público comprueba Recetas API actual y los tres PDF vigentes',
   assert.ok(monitor.includes("kind: 'pdf'"))
   assert.ok(monitor.includes("new TextDecoder().decode(bytes.subarray(0, 5)) !== '%PDF-'"))
 })
+
+test('el monitor usa Accept HTML para rutas SPA de Vercel y evita falsos 404', () => {
+  const monitor = readFileSync(resolve(process.cwd(), 'scripts/check-public-demos.mjs'), 'utf8')
+  assert.ok(monitor.includes("Accept: kind === 'html'"))
+  assert.ok(monitor.includes('text/html,application/xhtml+xml'))
+  assert.ok(monitor.includes('https://cifrya.com/demo'))
+})
