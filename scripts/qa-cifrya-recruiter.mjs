@@ -30,11 +30,15 @@ for (const size of sizes){
   if(size.width<768){
     const menu=page.getByRole('button',{name:'Abrir menú principal'})
     await menu.click()
-    await page.getByRole('link',{name:'Cuentas'}).first().waitFor({state:'visible',timeout:10000})
-    // El menú muestra enlaces en móvil; la etiqueta de cuenta sigue oculta por CSS, aunque existe en DOM.
-    await menu.click()
+    const cuentas=page.getByRole('link',{name:'Cuentas'}).first()
+    await cuentas.waitFor({state:'visible',timeout:10000})
+    // El panel lateral cubre el botón hamburguesa; se cierra navegando desde el panel.
+    await cuentas.click()
+    await page.getByRole('heading',{name:'Cuentas',exact:true}).waitFor({timeout:15000})
+    await page.goto(base+'/app/dashboard',{waitUntil:'domcontentloaded'})
+    await page.getByRole('heading',{name:'Inicio',exact:true}).waitFor()
   }
-  await page.getByText('Bancolombia').first().waitFor()
+  await page.getByText('Bancolombia').first().waitFor({state:'attached'})
   await page.screenshot({path:resolve(dir,size.name+'-dashboard.png'),fullPage:true,animations:'disabled'})
  })
  const pages=[
