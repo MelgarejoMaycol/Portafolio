@@ -47,6 +47,36 @@ jobs:
           exit 1
       - name: Analizar accesibilidad en Chromium
         run: node scripts/qa-accessibility.mjs
+      - name: Conservar resultado del build local
+        if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+        run: cp qa-accessibility/wcag.json qa-accessibility/wcag-local.json
+
+      - name: Esperar versión exacta del portafolio en Vercel
+        if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+        shell: bash
+        run: |
+          set -euo pipefail
+          asset=$(grep -oE '/assets/index-[^"]+\\.js' dist/index.html | head -n 1)
+          test -n "$asset"
+          for i in $(seq 1 30); do
+            if curl -fsSL --max-time 20 https://melgarejomaycol.vercel.app/ -o /tmp/portfolio-public.html &&
+              grep -Fq "$asset" /tmp/portfolio-public.html; then
+              echo "Misma versión de JavaScript comprobada en Vercel: $asset"
+              exit 0
+            fi
+            sleep 6
+          done
+          echo "La página pública no coincide con la versión de la rama main"
+          exit 1
+
+      - name: Analizar WCAG directamente en Vercel publicado
+        if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+        env:
+          QA_BASE_URL: https://melgarejomaycol.vercel.app
+        run: |
+          node scripts/qa-accessibility.mjs
+          mv qa-accessibility/wcag.json qa-accessibility/wcag-production.json
+
       - name: Conservar diagnóstico WCAG
         if: always()
         uses: actions/upload-artifact@v4
