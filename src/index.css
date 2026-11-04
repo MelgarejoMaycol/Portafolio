@@ -2108,3 +2108,29 @@ h2 {
 .cv-dialog-header .text-primary {
   color: #8ac6ff !important;
 }
+
+
+/* Revisión orientada a reclutamiento: mensaje legible y contribución verificable. */
+.inicio-value-prop {
+  max-width: 620px;
+  margin: -.55rem 0 1.2rem;
+  color: #c8d8eb;
+  font-size: clamp(.98rem, 1.25vw, 1.1rem);
+  line-height: 1.65;
+}
+.project-card-contribution {
+  flex: 0 0 auto;
+  margin: -.6rem 0 1.1rem;
+  padding: .8rem .9rem;
+  border-left: 3px solid #4bbdde;
+  border-radius: 0 9px 9px 0;
+  background: rgba(48, 121, 163, .13);
+  color: #d2e6f5;
+  font-size: .91rem;
+  line-height: 1.5;
+}
+.project-card-contribution strong { color: #fff; }
+@media (max-width: 575px) {
+  .inicio-value-prop { margin: 0 0 1.05rem; font-size: .96rem; }
+  .project-card-contribution { font-size: .87rem; }
+}
