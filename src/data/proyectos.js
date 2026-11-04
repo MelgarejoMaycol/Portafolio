@@ -2,8 +2,8 @@ import proyectoToDo from '../../public/Proyecto TO_DO.png'
 import proyectoTaxis from '../../public/ProyectoTaxis.png'
 import proyectoCompu from '../../public/ProyectoCompu3D.png'
 import proyectoTrackFile from '../../public/ProyectoTrackFile.png'
-import ProyectoSeries from '../../public/ProyectoSeries.png'
 import ProyectoPokeVerso from '../../public/ProyectoPokeVerso.png'
+import ProyectoSeries from '../../public/ProyectoSeries.png'
 import RecetasFrontTS from '../../public/ProyectoRecetas_Front_TS.png'
 
 const imagenCifrya = '/cifrya-dashboard.webp'
@@ -12,7 +12,8 @@ export const proyectosPrincipales = [
   {
     id: 'cifrya',
     titulo: 'Cifrya — Finanzas Personales',
-    descripcion: 'Finanzas personales con cuentas, movimientos y presupuestos.',
+    descripcion: 'Aplicación de finanzas con cuentas, movimientos, presupuestos y reportes.',
+    miAporte: 'Desarrollo frontend React/TypeScript y servicios Node.js/PostgreSQL; código privado, demo pública.',
     categorias: ['fullstack'],
     imagen: imagenCifrya,
     imagenContain: false,
@@ -25,7 +26,8 @@ export const proyectosPrincipales = [
   {
     id: 'recetas-ts',
     titulo: 'Recetas TS — React y TypeScript',
-    descripcion: 'Buscador de recetas con integración de API y pruebas automatizadas.',
+    descripcion: 'Buscador de recetas con React/TypeScript, navegación y pruebas automatizadas.',
+    miAporte: 'Implementé vistas, consumo de API y pruebas; repositorio y CI públicos.',
     categorias: ['frontend'],
     imagen: RecetasFrontTS,
     imagenContain: true,
@@ -41,6 +43,7 @@ export const proyectosPrincipales = [
     id: 'trackfile',
     titulo: 'TrackFile — Gestión Documental',
     descripcion: 'Gestión documental para transporte, desarrollada en equipo.',
+    miAporte: 'Frontend Flutter, diseño de PostgreSQL, pruebas y despliegue. Backend liderado por mi compañera.',
     categorias: ['fullstack'],
     imagen: proyectoTrackFile,
     imagenContain: true,
@@ -50,7 +53,7 @@ export const proyectosPrincipales = [
     linkDetalles: 'https://github.com/MelgarejoMaycol/Portafolio/blob/main/docs/TRACKFILE_CASO_TECNICO.md',
     linkCodigo: 'https://github.com/MelgarejoMaycol/TRACKFILE',
     detalleLabel: 'Ficha técnica',
-    etiqueta: 'Full Stack · En equipo'
+    etiqueta: 'Frontend y datos · En equipo'
   }
 ]
 
