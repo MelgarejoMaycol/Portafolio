@@ -117,6 +117,9 @@ export default function Proyectos() {
                 <div className="project-card-content">
                   <h3>{proyecto.titulo}</h3>
                   <p className="project-card-description">{proyecto.descripcion}</p>
+                  {proyecto.miAporte && (
+                    <p className="project-card-contribution"><strong>Mi aporte:</strong> {proyecto.miAporte}</p>
+                  )}
                   <div className="project-stack" aria-label={'Tecnologías de ' + proyecto.titulo}>
                     {proyecto.stack.map((tecnologia) => <span key={tecnologia}>{tecnologia}</span>)}
                   </div>
