@@ -28,7 +28,7 @@ export default function Inicio({ onOpenCV }) {
             <div className="d-flex gap-2 gap-md-3 flex-wrap inicio-actions">
               <a href="#proyectos" className="btn btn-primary rounded-pill px-4">Ver proyectos</a>
               <button type="button" onClick={onOpenCV} className="btn btn-outline-light rounded-pill px-4">
-                Ver y descargar CV
+                Ver CV
               </button>
               <a href="#contacto" className="btn btn-outline-primary rounded-pill px-4">Contactar</a>
             </div>
