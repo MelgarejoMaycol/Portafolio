@@ -3,6 +3,7 @@ import proyectoTaxis from '../../public/ProyectoTaxis.png'
 import proyectoCompu from '../../public/ProyectoCompu3D.png'
 import proyectoTrackFile from '../../public/ProyectoTrackFile.png'
 import ProyectoPokeVerso from '../../public/ProyectoPokeVerso.png'
+import ProyectoSeries from '../../public/ProyectoSeries.png'
 import RecetasFrontTS from '../../public/ProyectoRecetas_Front_TS.png'
 
 const imagenCifrya = '/cifrya-dashboard.webp'
@@ -76,6 +77,16 @@ export const otrosProyectos = [
       imagen: proyectoTaxis,
       linkDetalles: 'https://github.com/MelgarejoMaycol/Empresa_Taxis',
       linkPagina: 'https://empresa-taxis.vercel.app/'
+    },
+    {
+      id: 3,
+      titulo: 'Series de Netflix',
+      categorias: ['frontend'],
+      descripcion:
+        'Proyecto inicial de HTML y CSS enfocado en estructura semántica, estilos y presentación de información sobre series de Netflix.',
+      imagen: ProyectoSeries,
+      linkDetalles: 'https://github.com/MelgarejoMaycol/Series-de-Netflix',
+      linkPagina: 'https://melgarejomaycol.github.io/Series-de-Netflix/'
     },
     {
       id: 4,
